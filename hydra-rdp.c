@@ -2424,7 +2424,8 @@ int start_rdp(int s, char *ip, int port, unsigned char options, char *miscptr, F
   strcpy(server, hydra_address2string(ip));
 
   if ((miscptr != NULL) && (strlen(miscptr) > 0)) {
-    strncpy(domain, miscptr, sizeof(domain));
+    strncpy(domain, miscptr, sizeof(domain) - 1);
+    domain[sizeof(domain) - 1] = 0;
   }
 
   if (!rdp_connect(server, flags, domain, login, pass, shell, directory, g_redirect))
@@ -2451,6 +2452,9 @@ int start_rdp(int s, char *ip, int port, unsigned char options, char *miscptr, F
 void service_rdp(char *ip, int sp, unsigned char options, char *miscptr, FILE * fp, int port) {
   int run = 1, next_run = 1;
   int myport = PORT_RDP;
+
+  if (port != 0)
+    myport = port;
 
   hydra_register_socket(sp);
   if (memcmp(hydra_get_next_pair(), &HYDRA_EXIT, sizeof(HYDRA_EXIT)) == 0)

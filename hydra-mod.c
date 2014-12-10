@@ -3,6 +3,8 @@
 #ifdef LIBOPENSSL
 #include <openssl/ssl.h>
 #include <openssl/err.h>
+#include <openssl/bn.h>
+#include <openssl/rsa.h>
 #endif
 #ifdef HAVE_PCRE
 #include <pcre.h>
@@ -26,7 +28,8 @@
 #define SOCKS_IPV6	4
 
 extern int conwait;
-
+char quiet;
+int do_retry = 1;
 int module_auth_type = -1;
 int intern_socket, extern_socket;
 char pair[260];
@@ -43,6 +46,7 @@ int ssl_first = 1;
 int __first_connect = 1;
 char ipstring[64];
 unsigned int colored_output = 1;
+char quiet = 0;
 
 #ifdef LIBOPENSSL
 SSL *ssl = NULL;
@@ -144,6 +148,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
           } else {
             if (errno == EACCES && (getuid() > 0)) {
               fprintf(stderr, "[ERROR] You need to be root to test this service\n");
+              close(s);
               return -1;
             }
           }
@@ -205,10 +210,14 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
       alarm(0);
       if (ret < 0 && alarm_went_off == 0) {
         fail++;
-        if (verbose && fail <= MAX_CONNECT_RETRY)
-          fprintf(stderr, "Process %d: Can not connect [unreachable], retrying (%d of %d retries)\n", (int) getpid(), fail, MAX_CONNECT_RETRY);
+        if (verbose ) {
+          if (do_retry && fail <= MAX_CONNECT_RETRY)
+            fprintf(stderr, "Process %d: Can not connect [unreachable], retrying (%d of %d retries)\n", (int) getpid(), fail, MAX_CONNECT_RETRY);
+          else
+            fprintf(stderr, "Process %d: Can not connect [unreachable]\n", (int) getpid());
+        }
       }
-    } while (ret < 0 && fail <= MAX_CONNECT_RETRY);
+    } while (ret < 0 && fail <= MAX_CONNECT_RETRY && do_retry);
     if (ret < 0 && fail > MAX_CONNECT_RETRY) {
       if (debug)
         printf("DEBUG_CONNECT_UNREACHABLE\n");
@@ -218,6 +227,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
  *              hydra_child_exit(1);
  */
       extern_socket = -1;
+      close(s);
       ret = -1;
       return ret;
     }
@@ -230,6 +240,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
     if (use_proxy == 2) {
       if ((buf = malloc(4096)) == NULL) {
         fprintf(stderr, "[ERROR] could not malloc()\n");
+        close(s);
         return -1;
       }
       memset(&target, 0, sizeof(target));
@@ -270,10 +281,10 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
             fprintf(stderr, "[ERROR] CONNECT call to proxy failed with code %c%c%c\n", *tmpptr, *(tmpptr + 1), *(tmpptr + 2));
           err = 1;
         }
-        free(buf);
+//        free(buf);
       } else {
         if (hydra_strcasestr(proxy_string_type, "socks5")) {
-          char buf[1024];
+//          char buf[1024];
           size_t cnt, wlen;
 
           /* socks v5 support */
@@ -376,7 +387,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
               hydra_report(stderr, "[ERROR] SOCKS4 proxy does not support IPv6\n");
               err = 1;
             } else {
-              char buf[1024];
+//              char buf[1024];
               size_t cnt, wlen;
 
               /* socks v4 support */
@@ -412,12 +423,12 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
           }
         }
       }
+      free(buf);
     }
     if (err) {
       close(s);
       extern_socket = -1;
       ret = -1;
-      free(buf);
       return ret;
     }
     fail = 0;
@@ -651,6 +662,7 @@ void hydra_report_debug(FILE * st, char *format, ...) {
 }
 
 void hydra_report_found(int port, char *svc, FILE * fp) {
+/*
   if (!strcmp(svc, "rsh"))
     if (colored_output)
       fprintf(fp, "[\e[31m%d\e[0m][\e[31m%s\e[0m] login: \e[32m%s\e[0m\n", port, svc, hydra_get_next_login());
@@ -669,10 +681,12 @@ void hydra_report_found(int port, char *svc, FILE * fp) {
   }
 
   fflush(fp);
+*/
 }
 
 /* needed for irc module to display the general server password */
 void hydra_report_pass_found(int port, char *ip, char *svc, FILE * fp) {
+/*
   strcpy(ipaddr_str, hydra_address2string(ip));
   if (colored_output)
     fprintf(fp, "[\e[31m%d\e[0m][\e[31m%s\e[0m] host: \e[32m%s\e[0m   password: \e[32m%s\e[0m\n", port, svc, ipaddr_str, hydra_get_next_password());
@@ -681,10 +695,11 @@ void hydra_report_pass_found(int port, char *ip, char *svc, FILE * fp) {
   if (stdout != fp)
     printf("[%d][%s] host: %s   password: %s\n", port, svc, ipaddr_str, hydra_get_next_password());
   fflush(fp);
+*/
 }
 
 void hydra_report_found_host(int port, char *ip, char *svc, FILE * fp) {
-  char *keyw = "password";
+/*  char *keyw = "password";
 
   strcpy(ipaddr_str, hydra_address2string(ip));
   if (!strcmp(svc, "smtp-enum"))
@@ -721,9 +736,11 @@ void hydra_report_found_host(int port, char *ip, char *svc, FILE * fp) {
   }
   fflush(fp);
   fflush(stdout);
+*/
 }
 
 void hydra_report_found_host_msg(int port, char *ip, char *svc, FILE * fp, char *msg) {
+/*
   strcpy(ipaddr_str, hydra_address2string(ip));
   if (colored_output)
     fprintf(fp, "[\e[31m%d\e[0m][\e[31m%s\e[0m] host: \e[32m%s\e[0m   login: \e[32m%s\e[0m   password: \e[32m%s\e[0m  [%s]\n", port, svc, ipaddr_str, hydra_get_next_login(),
@@ -733,6 +750,7 @@ void hydra_report_found_host_msg(int port, char *ip, char *svc, FILE * fp, char 
   if (stdout != fp)
     printf("[%d][%s] host: %s   login: %s   password: %s\n", port, svc, ipaddr_str, hydra_get_next_login(), hydra_get_next_password());
   fflush(fp);
+*/
 }
 
 int hydra_connect_to_ssl(int socket) {
@@ -846,7 +864,7 @@ int hydra_recv_nb(int socket, char *buf, int length) {
 }
 
 char *hydra_receive_line(int socket) {
-  char buf[1024], *buff, text[64];
+  char buf[1024], *buff, *buff2, text[64];
   int i, j = 1, k, got = 0;
 
   if ((buff = malloc(sizeof(buf))) == NULL) {
@@ -894,7 +912,11 @@ char *hydra_receive_line(int socket) {
         if (buf[k] == 0)
           buf[k] = 32;
       buf[j] = 0;
-      buff = realloc(buff, got + j + 1);
+      if ((buff2 = realloc(buff, got + j + 1)) == NULL) {
+        free(buff);
+        return NULL;
+      } else
+        buff = buff2;
       memcpy(buff + got, &buf, j + 1);
       got += j;
       buff[got] = 0;
@@ -1127,7 +1149,8 @@ char *hydra_address2string(char *address) {
   } else
 #endif
   {
-    fprintf(stderr, "[ERROR] unknown address string size!\n");
+    if (debug)
+      fprintf(stderr, "[ERROR] unknown address string size!\n");
     return NULL;
   }
   return NULL;                  // not reached

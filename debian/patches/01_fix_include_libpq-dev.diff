@@ -4,7 +4,7 @@ Author: Julián Moreno Patiño <darkjunix@gmail.com>
 Last-Update: 2011-06-18
 --- a/hydra-postgres.c
 +++ b/hydra-postgres.c
-@@ -14,7 +14,7 @@
+@@ -14,7 +14,7 @@ void dummy_postgres() {
  }
  #else
  

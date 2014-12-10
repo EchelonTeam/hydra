@@ -15,7 +15,7 @@ extern int child_head_no;
 char snmpv3buf[1024], *snmpv3info = NULL;
 int snmpv3infolen = 0, snmpversion = 1, snmpread = 1, hashtype = 1, enctype = 0;
 
-char snmpv3_init[] = { 0x30, 0x3e, 0x02, 0x01, 0x03, 0x30, 0x11, 0x02,
+unsigned char snmpv3_init[] = { 0x30, 0x3e, 0x02, 0x01, 0x03, 0x30, 0x11, 0x02,
   0x04, 0x08, 0x86, 0xdd, 0xf0, 0x02, 0x03, 0x00,
   0xff, 0xe3, 0x04, 0x01, 0x04, 0x02, 0x01, 0x03,
   0x04, 0x10, 0x30, 0x0e, 0x04, 0x00, 0x02, 0x01,
@@ -25,12 +25,12 @@ char snmpv3_init[] = { 0x30, 0x3e, 0x02, 0x01, 0x03, 0x30, 0x11, 0x02,
   0x02, 0x01, 0x00, 0x02, 0x01, 0x00, 0x30, 0x00
 };
 
-char snmpv3_get1[] = { 0x30, 0x77, 0x02, 0x01, 0x03, 0x30, 0x11, 0x02,
+unsigned char snmpv3_get1[] = { 0x30, 0x77, 0x02, 0x01, 0x03, 0x30, 0x11, 0x02,
   0x04, 0x08, 0x86, 0xdd, 0xef, 0x02, 0x03, 0x00,
   0xff, 0xe3, 0x04, 0x01, 0x05, 0x02, 0x01, 0x03
 };
 
-char snmpv3_get2[] = { 0x30, 0x2e, 0x04, 0x0c, 0x80, 0x00, 0x00,
+unsigned char snmpv3_get2[] = { 0x30, 0x2e, 0x04, 0x0c, 0x80, 0x00, 0x00,
   0x09, 0x03, 0x00, 0x00, 0x1f, 0xca, 0x8d, 0x82,
   0x1b, 0x04, 0x00, 0xa0, 0x1c, 0x02, 0x04, 0x3f,
   0x44, 0x5c, 0xbb, 0x02, 0x01, 0x00, 0x02, 0x01,
@@ -39,7 +39,7 @@ char snmpv3_get2[] = { 0x30, 0x2e, 0x04, 0x0c, 0x80, 0x00, 0x00,
   0x00
 };
 
-char snmpv3_nouser[] = { 0x04, 0x00, 0x04, 0x00, 0x04, 0x00 };
+unsigned char snmpv3_nouser[] = { 0x04, 0x00, 0x04, 0x00, 0x04, 0x00 };
 
 struct SNMPV1_A {
   char ID;
@@ -58,14 +58,14 @@ struct SNMPV1_A snmpv1_a = {
 };
 
 struct SNMPV1_R {
-  char type[2];
-  char identid[2];
-  char ident[4];
-  char errstat[3];
-  char errind[3];
-  char objectid[2];
-  char object[11];
-  char value[3];
+  unsigned char type[2];
+  unsigned char identid[2];
+  unsigned char ident[4];
+  unsigned char errstat[3];
+  unsigned char errind[3];
+  unsigned char objectid[2];
+  unsigned char object[11];
+  unsigned char value[3];
 } snmpv1_r = {
   .type = "\xa0\x1b",           /* GET */
     .identid = "\x02\x04",.ident = "\x1a\x5e\x97\x00",  /* random crap :) */
@@ -76,14 +76,14 @@ struct SNMPV1_R {
 };
 
 struct SNMPV1_W {
-  char type[2];
-  char identid[2];
-  char ident[4];
-  char errstat[3];
-  char errind[3];
-  char objectid[2];
-  char object[12];
-  char value[8];
+  unsigned char type[2];
+  unsigned char identid[2];
+  unsigned char ident[4];
+  unsigned char errstat[3];
+  unsigned char errind[3];
+  unsigned char objectid[2];
+  unsigned char object[12];
+  unsigned char value[8];
 } snmpv1_w = {
   .type = "\xa3\x21",           /* SET */
     .identid = "\x02\x04",.ident = "\x1a\x5e\x97\x22",  /* random crap :) */
@@ -101,7 +101,13 @@ void password_to_key_md5(u_char * password,     /* IN */
                          u_char * key) {        /* OUT - pointer to caller 16-octet buffer */
   MD5_CTX MD;
   u_char *cp, password_buf[80], *mypass = password, bpass[17];
-  u_long password_index = 0, count = 0, i, mylen = passwordlen, myelen = engineLength;
+  u_long password_index = 0, count = 0, i, mylen, myelen = engineLength;
+
+  if (strlen(password) > passwordlen)
+    passwordlen = strlen(password);
+  if (passwordlen > sizeof(bpass) - 1)
+    passwordlen = sizeof(bpass) - 1;
+  mylen = passwordlen;
 
   if (mylen < 8) {
     memset(bpass, 0, sizeof(bpass));
@@ -191,7 +197,7 @@ void password_to_key_sha(u_char * password,     /* IN */
 #endif
 
 int start_snmp(int s, char *ip, int port, unsigned char options, char *miscptr, FILE * fp) {
-  char *empty = "\"\"", *ptr, *login, *pass, buffer[1024], buf[1024], hash[64], key[256], salt[8];
+  char *empty = "\"\"", *ptr, *login, *pass, buffer[1024], buf[1024], hash[64], key[256] = "", salt[8] = "";
   int i, j, k, size, off = 0, off2 = 0, done = 0;
   unsigned char initVect[8], privacy_params[8];
   int engine_boots = 0;
@@ -523,16 +529,18 @@ void service_snmp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       hydra_send(sock, snmpv3_init, sizeof(snmpv3_init), 0);
       if (hydra_data_ready_timed(sock, 5, 0) > 0) {
         if ((i = hydra_recv(sock, (char *) snmpv3buf, sizeof(snmpv3buf))) > 30) {
-          if (snmpv3buf[4] == 3 && snmpv3buf[5] == 0x30); {
+          if (snmpv3buf[4] == 3 && snmpv3buf[5] == 0x30) {
             snmpv3info = snmpv3buf + 7 + snmpv3buf[6];
             snmpv3infolen = snmpv3info[3] + 4;
-            while (snmpv3info[snmpv3infolen - 2] == 4 && snmpv3info[snmpv3infolen - 1] == 0)
-              snmpv3infolen -= 2;
-            if (debug)
-              hydra_dump_asciihex(snmpv3info, snmpv3infolen);
-            if (snmpv3info[10] == 3 && child_head_no == 0)
-              printf("[INFO] Remote device MAC address is %02x:%02x:%02x:%02x:%02x:%02x\n", (unsigned char) snmpv3info[12], (unsigned char) snmpv3info[13],
-                     (unsigned char) snmpv3info[14], (unsigned char) snmpv3info[15], (unsigned char) snmpv3info[16], (unsigned char) snmpv3info[12]);
+            if (snmpv3info + snmpv3infolen <= snmpv3buf + sizeof(snmpv3buf)) {
+              while (snmpv3info[snmpv3infolen - 2] == 4 && snmpv3info[snmpv3infolen - 1] == 0 && snmpv3infolen > 1)
+                snmpv3infolen -= 2;
+              if (debug)
+                hydra_dump_asciihex(snmpv3info, snmpv3infolen);
+              if (snmpv3info[10] == 3 && child_head_no == 0)
+                printf("[INFO] Remote device MAC address is %02x:%02x:%02x:%02x:%02x:%02x\n", (unsigned char) snmpv3info[12], (unsigned char) snmpv3info[13],
+                       (unsigned char) snmpv3info[14], (unsigned char) snmpv3info[15], (unsigned char) snmpv3info[16], (unsigned char) snmpv3info[12]);
+            }
           }
         }
       }

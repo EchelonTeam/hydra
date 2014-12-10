@@ -96,9 +96,8 @@ int start_telnet(int s, char *ip, int port, unsigned char options, char *miscptr
 }
 
 void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE * fp, int port) {
-  int run = 1, next_run = 1, sock = -1;
+  int run = 1, next_run = 1, sock = -1, fck;
   int myport = PORT_TELNET, mysslport = PORT_TELNET_SSL;
-  int fck = 0;
 
   hydra_register_socket(sp);
   if (memcmp(hydra_get_next_pair(), &HYDRA_EXIT, sizeof(HYDRA_EXIT)) == 0)
@@ -132,7 +131,7 @@ void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE
         hydra_child_exit(1);
       }
       if ((buf = hydra_receive_line(sock)) == NULL) {   /* check the first line */
-        hydra_report(stderr, "[ERROR] Not a TELNET protocol or service shutdown: %s\n", buf);
+        hydra_report(stderr, "[ERROR] Not a TELNET protocol or service shutdown\n");
         hydra_child_exit(2);
 //        hydra_child_exit(2);
       }
@@ -140,7 +139,7 @@ void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE
         hydra_send(sock, "\r\n", 2, 0);
         free(buf);
         if ((buf = hydra_receive_line(sock)) == NULL) {
-          hydra_report(stderr, "[ERROR] Not a TELNET protocol or service shutdown: %s\n", buf);
+          hydra_report(stderr, "[ERROR] Not a TELNET protocol or service shutdown\n");
           hydra_child_exit(2);
         }
       }

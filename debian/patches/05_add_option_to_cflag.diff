@@ -2,12 +2,12 @@ Description: Add -Wall to build options
  and drop -O3 optimization level according debian policy
 Forwarded: vh@thc.org
 Author: Julián Moreno Patiño <darkjunix@gmail.com>
-Last-Update: 2012-05-23
+Last-Update: 2013-08-04
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -1,7 +1,7 @@
  #
- # Makefile for Hydra - (c) 2001-2012 by van Hauser / THC <vh@thc.org>
+ # Makefile for Hydra - (c) 2001-2014 by van Hauser / THC <vh@thc.org>
  #
 -OPTS=-I. -O3
 +OPTS=-I. -Wall
