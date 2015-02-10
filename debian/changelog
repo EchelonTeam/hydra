@@ -1,3 +1,9 @@
+hydra (8.1-1~kali1) kali; urgency=medium
+
+  * Import new version from debian
+
+ -- Sophie Brun <sophie@freexian.com>  Tue, 10 Feb 2015 15:57:34 +0100
+
 hydra (8.1-1) unstable; urgency=medium
 
   * New upstream release.
