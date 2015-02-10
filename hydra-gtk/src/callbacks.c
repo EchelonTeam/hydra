@@ -108,6 +108,18 @@ int hydra_get_options(char *options[]) {
     options[i++] = "-d";
   }
 
+  /* COMPLETE HELP */
+  widget = lookup_widget(GTK_WIDGET(wndMain), "chkCompleteHelp");
+  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
+    options[i++] = "-h";
+  }
+
+  /* Service Module Usage Details */
+  widget = lookup_widget(GTK_WIDGET(wndMain), "chkServiceDetails");
+  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
+    options[i++] = "-U";
+  }
+
   /* use colon separated list? */
   widget = lookup_widget(GTK_WIDGET(wndMain), "chkColon");
   if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
@@ -150,7 +162,7 @@ int hydra_get_options(char *options[]) {
     }
   }
 
-  /* empty passes / login as pass? */
+  /* empty passes / login as pass / reversed login? */
   memset(passLoginNull, 0, 4);
   widget = lookup_widget(GTK_WIDGET(wndMain), "chkPassNull");
   if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
@@ -162,6 +174,17 @@ int hydra_get_options(char *options[]) {
       passLoginNull[0] = 's';
     } else {
       passLoginNull[1] = 's';
+    }
+  }
+  /* The "Try reversed login" button was implemented by Petar Kaleychev <petar.kaleychev@gmail.com> */
+  widget = lookup_widget(GTK_WIDGET(wndMain), "chkPassReverse");
+  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
+    if (passLoginNull[0] == 0) {
+      passLoginNull[0] = 'r';
+    } else if (passLoginNull[1] == 0) {
+      passLoginNull[1] = 'r';
+    } else {
+      passLoginNull[2] = 'r';
     }
   }
   if (passLoginNull[0] != 0) {
@@ -194,9 +217,21 @@ int hydra_get_options(char *options[]) {
   }
 
   /* exit after first found pair? */
+  /* per host */
   widget = lookup_widget(GTK_WIDGET(wndMain), "chkExitf");
   if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
     options[i++] = "-f";
+  }
+  /* global */
+  widget = lookup_widget(GTK_WIDGET(wndMain), "chkExitF");
+  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
+    options[i++] = "-F";
+  }
+
+  /* Do not print messages about connection errors */
+  widget = lookup_widget(GTK_WIDGET(wndMain), "chkNoErr");
+  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
+    options[i++] = "-q";
   }
 
   /* get additional parameters */

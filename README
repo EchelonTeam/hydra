@@ -3,7 +3,7 @@
 
                       (c) 2001-2014 by van Hauser / THC
                        <vh@thc.org> http://www.thc.org
-            co-maintained by David (dot) Maciejak @ gmail (dot) com
+       many modules were written by David (dot) Maciejak @ gmail (dot) com
                  BFG code by Jan Dlabal <dlabaljan@gmail.com>
 
   		    Licensed under AGPLv3 (see LICENSE file)
@@ -119,7 +119,7 @@ Via the command line options you specify which logins to try, which passwords,
 if SSL should be used, how many parallel tasks to use for attacking, etc.
 
 PROTOCOL is the protocol you want to use for attacking, e.g. ftp, smtp,
-http-get or many others are vailable
+http-get or many others are available
 TARGET is the target you want to attack
 OPTIONS are optional values which are special per PROTOCOL module
 

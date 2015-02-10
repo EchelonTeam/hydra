@@ -7,5 +7,6 @@ Comment=A fast network logon cracker
 Exec=xhydra %F
 Icon=xhydra
 Categories=Network;Security;
+Keywords=Audit;Hacking;Network;Password;Security;
 Terminal=false
 StartupNotify=true

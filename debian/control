@@ -6,26 +6,26 @@ Uploaders: Daniel Echeverry <epsilon77@gmail.com>
 Build-Depends: autotools-dev,
  debhelper (>= 9),
  firebird-dev[!hurd-any],
- libafpclient-dev[!hurd-any],
  libgtk2.0-dev,
  libidn11-dev,
  libmysqlclient-dev,
- libncp-dev[!kfreebsd-any !hurd-any],
  libncurses-dev,
  libpcre3-dev,
  libpq-dev,
  libssh-dev,
  libsvn-dev,
- pkg-config
-Standards-Version: 3.9.4
+ pkg-config, 
+ dh-exec
+Standards-Version: 3.9.6
 Homepage: http://freeworld.thc.org/thc-hydra/
-Vcs-Git: git://git.debian.org/collab-maint/hydra.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/hydra.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/hydra.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/hydra.git;a=summary
 
 Package: hydra
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Suggests: hydra-gtk
+Recommends: wget | curl
 Description: very fast network logon cracker
  Hydra is a parallelized login cracker which supports numerous protocols
  to attack. It is very fast and flexible, and new modules are easy to add.
@@ -43,7 +43,7 @@ Description: very fast network logon cracker
 
 Package: hydra-gtk
 Architecture: any
-Depends: hydra (>= 6.1-1), ${misc:Depends}, ${shlibs:Depends}
+Depends: hydra (>= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: very fast network logon cracker - GTK+ based GUI
  Hydra is a parallelized login cracker which supports numerous protocols
  to attack. It is very fast and flexible, and new modules are easy to add.

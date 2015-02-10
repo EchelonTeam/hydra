@@ -1,8 +1,49 @@
+hydra (8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.6 (no changes).
+  * Refresh 02_using_supported_protocols.diff and
+    08_fix_spelling_mistakes.diff patches.
+  * Remove d/source/options, now xz format is default.
+  * Update 08_fix_spelling_mistakes.diff patch.
+  * d/copyright: Add missing License values.
+
+ -- Julián Moreno Patiño <julian@debian.org>  Wed, 10 Dec 2014 07:33:34 -0500
+
 hydra (8.0-1kali1) kali; urgency=low
 
   * Upstream import
 
  -- Mati Aharoni <muts@kali.org>  Fri, 23 May 2014 04:52:27 -0400
+
+hydra (8.0-1) unstable; urgency=medium
+
+  * New upstream release. (LP: #1275463)
+  * debian/control
+    + Bump Standards-Version to 3.9.5 (no changes).
+    + Add dh-exec in B-D
+    + Add wget | curl to Recommends field
+  * debian/patches
+    + Refresh all patches
+    + Add 09_use_correct_install_dir_dlp4hydra.diff
+      + Change upstream path for one suitable for GNU Debian
+  * debian/copyright
+    + Extend copyright holders years
+    + Add dpl4hydra.sh copyright 
+  * Remove debian/source/options
+    + Use xz compression.
+  * debian/rules
+    + Remove override_dh_builddeb
+      + Now dpkg-deb uses xz compression by default
+  * debian/hydra.manpages
+    + Add dpl4hydra.1 file
+    + Add hydra-wizard.1 file
+  * Add hydra.install file
+    + Include two new scripts
+      + dpl4hydra: Generate a default password list
+      + hydra-wizard: A wizard script to use Hydra
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Fri, 30 May 2014 22:05:44 -0500
 
 hydra (7.6-0kali1) kali; urgency=low
 
@@ -10,24 +51,41 @@ hydra (7.6-0kali1) kali; urgency=low
 
  -- Mati Aharoni <muts@kali.org>  Sat, 28 Dec 2013 10:34:01 -0500
 
-hydra (7.5-1kali1) kali; urgency=low
+hydra (7.5-2) unstable; urgency=low
 
-  * Updated the license to AGPL
+  * debian/control
+    + Remove libncp-dev in B-D. (Closes: #728864)
+  * debian/patches
+    + Refresh 02_using_supported_protocols.diff patch.
+      + Remove the support of ncp protocol.
 
- -- Devon Kearns <dookie@kali.org>  Sat, 10 Aug 2013 21:03:10 -0600
+ -- Daniel Echeverry <epsilon77@gmail.com>  Fri, 15 Nov 2013 22:02:21 -0500
 
-hydra (7.5-1kali0) kali; urgency=low
+hydra (7.5-1) unstable; urgency=low
 
-  * Imported new upstream release.  (Closes: 0000181)
+  * New upstream release
+  * debian/copyright
+    + Move the license from GPL-3.0+ to AGPL-3.0 with OpenSSL exception
+    + Extend copyright holders years
+  * debian/patches
+    + Refreshed patch 02_using_supported_protocols.diff
+    + Refreshed patch 05_add_option_to_cflag.diff
+    + Refreshed patch 07_remove_troubled_files.diff
+    + Refreshed patch 08_fix_spelling_mistakes.diff
 
- -- Devon Kearns <dookie@kali.org>  Sat, 10 Aug 2013 20:38:53 -0600
+ -- Daniel Echeverry <epsilon77@gmail.com>  Sat, 31 Aug 2013 22:28:57 -0500
 
-hydra (7.4.2-2kali0) kali; urgency=low
+hydra (7.4.2-2) unstable; urgency=low
 
-  * Disabled dh_auto_clean and dh_clean, since they interfere with the package
-    (now it compiles correctly).
+  * Use ${binary:Version} in hydra-gtk package
+    instead bump manually the version.
+  * Disable libafpclient-dev support due to #702889
+    + Update 02_using_supported_protocols.diff patch to remove
+      the support of afp protocol.
+  * Use canonical URIs for Vcs-* fields.
+  * Add Keywords entry to d/hydra-gtk.desktop.
 
- -- Emanuele Acri <crossbower@gmail.com>  Thu, 28 Mar 2013 01:09:56 +0100
+ -- Julián Moreno Patiño <julian@debian.org>  Mon, 15 Jul 2013 15:44:45 -0500
 
 hydra (7.4.2-1) unstable; urgency=low
 
