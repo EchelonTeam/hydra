@@ -312,11 +312,11 @@ GtkWidget *create_wndMain(void) {
   gtk_misc_set_alignment(GTK_MISC(label6), 0, 0.5);
 
 
-  chkIPV6 = gtk_check_button_new_with_mnemonic("Prefer IPV6");
+  chkIPV6 = gtk_check_button_new_with_mnemonic(_("Prefer IPV6"));
   gtk_widget_set_name(chkIPV6, "chkIPV6");
   gtk_widget_show(chkIPV6);
   gtk_table_attach(GTK_TABLE(table8), chkIPV6, 0, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-  gtk_tooltips_set_tip(tooltips, chkIPV6, "Enable to use IPV6", NULL);
+  gtk_tooltips_set_tip(tooltips, chkIPV6, _("Enable to use IPV6"), NULL);
 
   radioTarget2 = gtk_radio_button_new_with_mnemonic(NULL, _("Target List"));
   gtk_widget_set_name(radioTarget2, "radioTarget2");
@@ -393,7 +393,7 @@ GtkWidget *create_wndMain(void) {
                     (GtkAttachOptions) (GTK_EXPAND), 0, 0);
   gtk_tooltips_set_tip (tooltips, chkServiceDetails, _("Service Module Usage Details"), NULL);
 
-  chkCompleteHelp = gtk_check_button_new_with_mnemonic ("COMPLETE HELP");
+  chkCompleteHelp = gtk_check_button_new_with_mnemonic (_("COMPLETE HELP"));
   gtk_widget_set_name (chkCompleteHelp, "chkCompleteHelp");
   gtk_widget_show (chkCompleteHelp);
   gtk_table_attach (GTK_TABLE (table9), chkCompleteHelp, 0, 1, 2, 3,
@@ -455,7 +455,7 @@ GtkWidget *create_wndMain(void) {
   radioUsername1_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(radioUsername2));
 
   chkUsernameLoop = gtk_check_button_new_with_mnemonic(_("Loop around users"));
-  gtk_widget_set_name(chkUsernameLoop, _("chkUsernameLoop"));
+  gtk_widget_set_name(chkUsernameLoop, "chkUsernameLoop");
   gtk_widget_show(chkUsernameLoop);
   gtk_table_attach(GTK_TABLE(table2), chkUsernameLoop, 0, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
   gtk_tooltips_set_tip(tooltips, chkUsernameLoop, _("Enable this option to loop around users not passwords"), NULL);
@@ -539,7 +539,7 @@ GtkWidget *create_wndMain(void) {
   gtk_widget_set_name(chkColon, "chkColon");
   gtk_widget_show(chkColon);
   gtk_table_attach(GTK_TABLE(table5), chkColon, 0, 1, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-  gtk_tooltips_set_tip(tooltips, chkColon, _("\"Enable this option to use a colon file for login/password attempts"), NULL);
+  gtk_tooltips_set_tip(tooltips, chkColon, _("Enable this option to use a colon file for login/password attempts"), NULL);
 
   entColonFile = gtk_entry_new();
   gtk_widget_set_name(entColonFile, "entColonFile");
@@ -561,7 +561,7 @@ GtkWidget *create_wndMain(void) {
   gtk_widget_set_name(chkPassLogin, "chkPassLogin");
   gtk_widget_show(chkPassLogin);
   gtk_table_attach(GTK_TABLE(table6), chkPassLogin, 0, 1, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-  gtk_tooltips_set_tip(tooltips, chkPassLogin, "Enable this option to try the login as password, in addition to the password/file", NULL);
+  gtk_tooltips_set_tip(tooltips, chkPassLogin, _("Enable this option to try the login as password, in addition to the password/file"), NULL);
 
   chkPassNull = gtk_check_button_new_with_mnemonic(_("Try empty password"));
   gtk_widget_set_name(chkPassNull, "chkPassNull");
@@ -570,10 +570,10 @@ GtkWidget *create_wndMain(void) {
   gtk_tooltips_set_tip(tooltips, chkPassNull, _("Enable this option to try an empty password, in addition to the password/file"), NULL);
 
   chkPassReverse = gtk_check_button_new_with_mnemonic (_("Try reversed login"));
-  gtk_widget_set_name (chkPassReverse, _("chkPassReverse"));
+  gtk_widget_set_name (chkPassReverse, "chkPassReverse");
   gtk_widget_show (chkPassReverse);
   gtk_table_attach (GTK_TABLE (table6), chkPassReverse, 2, 3, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-  gtk_tooltips_set_tip (tooltips, chkPassReverse, "Enable this option to try an reverse password, in addition to the password/file", NULL);
+  gtk_tooltips_set_tip (tooltips, chkPassReverse, _("Enable this option to try an reverse password, in addition to the password/file"), NULL);
   
   label2 = gtk_label_new(_("Passwords"));
   gtk_widget_set_name(label2, "label2");
@@ -624,10 +624,10 @@ GtkWidget *create_wndMain(void) {
   gtk_widget_set_name(entProxyUser, "entProxyUser");
   gtk_widget_show(entProxyUser);
   gtk_table_attach(GTK_TABLE(table7), entProxyUser, 1, 2, 3, 4, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-  gtk_tooltips_set_tip(tooltips, entProxyUser, "The user name for proxy authentication", NULL);
-  gtk_entry_set_text(GTK_ENTRY(entProxyUser), "yourname");
+  gtk_tooltips_set_tip(tooltips, entProxyUser, _("The user name for proxy authentication"), NULL);
+  gtk_entry_set_text(GTK_ENTRY(entProxyUser), _("yourname"));
 
-  label24 = gtk_label_new("Password");
+  label24 = gtk_label_new(_("Password"));
   gtk_widget_set_name(label24, "label24");
   gtk_widget_show(label24);
   gtk_table_attach(GTK_TABLE(table7), label24, 0, 1, 4, 5, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
@@ -710,7 +710,7 @@ GtkWidget *create_wndMain(void) {
   gtk_table_attach(GTK_TABLE(table10), spnTasks, 1, 2, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
   gtk_tooltips_set_tip(tooltips, spnTasks, _("The number of attack tasks to run in parallel. The more the faster, the most: computer lockup :-) 16-64 is a good choice"), NULL);
 
-  label32 = gtk_label_new("Timeout");
+  label32 = gtk_label_new(_("Timeout"));
   gtk_widget_set_name(label32, "label32");
   gtk_widget_show(label32);
   gtk_table_attach(GTK_TABLE(table10), label32, 0, 1, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK), (GtkAttachOptions) (GTK_EXPAND), 0, 0);
