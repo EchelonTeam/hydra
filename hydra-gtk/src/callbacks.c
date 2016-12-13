@@ -669,10 +669,40 @@ void on_btnSave_clicked(GtkButton * button, gpointer user_data) {
   GtkTextIter start;
   GtkTextIter end;
 
+  GtkFileFilter *filefilter;
   dialog = gtk_file_chooser_dialog_new(_("Save output"), (GtkWindow *) wndMain, GTK_FILE_CHOOSER_ACTION_SAVE,
                                        GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
-  if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+
+  filefilter = gtk_file_filter_new();
+  gtk_file_filter_set_name( filefilter, "txt" );
+  gtk_file_filter_add_pattern( filefilter, "*.txt" );
+  gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), GTK_FILE_FILTER(filefilter));
+
+  filefilter = gtk_file_filter_new();
+  gtk_file_filter_set_name( filefilter, "xml" );
+  gtk_file_filter_add_pattern( filefilter, "*.xml" );
+  gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), GTK_FILE_FILTER(filefilter));
+
+   if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+    filefilter = gtk_file_chooser_get_filter(GTK_FILE_CHOOSER(dialog));
+    const char *ext = gtk_file_filter_get_name(GTK_FILE_FILTER(filefilter));
+
     filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+
+    int extlen = strlen(ext);
+    int filenamelen = strlen(filename);
+    gboolean hasext = FALSE;
+    if (filenamelen > extlen + 1) {
+      char *p = strstr(&filename[filenamelen-extlen], ext);
+      if(p)
+          hasext = p[-1] == '.';
+    }
+
+    if (!hasext) {
+        char *tmp = filename;
+        filename = g_strconcat(filename, ".", ext, NULL);
+        g_free(tmp);
+    }
 
     output = lookup_widget(GTK_WIDGET(wndMain), "txtOutput");
     outputbuf = gtk_text_view_get_buffer((GtkTextView *) output);
@@ -686,9 +716,29 @@ void on_btnSave_clicked(GtkButton * button, gpointer user_data) {
       write(fd, text, strlen(text));
       close(fd);
     }
+
+    pid_t adapter_pid = 0;
+    if (!strcmp(ext, "xml"))
+    {
+       if ((adapter_pid = fork()) > 0) /* parent */
+       {
+         int status;
+         wait(&status);
+       }
+       else if (adapter_pid == 0) /* child */
+       {
+          setpgid(getpid(), getpid());
+          execlp("hydraxmladapter", "hydraxmladapter", filename, filename, "-r", (char *) 0);
+          gtk_main_quit();
+	  return;
+       }
+    }
+
     g_free(text);
     g_free(filename);
   }
+
+  gtk_file_chooser_remove_filter(GTK_FILE_CHOOSER(dialog), GTK_FILE_FILTER(filefilter));
   gtk_widget_destroy(dialog);
 #endif
 }

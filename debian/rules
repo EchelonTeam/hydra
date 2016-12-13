@@ -14,3 +14,4 @@ override_dh_auto_install:
 	$(CURDIR)/debian/hydra/usr/share/locale/ru/LC_MESSAGES/hydra.mo
 	install -o root -g root -m 644 -D hydra-gtk/po/ru.gmo \
 	$(CURDIR)/debian/hydra-gtk/usr/share/locale/ru/LC_MESSAGES/xhydra.mo
+	$(INSTALL) hydraxmladapter $(CURDIR)/debian/hydra-gtk/usr/bin
