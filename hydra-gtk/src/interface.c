@@ -188,6 +188,7 @@ GtkWidget *create_wndMain(void) {
   wndMain = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_name(wndMain, "wndMain");
   gtk_window_set_title(GTK_WINDOW(wndMain), _("xHydra"));
+  gtk_window_set_icon(GTK_WINDOW(wndMain), create_pixbuf("xhydra.xpm"));
 
   vbox1 = gtk_vbox_new(FALSE, 0);
   gtk_widget_set_name(vbox1, "vbox1");
