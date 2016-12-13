@@ -111,18 +111,6 @@ int hydra_get_options(char *options[]) {
     options[i++] = "-d";
   }
 
-  /* COMPLETE HELP */
-  widget = lookup_widget(GTK_WIDGET(wndMain), "chkCompleteHelp");
-  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
-    options[i++] = "-h";
-  }
-
-  /* Service Module Usage Details */
-  widget = lookup_widget(GTK_WIDGET(wndMain), "chkServiceDetails");
-  if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
-    options[i++] = "-U";
-  }
-
   /* use colon separated list? */
   widget = lookup_widget(GTK_WIDGET(wndMain), "chkColon");
   if (gtk_toggle_button_get_active((GtkToggleButton *) widget)) {
