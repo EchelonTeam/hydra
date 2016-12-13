@@ -2,7 +2,7 @@
 needs="X11"\
 section="Applications/Network/Monitoring"\
 title="XHydra"\
-icon="/usr/share/pixmaps/xhydra.xpm"\
+icon="/usr/share/pixmaps/xhydra.svg"\
 longtitle="Run XHydra" \
 description="Run the Hydra GUI, XHydra" \
 command="/usr/bin/xhydra" 
