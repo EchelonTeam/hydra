@@ -454,8 +454,19 @@ int read_into(int fd) {
 
   if (result == BUF_S - 1)      /* there might be more available, recurse baby! */
     return read_into(fd);
-  else
+  else {
+    GtkWidget *checkbox = lookup_widget(GTK_WIDGET(wndMain), "checkbutton1");
+    gboolean autoscroll = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (checkbox));
+    if (autoscroll) {
+      GtkWidget *scroll = lookup_widget(GTK_WIDGET(wndMain), "scrolledwindow1");
+      GtkAdjustment* adj = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW (scroll));
+      gdouble val = 0;
+
+      g_object_get(adj, "upper", &val, NULL);
+      gtk_adjustment_set_value(adj, val);
+    }
     return TRUE;
+  }
 }
 
 /* wait for hydra output */

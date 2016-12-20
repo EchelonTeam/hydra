@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xhydra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-13 13:15+0300\n"
-"PO-Revision-Date: 2016-12-13 12:15+0300\n"
+"POT-Creation-Date: 2016-12-20 14:21+0300\n"
+"PO-Revision-Date: 2016-12-20 14:22+0300\n"
 "Last-Translator: Vasia Pupkin <v.pupkin@gmail.com>\n"
 "Language-Team: Echelon <coder@cnpo.ru>\n"
 "Language: ru\n"
@@ -15,41 +15,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.11\n"
 
-#: ../src/interface.c:190
+#: ../src/interface.c:189
 msgid "xHydra"
 msgstr "Сетевой аудит паролей"
 
-#: ../src/interface.c:294
+#: ../src/interface.c:293
 msgid "The protocol to use for the login/password cracking attempt"
 msgstr "Протокол, который будет использован для перебора"
 
-#: ../src/interface.c:296
+#: ../src/interface.c:295
 msgid "Protocol"
 msgstr "Протокол"
 
-#: ../src/interface.c:307
+#: ../src/interface.c:306
 msgid ""
 "select the port on which the daemon you want to brute force runs, 0 means "
 "default"
 msgstr "Номер порта, который прослушивает целевой сервис, 0 - стандартный порт"
 
-#: ../src/interface.c:309
+#: ../src/interface.c:308
 msgid "Port"
 msgstr "Порт"
 
-#: ../src/interface.c:316
+#: ../src/interface.c:315
 msgid "Prefer IPV6"
 msgstr "Использовать IPv6"
 
-#: ../src/interface.c:320
+#: ../src/interface.c:319
 msgid "Enable to use IPV6"
 msgstr "Включите, чтобы использовать IPv6"
 
-#: ../src/interface.c:322
+#: ../src/interface.c:321
 msgid "Target List"
 msgstr "Список целей"
 
-#: ../src/interface.c:333
+#: ../src/interface.c:332
 msgid ""
 "A file which contains the targets to attack. One entry per line. IP\n"
 "addresses and/or DNS names."
@@ -57,213 +57,213 @@ msgstr ""
 "Файл, содержащий цели для перебора, по одной в строке. \n"
 " IP адрес или DNS имя."
 
-#: ../src/interface.c:339
+#: ../src/interface.c:338
 msgid "The target to attack - DNS name or IP address"
 msgstr "Цель перебора - DNS имя или IP адрес"
 
-#: ../src/interface.c:342
+#: ../src/interface.c:341
 msgid "Single Target"
 msgstr "Одиночная цель"
 
-#: ../src/interface.c:350 ../src/interface.c:394
+#: ../src/interface.c:349 ../src/interface.c:393
 msgid "Target"
 msgstr "Цель"
 
-#: ../src/interface.c:365
+#: ../src/interface.c:364
 msgid "Be Verbose"
 msgstr "Подробный вывод"
 
-#: ../src/interface.c:369
+#: ../src/interface.c:368
 msgid "be verbose"
 msgstr "Подробный вывод консольной утилиты"
 
-#: ../src/interface.c:371
+#: ../src/interface.c:370
 msgid "Debug"
 msgstr "Отладка"
 
-#: ../src/interface.c:375
+#: ../src/interface.c:374
 msgid "Enable debug mode"
 msgstr "Включить режим отладки"
 
-#: ../src/interface.c:377
+#: ../src/interface.c:376
 msgid "Show Attempts"
 msgstr "Показывать попытки"
 
-#: ../src/interface.c:381
+#: ../src/interface.c:380
 msgid "Show attempts"
 msgstr "Показывать попытки"
 
-#: ../src/interface.c:383
+#: ../src/interface.c:382
 msgid "Use SSL"
 msgstr "Использовать SSL"
 
-#: ../src/interface.c:387
+#: ../src/interface.c:386
 msgid "Enable to use SSL (the target must have SSL enabled!)"
 msgstr "Включить использование SSL (SSL должен поддерживаться целью!)"
 
-#: ../src/interface.c:389
+#: ../src/interface.c:388
 msgid "Output Options"
 msgstr "Параметры вывода"
 
-#: ../src/interface.c:418
+#: ../src/interface.c:417
 msgid "File with user logins, one entry per line"
 msgstr "Файл, содержащий имена пользователей, по одному в строке"
 
-#: ../src/interface.c:424
+#: ../src/interface.c:423
 msgid "The login to use"
 msgstr "Имя пользователя для подбора"
 
-#: ../src/interface.c:425 ../src/interface.c:613
+#: ../src/interface.c:424 ../src/interface.c:612
 msgid "yourname"
 msgstr "вашеимя"
 
-#: ../src/interface.c:427 ../src/interface.c:448 ../src/interface.c:602
+#: ../src/interface.c:426 ../src/interface.c:447 ../src/interface.c:601
 msgid "Username"
 msgstr "Логин"
 
-#: ../src/interface.c:435
+#: ../src/interface.c:434
 msgid "Username List"
 msgstr "Список имен"
 
-#: ../src/interface.c:442
+#: ../src/interface.c:441
 msgid "Loop around users"
 msgstr "Цикл по списку пользователей"
 
-#: ../src/interface.c:446
+#: ../src/interface.c:445
 msgid "Enable this option to loop around users not passwords"
 msgstr ""
-"Использовать внешний цикл по паролям и внутренний по пользователям, а не наоборот"
+"Использовать внешний цикл по паролям и внутренний по пользователям, а не "
+"наоборот"
 
-#: ../src/interface.c:467
+#: ../src/interface.c:466
 msgid "File with passwords to try, one entry per line"
 msgstr "Файл с паролями, по одному в строке"
 
-#: ../src/interface.c:473
+#: ../src/interface.c:472
 msgid "The password to try"
 msgstr "Пароль для подбора"
 
-#: ../src/interface.c:474 ../src/interface.c:626
+#: ../src/interface.c:473 ../src/interface.c:625
 msgid "yourpass"
 msgstr "вашпароль"
 
-#: ../src/interface.c:476 ../src/interface.c:508 ../src/interface.c:615
+#: ../src/interface.c:475 ../src/interface.c:507 ../src/interface.c:614
 msgid "Password"
 msgstr "Пароль"
 
-#: ../src/interface.c:484
+#: ../src/interface.c:483
 msgid "Password List"
 msgstr "Список паролей"
 
-#: ../src/interface.c:490
+#: ../src/interface.c:489
 msgid "Generate"
 msgstr "Генератор"
 
-#: ../src/interface.c:505
+#: ../src/interface.c:504
 msgid "Generate passwords"
 msgstr "Шаблон генерации (см. man hydra)"
 
-#: ../src/interface.c:523
+#: ../src/interface.c:522
 msgid "Use Colon separated file"
 msgstr "Использовать файл разделенного двоеточием списка"
 
-#: ../src/interface.c:527
-#, fuzzy
+#: ../src/interface.c:526
 msgid "Enable this option to use a colon file for login/password attempts"
 msgstr "Использовать файл с именами/паролями, разделенными двоеточием"
 
-#: ../src/interface.c:533
+#: ../src/interface.c:532
 msgid ""
 "The colon file to use, each line has to be structured like \"mylogin:mypass\""
 msgstr "Файл, каждая строка которого имеет вид \"логин:пароль\""
 
-#: ../src/interface.c:535
+#: ../src/interface.c:534
 msgid "Colon separated file"
 msgstr "Файл, разделенный двоеточием"
 
-#: ../src/interface.c:545
+#: ../src/interface.c:544
 msgid "Try login as password"
 msgstr "Пробовать имя как пароль"
 
-#: ../src/interface.c:549
+#: ../src/interface.c:548
 msgid ""
 "Enable this option to try the login as password, in addition to the password/"
 "file"
 msgstr ""
 "Использовать логин в качестве пароля дополнительно к паролю/списку паролей"
 
-#: ../src/interface.c:551
+#: ../src/interface.c:550
 msgid "Try empty password"
 msgstr "Пробовать пустой пароль"
 
-#: ../src/interface.c:555
+#: ../src/interface.c:554
 msgid ""
 "Enable this option to try an empty password, in addition to the password/file"
 msgstr "Пробовать пустой пароль в дополнение к паролю/списку паролей"
 
-#: ../src/interface.c:557
+#: ../src/interface.c:556
 msgid "Try reversed login"
 msgstr "Пробовать перевёрнутый пароль"
 
-#: ../src/interface.c:561
+#: ../src/interface.c:560
 msgid ""
 "Enable this option to try an reverse password, in addition to the password/"
 "file"
 msgstr ""
 "Пробовать перевёртнутый пароль (ьлорап) в дополнение к паролю/списку паролей"
 
-#: ../src/interface.c:563
+#: ../src/interface.c:562
 msgid "Passwords"
 msgstr "Пароли"
 
-#: ../src/interface.c:583
+#: ../src/interface.c:582
 msgid "Proxy "
 msgstr "Прокси "
 
-#: ../src/interface.c:593
+#: ../src/interface.c:592
 msgid "The address of the proxy. Syntax: \"http://123.45.67.89:8080\""
 msgstr "Адрес прокси-сервера. Синтаксис: \"http://123.45.67.89:8080\""
 
-#: ../src/interface.c:596
+#: ../src/interface.c:595
 msgid "Proxy needs authentication"
 msgstr "Прокси требует авторизации"
 
-#: ../src/interface.c:600
+#: ../src/interface.c:599
 msgid "Enable this if the proxy requires authentication"
 msgstr "Включите, если прокси требует авторизации"
 
-#: ../src/interface.c:612
+#: ../src/interface.c:611
 msgid "The user name for proxy authentication"
 msgstr "Логин прокси"
 
-#: ../src/interface.c:625
+#: ../src/interface.c:624
 msgid "The password for proxy authentication"
 msgstr "Пароль прокси"
 
-#: ../src/interface.c:639
+#: ../src/interface.c:638
 msgid "No Proxy"
 msgstr "Нет прокси"
 
-#: ../src/interface.c:647
+#: ../src/interface.c:646
 msgid "HTTP Method"
 msgstr "Метод HTTP"
 
-#: ../src/interface.c:655
+#: ../src/interface.c:654
 msgid "CONNECT Method"
 msgstr "Метод CONNECT"
 
-#: ../src/interface.c:659
+#: ../src/interface.c:658
 msgid "Enable this to use a proxy for scanning"
 msgstr "Включите, чтобы использовать прокси для сканирования"
 
-#: ../src/interface.c:663
+#: ../src/interface.c:662
 msgid "Use a HTTP/HTTPS Proxy"
 msgstr "Использовать HTTP/HTTTPS прокси"
 
-#: ../src/interface.c:678
+#: ../src/interface.c:677
 msgid "Exit after first found pair (per host)"
 msgstr "Закончить после первой подобранной пары (на каждый хост)"
 
-#: ../src/interface.c:682
+#: ../src/interface.c:681
 msgid ""
 "Enable this to stop all attacking processes once a valid login/password pair "
 "is found (per host)"
@@ -271,13 +271,13 @@ msgstr ""
 "Включите, чтобы остановить подбор после того как была найдена первая пара "
 "имя/пароль (на отдельный хост)"
 
-#: ../src/interface.c:689
+#: ../src/interface.c:688
 msgid ""
 "The maximum timeout an attack process is waiting for a response from the "
 "target"
 msgstr "Максимальное время ожидания ответа сервера"
 
-#: ../src/interface.c:696
+#: ../src/interface.c:695
 msgid ""
 "The number of attack tasks to run in parallel. The more the faster, the "
 "most: computer lockup :-) 16-64 is a good choice"
@@ -285,19 +285,19 @@ msgstr ""
 "Число параллельных задач. Чем больше, тем быстрее, в разумных пределах. "
 "16-64 лучше всего"
 
-#: ../src/interface.c:698
+#: ../src/interface.c:697
 msgid "Timeout"
 msgstr "Таймаут"
 
-#: ../src/interface.c:704
+#: ../src/interface.c:703
 msgid "Number of Tasks"
 msgstr "Число задач"
 
-#: ../src/interface.c:710
+#: ../src/interface.c:709
 msgid "Exit after first found pair (global)"
 msgstr "Закончить после первой подобранной пары (глобально)"
 
-#: ../src/interface.c:716
+#: ../src/interface.c:715
 msgid ""
 "Enable this to stop all attacking processes once a valid login/password pair "
 "is found (global)"
@@ -305,165 +305,173 @@ msgstr ""
 "Включите, чтобы остановить подбор после того как была найдена первая пара "
 "имя/пароль (глобально)"
 
-#: ../src/interface.c:718 ../src/interface.c:724
+#: ../src/interface.c:717 ../src/interface.c:723
 msgid "Do not print messages about connection errors"
 msgstr "Не выводить сообщения об ошибках соединения"
 
-#: ../src/interface.c:726
+#: ../src/interface.c:725
 msgid "Performance Options"
 msgstr "Параметры быстродействия"
 
-#: ../src/interface.c:731
+#: ../src/interface.c:730
 msgid "Tuning"
 msgstr "Тонкая настройка"
 
-#: ../src/interface.c:750
+#: ../src/interface.c:749
 msgid "URL to connect to via the proxy"
 msgstr "URL для соединения через прокси"
 
-#: ../src/interface.c:751
+#: ../src/interface.c:750
 msgid "www.suse.com"
 msgstr "www.cnpo.ru"
 
-#: ../src/interface.c:753
+#: ../src/interface.c:752
 msgid "http-proxy url / http-proxy-urlenum credential module"
 msgstr ""
 
-#: ../src/interface.c:767
+#: ../src/interface.c:766
 msgid "The protected URL you want to access"
 msgstr "Защищенный URL для доступа"
 
-#: ../src/interface.c:768
+#: ../src/interface.c:767
 msgid "/foo/bar/protected.html"
 msgstr ""
 
-#: ../src/interface.c:770
+#: ../src/interface.c:769
 msgid "http / https url"
 msgstr ""
 
-#: ../src/interface.c:784
+#: ../src/interface.c:783
 msgid "The password to the cisco device"
 msgstr "Пароль устройства cisco"
 
-#: ../src/interface.c:785
+#: ../src/interface.c:784
 msgid "password"
 msgstr "пароль"
 
-#: ../src/interface.c:787
+#: ../src/interface.c:786
 msgid "Cisco Enable, Login for Cisco device"
 msgstr "Вкл cisco, логин для устройства cisco"
 
-#: ../src/interface.c:801
+#: ../src/interface.c:800
 msgid "The DN scope of ldap to authenticate against"
 msgstr "Область видимости домена LDAP для авторизации"
 
-#: ../src/interface.c:802
+#: ../src/interface.c:801
 msgid "dn-scope"
 msgstr ""
 
-#: ../src/interface.c:819
+#: ../src/interface.c:818
 msgid "local accounts"
 msgstr "Локальные записи"
 
-#: ../src/interface.c:823
+#: ../src/interface.c:822
 msgid "Just attack local accounts"
 msgstr "Подбирать только локальные учетные записи"
 
-#: ../src/interface.c:825
+#: ../src/interface.c:824
 msgid "domain accounts"
 msgstr "Доменные записи"
 
-#: ../src/interface.c:829
+#: ../src/interface.c:828
 msgid "Attack domain and local accounts"
 msgstr "Подбирать доменный учетные записи"
 
-#: ../src/interface.c:831
+#: ../src/interface.c:830
 msgid "Interpret passes as NTLM hashes"
 msgstr "Интерпретировать пароли как хэши NTLM"
 
-#: ../src/interface.c:835
+#: ../src/interface.c:834
 msgid "Interpret passes as NTML hashes"
 msgstr "Интерпретировать пароли как хэши NTLM"
 
-#: ../src/interface.c:852
+#: ../src/interface.c:851
 msgid "The client id you want to attack, something between 0 and 99"
 msgstr "ID клиента для авторизации, от 0 до 99"
 
-#: ../src/interface.c:868
+#: ../src/interface.c:867
 msgid "Directory of the CVS/SVN repository"
 msgstr "Каталог репозитория CVS/SVN"
 
-#: ../src/interface.c:869
+#: ../src/interface.c:868
 msgid "trunk"
 msgstr "trunk"
 
-#: ../src/interface.c:871
+#: ../src/interface.c:870
 msgid "CVS/SVN Repository"
 msgstr "CVS/SVN Репозиторий"
 
-#: ../src/interface.c:890
+#: ../src/interface.c:889
 msgid "Insert the return string for a succesfull login"
 msgstr "Строка, возвращаемая при успешной авторизации"
 
-#: ../src/interface.c:892
+#: ../src/interface.c:891
 msgid "Telnet - Successful Login String"
 msgstr "Telnet - Строка успешного входа"
 
-#: ../src/interface.c:908
+#: ../src/interface.c:907
 msgid "Write Password"
 msgstr "Пароль на запись"
 
-#: ../src/interface.c:915
+#: ../src/interface.c:914
 msgid "Read Password"
 msgstr "Пароль на чтение"
 
-#: ../src/interface.c:922
+#: ../src/interface.c:921
 msgid "Version 2"
 msgstr "Версия 2"
 
-#: ../src/interface.c:929
+#: ../src/interface.c:928
 msgid "Version 1"
 msgstr "Версия 1"
 
-#: ../src/interface.c:941
+#: ../src/interface.c:940
 msgid "Specific"
 msgstr "Особые параметры"
 
-#: ../src/interface.c:973
+#: ../src/interface.c:972
 msgid "Output"
 msgstr "Вывод"
 
-#: ../src/interface.c:983 ../src/interface.c:1007
+#: ../src/interface.c:982 ../src/interface.c:1013
 msgid "Start"
 msgstr "Пуск"
 
-#: ../src/interface.c:987
+#: ../src/interface.c:986
 msgid "start hydra"
 msgstr "Запуск аудита"
 
-#: ../src/interface.c:989
+#: ../src/interface.c:988
 msgid "Stop"
 msgstr "Стоп"
 
-#: ../src/interface.c:993
+#: ../src/interface.c:992
 msgid "stop hydra"
 msgstr "Останов аудита"
 
-#: ../src/interface.c:995
+#: ../src/interface.c:994
 msgid "Save Output"
 msgstr "Сохранить"
 
-#: ../src/interface.c:999
+#: ../src/interface.c:998
 msgid "save output"
 msgstr "Сохранить вывод"
 
-#: ../src/interface.c:1001
+#: ../src/interface.c:1000
 msgid "Clear Output"
 msgstr "Очистить"
 
-#: ../src/interface.c:1005
+#: ../src/interface.c:1004
 msgid "clear screen"
 msgstr "Очистить окно"
+
+#: ../src/interface.c:1006
+msgid "Autoscroll"
+msgstr "Автопрокрутка"
+
+#: ../src/interface.c:1010
+msgid "toggle autoscroll"
+msgstr "Включить/выключить прокрутку"
 
 #: ../src/callbacks.c:430
 msgid "password: "
@@ -481,23 +489,23 @@ msgstr ""
 "<завершено>\n"
 "\n"
 
-#: ../src/callbacks.c:636
+#: ../src/callbacks.c:647
 msgid "Select target list"
 msgstr "Выберите файл со списком целей"
 
-#: ../src/callbacks.c:643
+#: ../src/callbacks.c:654
 msgid "Select username list"
 msgstr "Выберите файл со списком логинов"
 
-#: ../src/callbacks.c:650
+#: ../src/callbacks.c:661
 msgid "Select password list"
 msgstr "Выберите файл со списком паролей"
 
-#: ../src/callbacks.c:656
+#: ../src/callbacks.c:667
 msgid "Select colon separated user,password list"
 msgstr "Выберите файл со списком имя пользователя,пароль"
 
-#: ../src/callbacks.c:672
+#: ../src/callbacks.c:684
 msgid "Save output"
 msgstr "Сохранить отчет"
 
@@ -516,12 +524,6 @@ msgstr "Сохранить отчет"
 
 #~ msgid "http-proxy module"
 #~ msgstr "модуль http-proxy"
-
-#~ msgid "Autoscroll"
-#~ msgstr "Автопрокрутка"
-
-#~ msgid "toggles autoscroll"
-#~ msgstr "включить/выключить прокрутку"
 
 #~ msgid "Enable this to use a proxy for scanning ( Only for HTTP Module )"
 #~ msgstr ""

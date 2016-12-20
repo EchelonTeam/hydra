@@ -176,6 +176,7 @@ GtkWidget *create_wndMain(void) {
   GtkWidget *btnClear;
   GtkWidget *label4;
   GtkWidget *statusbar;
+  GtkWidget *checkbutton1;
   GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
@@ -1002,6 +1003,13 @@ GtkWidget *create_wndMain(void) {
   gtk_box_pack_start(GTK_BOX(hbox1), btnClear, TRUE, FALSE, 0);
   gtk_tooltips_set_tip(tooltips, btnClear, _("clear screen"), NULL);
 
+  checkbutton1 = gtk_check_button_new_with_mnemonic (_("Autoscroll"));
+  gtk_widget_set_name (checkbutton1, "checkbutton1");
+  gtk_widget_show (checkbutton1);
+  gtk_box_pack_start (GTK_BOX (hbox1), checkbutton1, TRUE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton1, _("toggle autoscroll"), NULL);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton1), TRUE);
+
   label4 = gtk_label_new(_("Start"));
   gtk_widget_set_name(label4, "label4");
   gtk_widget_show(label4);
@@ -1157,6 +1165,7 @@ GtkWidget *create_wndMain(void) {
   GLADE_HOOKUP_OBJECT(wndMain, btnClear, "btnClear");
   GLADE_HOOKUP_OBJECT(wndMain, label4, "label4");
   GLADE_HOOKUP_OBJECT(wndMain, statusbar, "statusbar");
+  GLADE_HOOKUP_OBJECT (wndMain, checkbutton1, "checkbutton1");
   GLADE_HOOKUP_OBJECT_NO_REF(wndMain, tooltips, "tooltips");
 
   gtk_window_add_accel_group(GTK_WINDOW(wndMain), accel_group);
