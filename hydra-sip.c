@@ -113,20 +113,20 @@ int start_sip(int s, char *ip, char *lip, int port, int lport, unsigned char opt
             }
           }
           if (verbose)
-            hydra_report(stderr, "[VERBOSE] Will reconnect using external IP address %s\n", external_ip_addr);
+            hydra_report(stderr, _("[VERBOSE] Will reconnect using external IP address %s\n"), external_ip_addr);
           return 1;
         }
-        hydra_report(stderr, "[ERROR] Could not find external IP address in server answer\n");
+        hydra_report(stderr, _("[ERROR] Could not find external IP address in server answer\n"));
         return 2;
       }
     }
   }
   if (!strstr(buf, "WWW-Authenticate: Digest")) {
-    hydra_report(stderr, "[ERROR] no www-authenticate header found!\n");
+    hydra_report(stderr, _("[ERROR] no www-authenticate header found!\n"));
     return -1;
   }
   if (debug)
-    hydra_report(stderr, "[INFO] S: %s\n", buf);
+    hydra_report(stderr, _("[INFO] S: %s\n"), buf);
   char buffer2[512];
 
   sasl_digest_md5(buffer2, login, pass, strstr(buf, "WWW-Authenticate: Digest") + strlen("WWW-Authenticate: Digest") + 1, host, "sip", NULL, 0, NULL);
@@ -141,7 +141,7 @@ int start_sip(int s, char *ip, char *lip, int port, int lport, unsigned char opt
 
   cseq++;
   if (debug)
-    hydra_report(stderr, "[INFO] C: %s\n", buffer);
+    hydra_report(stderr, _("[INFO] C: %s\n"), buffer);
   if (hydra_send(s, buffer, strlen(buffer), 0) < 0) {
     return 3;
   }
@@ -156,7 +156,7 @@ int start_sip(int s, char *ip, char *lip, int port, int lport, unsigned char opt
       if ((i = hydra_recv(s, (char *) buf, sizeof(buf) - 1)) >= 0)
         buf[i] = 0;
       if (debug)
-        hydra_report(stderr, "[INFO] S: %s\n", buf);
+        hydra_report(stderr, _("[INFO] S: %s\n"), buf);
       sip_code = get_sip_code(buf);
       if (sip_code >= 200 && sip_code < 300) {
         hydra_report_found_host(port, ip, "sip", fp);
@@ -186,7 +186,7 @@ void service_sip(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
 
   // FIXME IPV6
   if (ip[0] != 4) {
-    fprintf(stderr, "[ERROR] sip module is not ipv6 enabled yet, patches are appreciated.\n");
+    fprintf(stderr, _("[ERROR] sip module is not ipv6 enabled yet, patches are appreciated.\n"));
     hydra_child_exit(2);
   }
 
@@ -218,7 +218,7 @@ void service_sip(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
 
         if (sock < 0) {
           if (verbose || debug)
-            hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+            hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           free(lip);
           hydra_child_exit(1);
         }
@@ -238,7 +238,7 @@ void service_sip(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       free(lip);
       hydra_child_exit(2);
     }

@@ -147,7 +147,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
               sin.sin_port = htons(src_port);
           } else {
             if (errno == EACCES && (getuid() > 0)) {
-              fprintf(stderr, "[ERROR] You need to be root to test this service\n");
+              fprintf(stderr, _("[ERROR] You need to be root to test this service\n"));
               close(s);
               return -1;
             }
@@ -214,7 +214,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
           if (do_retry && fail <= MAX_CONNECT_RETRY)
             fprintf(stderr, "Process %d: Can not connect [unreachable], retrying (%d of %d retries)\n", (int) getpid(), fail, MAX_CONNECT_RETRY);
           else
-            fprintf(stderr, "Process %d: Can not connect [unreachable]\n", (int) getpid());
+            fprintf(stderr, _("Process %d: Can not connect [unreachable]\n"), (int) getpid());
         }
       }
     } while (ret < 0 && fail <= MAX_CONNECT_RETRY && do_retry);
@@ -239,7 +239,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
     err = 0;
     if (use_proxy == 2) {
       if ((buf = malloc(4096)) == NULL) {
-        fprintf(stderr, "[ERROR] could not malloc()\n");
+        fprintf(stderr, _("[ERROR] could not malloc()\n"));
         close(s);
         return -1;
       }
@@ -296,16 +296,16 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
             buf[2] = SOCKS_PASSAUTH;
           cnt = hydra_send(s, buf, 3, 0);
           if (cnt != 3) {
-            hydra_report(stderr, "[ERROR] SOCKS5 proxy write failed (%zu/3)\n", cnt);
+            hydra_report(stderr, _("[ERROR] SOCKS5 proxy write failed (%zu/3)\n"), cnt);
             err = 1;
           } else {
             cnt = hydra_recv(s, buf, 2);
             if (cnt != 2) {
-              hydra_report(stderr, "[ERROR] SOCKS5 proxy read failed (%zu/2)\n", cnt);
+              hydra_report(stderr, _("[ERROR] SOCKS5 proxy read failed (%zu/2)\n"), cnt);
               err = 1;
             }
             if ((unsigned int) buf[1] == SOCKS_NOMETHOD) {
-              hydra_report(stderr, "[ERROR] SOCKS5 proxy authentication method negotiation failed\n");
+              hydra_report(stderr, _("[ERROR] SOCKS5 proxy authentication method negotiation failed\n"));
               err = 1;
             }
             /* SOCKS_DOMAIN not supported here, do we need it ? */
@@ -320,20 +320,20 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
 
                 cnt = hydra_send(s, buf, strlen(buf), 0);
                 if (cnt != strlen(buf)) {
-                  hydra_report(stderr, "[ERROR] SOCKS5 proxy write failed (%zu/3)\n", cnt);
+                  hydra_report(stderr, _("[ERROR] SOCKS5 proxy write failed (%zu/3)\n"), cnt);
                   err = 1;
                 } else {
                   cnt = hydra_recv(s, buf, 2);
                   if (cnt != 2) {
-                    hydra_report(stderr, "[ERROR] SOCKS5 proxy read failed (%zu/2)\n", cnt);
+                    hydra_report(stderr, _("[ERROR] SOCKS5 proxy read failed (%zu/2)\n"), cnt);
                     err = 1;
                   }
                   if (buf[1] != 0) {
-                    hydra_report(stderr, "[ERROR] SOCKS5 proxy authentication failure\n");
+                    hydra_report(stderr, _("[ERROR] SOCKS5 proxy authentication failure\n"));
                     err = 1;
                   } else {
                     if (debug)
-                      hydra_report(stderr, "[DEBUG] SOCKS5 proxy authentication success\n");
+                      hydra_report(stderr, _("[DEBUG] SOCKS5 proxy authentication success\n"));
                   }
                 }
               }
@@ -362,20 +362,20 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
 #endif
               cnt = hydra_send(s, buf, wlen, 0);
               if (cnt != wlen) {
-                hydra_report(stderr, "[ERROR] SOCKS5 proxy write failed (%zu/%zu)\n", cnt, wlen);
+                hydra_report(stderr, _("[ERROR] SOCKS5 proxy write failed (%zu/%zu)\n"), cnt, wlen);
                 err = 1;
               } else {
                 cnt = hydra_recv(s, buf, 10);
                 if (cnt != 10) {
-                  hydra_report(stderr, "[ERROR] SOCKS5 proxy read failed (%zu/10)\n", cnt);
+                  hydra_report(stderr, _("[ERROR] SOCKS5 proxy read failed (%zu/10)\n"), cnt);
                   err = 1;
                 }
                 if (buf[1] != 0) {
                   /* 0x05 = connection refused by destination host */
                   if (buf[1] == 5)
-                    hydra_report(stderr, "[ERROR] SOCKS proxy request failed\n");
+                    hydra_report(stderr, _("[ERROR] SOCKS proxy request failed\n"));
                   else
-                    hydra_report(stderr, "[ERROR] SOCKS error %d\n", buf[1]);
+                    hydra_report(stderr, _("[ERROR] SOCKS error %d\n"), buf[1]);
                   err = 1;
                 }
               }
@@ -384,7 +384,7 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
         } else {
           if (hydra_strcasestr(proxy_string_type, "socks4")) {
             if (ipv6) {
-              hydra_report(stderr, "[ERROR] SOCKS4 proxy does not support IPv6\n");
+              hydra_report(stderr, _("[ERROR] SOCKS4 proxy does not support IPv6\n"));
               err = 1;
             } else {
 //              char buf[1024];
@@ -399,26 +399,26 @@ int internal__hydra_connect(char *host, int port, int protocol, int type) {
               wlen = 9;
               cnt = hydra_send(s, buf, wlen, 0);
               if (cnt != wlen) {
-                hydra_report(stderr, "[ERROR] SOCKS4 proxy write failed (%zu/%zu)\n", cnt, wlen);
+                hydra_report(stderr, _("[ERROR] SOCKS4 proxy write failed (%zu/%zu)\n"), cnt, wlen);
                 err = 1;
               } else {
                 cnt = hydra_recv(s, buf, 8);
                 if (cnt != 8) {
-                  hydra_report(stderr, "[ERROR] SOCKS4 proxy read failed (%zu/8)\n", cnt);
+                  hydra_report(stderr, _("[ERROR] SOCKS4 proxy read failed (%zu/8)\n"), cnt);
                   err = 1;
                 }
                 if (buf[1] != 90) {
                   /* 91 = 0x5b = request rejected or failed */
                   if (buf[1] == 91)
-                    hydra_report(stderr, "[ERROR] SOCKS proxy request failed\n");
+                    hydra_report(stderr, _("[ERROR] SOCKS proxy request failed\n"));
                   else
-                    hydra_report(stderr, "[ERROR] SOCKS error %d\n", buf[1]);
+                    hydra_report(stderr, _("[ERROR] SOCKS error %d\n"), buf[1]);
                   err = 1;
                 }
               }
             }
           } else {
-            hydra_report(stderr, "[ERROR] Unknown proxy type: %s, valid type are \"connect\", \"socks4\" or \"socks5\"\n", proxy_string_type);
+            hydra_report(stderr, _("[ERROR] Unknown proxy type: %s, valid type are \"connect\", \"socks4\" or \"socks5\"\n"), proxy_string_type);
             err = 1;
           }
         }
@@ -469,7 +469,7 @@ int internal__hydra_connect_to_ssl(int socket) {
     if ((sslContext = SSL_CTX_new(SSLv23_client_method())) == NULL) {
       if (verbose) {
         err = ERR_get_error();
-        fprintf(stderr, "[ERROR] SSL allocating context: %s\n", ERR_error_string(err, NULL));
+        fprintf(stderr, _("[ERROR] SSL allocating context: %s\n"), ERR_error_string(err, NULL));
       }
       return -1;
     }
@@ -487,7 +487,7 @@ int internal__hydra_connect_to_ssl(int socket) {
   if ((ssl = SSL_new(sslContext)) == NULL) {
     if (verbose) {
       err = ERR_get_error();
-      fprintf(stderr, "[ERROR] preparing an SSL context: %s\n", ERR_error_string(err, NULL));
+      fprintf(stderr, _("[ERROR] preparing an SSL context: %s\n"), ERR_error_string(err, NULL));
     }
     SSL_set_bio(ssl, NULL, NULL);
     SSL_clear(ssl);
@@ -499,13 +499,13 @@ int internal__hydra_connect_to_ssl(int socket) {
 //    fprintf(stderr, "[ERROR] SSL Connect %d\n", SSL_connect(ssl));
     if (verbose) {
       err = ERR_get_error();
-      fprintf(stderr, "[VERBOSE] Could not create an SSL session: %s\n", ERR_error_string(err, NULL));
+      fprintf(stderr, _("[VERBOSE] Could not create an SSL session: %s\n"), ERR_error_string(err, NULL));
     }
     close(socket);
     return -1;
   }
   if (debug)
-    fprintf(stderr, "[VERBOSE] SSL negotiated cipher: %s\n", SSL_get_cipher(ssl));
+    fprintf(stderr, _("[VERBOSE] SSL negotiated cipher: %s\n"), SSL_get_cipher(ssl));
 
   use_ssl = 1;
 
@@ -546,7 +546,7 @@ void hydra_child_exit(int code) {
   char buf[2];
 
   if (debug)
-    printf("[DEBUG] pid %d called child_exit with code %d\n", getpid(), code);
+    printf(_("[DEBUG] pid %d called child_exit with code %d\n"), getpid(), code);
   if (code == 0)                /* normal quitting */
     __fck = write(intern_socket, "Q", 1);
   else if (code == 1)           /* no connect possible */
@@ -555,7 +555,7 @@ void hydra_child_exit(int code) {
     __fck = write(intern_socket, "E", 1);
   // code 3 means exit without telling mommy about it - a bad idea. mommy should know
   else if (code == -1 || code > 3) {
-    fprintf(stderr, "[TOTAL FUCKUP] a module should not use hydra_child_exit(-1) ! Fix it in the source please ...\n");
+    fprintf(stderr, _("[TOTAL FUCKUP] a module should not use hydra_child_exit(-1) ! Fix it in the source please ...\n"));
     __fck = write(intern_socket, "E", 1);
   }
   do {
@@ -834,7 +834,7 @@ int hydra_recv(int socket, char *buf, int length) {
 
   ret = internal__hydra_recv(socket, buf, length);
   if (debug) {
-    sprintf(text, "[DEBUG] RECV [pid:%d]", getpid());
+    sprintf(text, _("[DEBUG] RECV [pid:%d]"), getpid());
     hydra_dump_data(buf, ret, text);
     //hydra_report_debug(stderr, "DEBUG_RECV_BEGIN|%s|END [pid:%d ret:%d]", buf, getpid(), ret);
   }
@@ -849,13 +849,13 @@ int hydra_recv_nb(int socket, char *buf, int length) {
     if ((ret = internal__hydra_recv(socket, buf, length)) <= 0) {
       buf[0] = 0;
       if (debug) {
-        sprintf(text, "[DEBUG] RECV [pid:%d]", getpid());
+        sprintf(text, _("[DEBUG] RECV [pid:%d]"), getpid());
         hydra_dump_data(buf, ret, text);
       }
       return ret;
     }
     if (debug) {
-      sprintf(text, "[DEBUG] RECV [pid:%d]", getpid());
+      sprintf(text, _("[DEBUG] RECV [pid:%d]"), getpid());
       hydra_dump_data(buf, ret, text);
       //hydra_report_debug(stderr, "DEBUG_RECV_BEGIN|%s|END [pid:%d ret:%d]", buf, getpid(), ret);
     }
@@ -868,12 +868,12 @@ char *hydra_receive_line(int socket) {
   int i, j = 1, k, got = 0;
 
   if ((buff = malloc(sizeof(buf))) == NULL) {
-    fprintf(stderr, "[ERROR] could not malloc\n");
+    fprintf(stderr, _("[ERROR] could not malloc\n"));
     return NULL;
   }
   memset(buff, 0, sizeof(buf));
   if (debug)
-    printf("[DEBUG] hydra_receive_line: waittime: %d, conwait: %d, socket: %d, pid: %d\n", waittime, conwait, socket, getpid());
+    printf(_("[DEBUG] hydra_receive_line: waittime: %d, conwait: %d, socket: %d, pid: %d\n"), waittime, conwait, socket, getpid());
 
   if ((i = hydra_data_ready_timed(socket, (long) waittime, 0)) > 0) {
     if ((got = internal__hydra_recv(socket, buff, sizeof(buf) - 1)) < 0) {
@@ -882,13 +882,13 @@ char *hydra_receive_line(int socket) {
     }
   } else {
     if (debug)
-      printf("[DEBUG] hydra_data_ready_timed: %d, waittime: %d, conwait: %d, socket: %d\n", i, waittime, conwait, socket);
+      printf(_("[DEBUG] hydra_data_ready_timed: %d, waittime: %d, conwait: %d, socket: %d\n"), i, waittime, conwait, socket);
     i = 0;
   }
 
   if (got < 0) {
     if (debug) {
-      sprintf(text, "[DEBUG] RECV [pid:%d]", getpid());
+      sprintf(text, _("[DEBUG] RECV [pid:%d]"), getpid());
       hydra_dump_data("", -1, text);
       //hydra_report_debug(stderr, "DEBUG_RECV_BEGIN||END [pid:%d %d]", getpid(), i);
       perror("recv");
@@ -925,7 +925,7 @@ char *hydra_receive_line(int socket) {
   }
 
   if (debug) {
-    sprintf(text, "[DEBUG] RECV [pid:%d]", getpid());
+    sprintf(text, _("[DEBUG] RECV [pid:%d]"), getpid());
     hydra_dump_data(buff, got, text);
     //hydra_report_debug(stderr, "DEBUG_RECV_BEGIN [pid:%d len:%d]|%s|END", getpid(), got, buff);
   }
@@ -940,7 +940,7 @@ int hydra_send(int socket, char *buf, int size, int options) {
   char text[64];
 
   if (debug) {
-    sprintf(text, "[DEBUG] SEND [pid:%d]", getpid());
+    sprintf(text, _("[DEBUG] SEND [pid:%d]"), getpid());
     hydra_dump_data(buf, size, text);
 
 /*    int k;
@@ -1026,7 +1026,7 @@ unsigned char hydra_conv64(unsigned char in) {
   else if (in == 63)
     return '/';
   else {
-    fprintf(stderr, "[ERROR] too high for base64: %d\n", in);
+    fprintf(stderr, _("[ERROR] too high for base64: %d\n"), in);
     return 0;
   }
 }
@@ -1150,7 +1150,7 @@ char *hydra_address2string(char *address) {
 #endif
   {
     if (debug)
-      fprintf(stderr, "[ERROR] unknown address string size!\n");
+      fprintf(stderr, _("[ERROR] unknown address string size!\n"));
     return NULL;
   }
   return NULL;                  // not reached
@@ -1169,7 +1169,7 @@ int hydra_string_match(char *str, const char *regex) {
 
   re = pcre_compile(regex, PCRE_CASELESS | PCRE_DOTALL, &error, &offset_error, NULL);
   if (re == NULL) {
-    fprintf(stderr, "[ERROR] PCRE compilation failed at offset %d: %s\n", offset_error, error);
+    fprintf(stderr, _("[ERROR] PCRE compilation failed at offset %d: %s\n"), offset_error, error);
     return 0;
   }
 

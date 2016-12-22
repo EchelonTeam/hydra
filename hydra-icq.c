@@ -154,7 +154,7 @@ int start_icq(int sock, char *ip, int port, FILE * output, char *miscptr, FILE *
 
   for (i = 0; login[i]; i++)
     if (!isdigit((int) login[i])) {
-      fprintf(stderr, "[ERROR] Invalid UIN %s\n, ignoring.", login);
+      fprintf(stderr, _("[ERROR] Invalid UIN %s\n, ignoring."), login);
       hydra_completed_pair();
       return 2;
     }
@@ -168,7 +168,7 @@ int start_icq(int sock, char *ip, int port, FILE * output, char *miscptr, FILE *
 
     if (r < 0) {
       if (verbose)
-        fprintf(stderr, "[ERROR] Process %d: Can not connect [unreachable]\n", (int) getpid());
+        fprintf(stderr, _("[ERROR] Process %d: Can not connect [unreachable]\n"), (int) getpid());
       return 3;
     }
 
@@ -206,7 +206,7 @@ void service_icq(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
   port = myport;
 
   if ((options & OPTION_SSL) != 0 && child_head_no == 0) {
-    fprintf(stderr, "[ERROR] You can not use SSL with ICQ!\n");
+    fprintf(stderr, _("[ERROR] You can not use SSL with ICQ!\n"));
     hydra_child_exit(0);
   }
 
@@ -221,7 +221,7 @@ void service_icq(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
         sock = hydra_disconnect(sock);
       sock = hydra_connect_udp(ip, myport);
       if (sock < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       next_run = 2;
@@ -234,7 +234,7 @@ void service_icq(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
         sock = hydra_disconnect(sock);
       hydra_child_exit(2);
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

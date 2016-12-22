@@ -111,7 +111,7 @@ int start_svn(int s, char *ip, int port, unsigned char options, char *miscptr, F
 
   if (err) {
     if (verbose)
-      hydra_report(stderr, "[ERROR] Access refused (error code %d) , message: %s\n", err->apr_err, err->message);
+      hydra_report(stderr, _("[ERROR] Access refused (error code %d) , message: %s\n"), err->apr_err, err->message);
     //Username not found 170001 ": Username not found"
     //Password incorrect 170001 ": Password incorrect"
     if (err->apr_err != 170001) {
@@ -129,7 +129,7 @@ int start_svn(int s, char *ip, int port, unsigned char options, char *miscptr, F
     }
   } else {
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Access granted\n");
+      hydra_report(stderr, _("[VERBOSE] Access granted\n"));
     hydra_report_found_host(port, ip, "svn", fp);
     hydra_completed_pair_found();
     return 3;
@@ -166,7 +166,7 @@ void service_svn(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
 
@@ -182,7 +182,7 @@ void service_svn(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       return;
     default:
       if (!verbose)
-        hydra_report(stderr, "[ERROR] Caught unknown return code, try verbose option for more details\n");
+        hydra_report(stderr, _("[ERROR] Caught unknown return code, try verbose option for more details\n"));
       hydra_child_exit(0);
     }
     run = next_run;

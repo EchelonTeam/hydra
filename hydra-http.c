@@ -199,7 +199,7 @@ int start_http(int s, char *ip, int port, unsigned char options, char *miscptr, 
     }
   } else {
     if (ptr != NULL && *ptr != '4')
-      fprintf(stderr, "[WARNING] Unusual return code: %c for %s:%s\n", (char) *(index(http_buf, ' ') + 1), login, pass);
+      fprintf(stderr, _("[WARNING] Unusual return code: %c for %s:%s\n"), (char) *(index(http_buf, ' ') + 1), login, pass);
 
     //the first authentication type failed, check the type from server header
     if ((hydra_strcasestr(http_buf, "WWW-Authenticate: Basic") == NULL) && (http_auth_mechanism == AUTH_BASIC)) {
@@ -291,7 +291,7 @@ void service_http(char *ip, int sp, unsigned char options, char *miscptr, FILE *
         if (sock < 0) {
           if (freemischttp)
             free(miscptr);
-          if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
         next_run = 2;
@@ -310,7 +310,7 @@ void service_http(char *ip, int sp, unsigned char options, char *miscptr, FILE *
     default:
       if (freemischttp)
         free(miscptr);
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

@@ -162,7 +162,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 4;
       if (buf[0] != '+') {
-        hydra_report(stderr, "[ERROR] POP3 LOGIN AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] POP3 LOGIN AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -178,7 +178,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
         return 4;
 
       if (buf[0] != '+') {
-        hydra_report(stderr, "[ERROR] POP3 LOGIN AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] POP3 LOGIN AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -197,7 +197,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 4;
       if (buf[0] != '+') {
-        hydra_report(stderr, "[ERROR] POP3 PLAIN AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] POP3 PLAIN AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -242,13 +242,13 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if (buf[0] != '+') {
         switch (p->pop3_auth_mechanism) {
         case AUTH_CRAMMD5:
-          hydra_report(stderr, "[ERROR] POP3 CRAM-MD5 AUTH : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] POP3 CRAM-MD5 AUTH : %s\n"), buf);
           break;
         case AUTH_CRAMSHA1:
-          hydra_report(stderr, "[ERROR] POP3 CRAM-SHA1 AUTH : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] POP3 CRAM-SHA1 AUTH : %s\n"), buf);
           break;
         case AUTH_CRAMSHA256:
-          hydra_report(stderr, "[ERROR] POP3 CRAM-SHA256 AUTH : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] POP3 CRAM-SHA256 AUTH : %s\n"), buf);
           break;
         }
         free(buf);
@@ -293,7 +293,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 4;
       if (buf[0] != '+') {
-        hydra_report(stderr, "[ERROR] POP3 DIGEST-MD5 AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] POP3 DIGEST-MD5 AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -302,7 +302,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
       free(buf);
 
       if (debug)
-        hydra_report(stderr, "[DEBUG] S: %s\n", buffer);
+        hydra_report(stderr, _("[DEBUG] S: %s\n"), buffer);
 
       fooptr = buffer2;
       sasl_digest_md5(fooptr, login, pass, buffer, miscptr, "pop", NULL, 0, NULL);
@@ -310,7 +310,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
         return 3;
 
       if (debug)
-        hydra_report(stderr, "[DEBUG] C: %s\n", buffer2);
+        hydra_report(stderr, _("[DEBUG] C: %s\n"), buffer2);
       hydra_tobase64((unsigned char *) buffer2, strlen(buffer2), sizeof(buffer2));
       sprintf(buffer, "%s\r\n", buffer2);
     }
@@ -330,7 +330,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 4;
       if (buf[0] != '+') {
-        hydra_report(stderr, "[ERROR] POP3 NTLM AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] POP3 NTLM AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -365,7 +365,7 @@ int start_pop3(int s, char *ip, int port, unsigned char options, char *miscptr, 
     if ((buf = hydra_receive_line(s)) == NULL)
       return 4;
     if (buf[0] != '+') {
-      hydra_report(stderr, "[ERROR] POP3 protocol or service shutdown: %s\n", buf);
+      hydra_report(stderr, _("[ERROR] POP3 protocol or service shutdown: %s\n"), buf);
       free(buf);
       return (3);
     }
@@ -415,11 +415,11 @@ void service_pop3(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       hydra_child_exit(2);
   p = list_find(ip);
   if (p == NULL) {
-    hydra_report(stderr, "[ERROR] Could not find ip %s in pool\n", hydra_address2string(ip));
+    hydra_report(stderr, _("[ERROR] Could not find ip %s in pool\n"), hydra_address2string(ip));
     return;
   }
   if (list_remove(p) != 0)
-    hydra_report(stderr, "[ERROR] Could not find ip %s in pool to free memory\n", hydra_address2string(ip));
+    hydra_report(stderr, _("[ERROR] Could not find ip %s in pool to free memory\n"), hydra_address2string(ip));
 
   hydra_register_socket(sp);
   if (memcmp(hydra_get_next_pair(), &HYDRA_EXIT, sizeof(HYDRA_EXIT)) == 0)
@@ -440,13 +440,13 @@ void service_pop3(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       buf = hydra_receive_line(sock);
       if (buf == NULL || buf[0] != '+') {       /* check the first line */
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Not an POP3 protocol or service shutdown: %s\n", buf);
+          hydra_report(stderr, _("[ERROR] Not an POP3 protocol or service shutdown: %s\n"), buf);
         hydra_child_exit(2);
       }
 
@@ -466,16 +466,16 @@ void service_pop3(char *ip, int sp, unsigned char options, char *miscptr, FILE *
         hydra_send(sock, "STLS\r\n", strlen("STLS\r\n"), 0);
         buf = hydra_receive_line(sock);
         if (buf[0] != '+') {
-          hydra_report(stderr, "[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n");
+          hydra_report(stderr, _("[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n"));
         } else {
           free(buf);
           if ((hydra_connect_to_ssl(sock) == -1)) {
             if (verbose)
-              hydra_report(stderr, "[ERROR] Can't use TLS\n");
+              hydra_report(stderr, _("[ERROR] Can't use TLS\n"));
             p->disable_tls = 1;
           } else {
             if (verbose)
-              hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+              hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
           }
         }
       }
@@ -497,7 +497,7 @@ void service_pop3(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;
@@ -531,13 +531,13 @@ int service_pop3_init(char *ip, int sp, unsigned char options, char *miscptr, FI
   }
   if (sock < 0) {
     if (verbose || debug)
-      hydra_report(stderr, "[ERROR] pid %d terminating, can not connect\n", (int) getpid());
+      hydra_report(stderr, _("[ERROR] pid %d terminating, can not connect\n"), (int) getpid());
     return -1;
   }
   buf = hydra_receive_line(sock);
   if (buf == NULL || buf[0] != '+') {   /* check the first line */
     if (verbose || debug)
-      hydra_report(stderr, "[ERROR] Not an POP3 protocol or service shutdown: %s\n", buf);
+      hydra_report(stderr, _("[ERROR] Not an POP3 protocol or service shutdown: %s\n"), buf);
     return -1;
   }
 
@@ -554,14 +554,14 @@ int service_pop3_init(char *ip, int sp, unsigned char options, char *miscptr, FI
   /* send capability request */
   if (hydra_send(sock, capa_str, strlen(capa_str), 0) < 0) {
     if (verbose || debug)
-      hydra_report(stderr, "[ERROR] Can not send the CAPABILITY request\n");
+      hydra_report(stderr, _("[ERROR] Can not send the CAPABILITY request\n"));
     return -1;
   }
 
   buf = pop3_read_server_capacity(sock);
 
   if (buf == NULL) {
-    hydra_report(stderr, "[ERROR] No answer from CAPABILITY request\n");
+    hydra_report(stderr, _("[ERROR] No answer from CAPABILITY request\n"));
     return -1;
   }
 
@@ -584,33 +584,33 @@ int service_pop3_init(char *ip, int sp, unsigned char options, char *miscptr, FI
       free(buf);
       buf = hydra_receive_line(sock);
       if (buf[0] != '+') {
-        hydra_report(stderr, "[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n");
+        hydra_report(stderr, _("[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n"));
       } else {
         free(buf);
         if ((hydra_connect_to_ssl(sock) == -1)) {
           if (verbose)
-            hydra_report(stderr, "[ERROR] Can't use TLS\n");
+            hydra_report(stderr, ("[ERROR] Can't use TLS\n"));
           p.disable_tls = 1;
         } else {
           if (verbose)
-            hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+            hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
         }
         if (!p.disable_tls) {
           /* ask again capability request but in TLS mode */
           if (hydra_send(sock, capa_str, strlen(capa_str), 0) < 0) {
             if (verbose || debug)
-              hydra_report(stderr, "[ERROR] Can not send the CAPABILITY request\n");
+              hydra_report(stderr, _("[ERROR] Can not send the CAPABILITY request\n"));
             return -1;
           }
           buf = pop3_read_server_capacity(sock);
           if (buf == NULL) {
-            hydra_report(stderr, "[ERROR] No answer from CAPABILITY request\n");
+            hydra_report(stderr, _("[ERROR] No answer from CAPABILITY request\n"));
             return -1;
           }
         }
       }
     } else
-      hydra_report(stderr, "[ERROR] option to use TLS/SSL failed as it is not supported by the server\n");
+      hydra_report(stderr, _("[ERROR] option to use TLS/SSL failed as it is not supported by the server\n"));
   }
 #endif
 
@@ -621,7 +621,7 @@ int service_pop3_init(char *ip, int sp, unsigned char options, char *miscptr, FI
 
 
   if (verbose)
-    hydra_report(stderr, "[VERBOSE] CAPABILITY: %s", buf);
+    hydra_report(stderr, _("[VERBOSE] CAPABILITY: %s"), buf);
 
   /* example:
      +OK Capability list follows:
@@ -722,21 +722,21 @@ int service_pop3_init(char *ip, int sp, unsigned char options, char *miscptr, FI
   if (verbose) {
     switch (p.pop3_auth_mechanism) {
     case AUTH_CLEAR:
-      hydra_report(stderr, "[VERBOSE] using POP3 CLEAR LOGIN mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 CLEAR LOGIN mechanism\n"));
       break;
     case AUTH_LOGIN:
-      hydra_report(stderr, "[VERBOSE] using POP3 LOGIN AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 LOGIN AUTH mechanism\n"));
       break;
     case AUTH_PLAIN:
-      hydra_report(stderr, "[VERBOSE] using POP3 PLAIN AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 PLAIN AUTH mechanism\n"));
       break;
     case AUTH_APOP:
 #ifdef LIBOPENSSL
       if (strlen(apop_challenge) == 0) {
-        hydra_report(stderr, "[VERBOSE] APOP not supported by server, using clear login\n");
+        hydra_report(stderr, _("[VERBOSE] APOP not supported by server, using clear login\n"));
         p.pop3_auth_mechanism = AUTH_CLEAR;
       } else {
-        hydra_report(stderr, "[VERBOSE] using POP3 APOP AUTH mechanism\n");
+        hydra_report(stderr, _("[VERBOSE] using POP3 APOP AUTH mechanism\n"));
       }
 #else
       p.pop3_auth_mechanism = AUTH_CLEAR;
@@ -744,20 +744,20 @@ int service_pop3_init(char *ip, int sp, unsigned char options, char *miscptr, FI
       break;
 #ifdef LIBOPENSSL
     case AUTH_CRAMMD5:
-      hydra_report(stderr, "[VERBOSE] using POP3 CRAM-MD5 AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 CRAM-MD5 AUTH mechanism\n"));
       break;
     case AUTH_CRAMSHA1:
-      hydra_report(stderr, "[VERBOSE] using POP3 CRAM-SHA1 AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 CRAM-SHA1 AUTH mechanism\n"));
       break;
     case AUTH_CRAMSHA256:
-      hydra_report(stderr, "[VERBOSE] using POP3 CRAM-SHA256 AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 CRAM-SHA256 AUTH mechanism\n"));
       break;
     case AUTH_DIGESTMD5:
-      hydra_report(stderr, "[VERBOSE] using POP3 DIGEST-MD5 AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 DIGEST-MD5 AUTH mechanism\n"));
       break;
 #endif
     case AUTH_NTLM:
-      hydra_report(stderr, "[VERBOSE] using POP3 NTLM AUTH mechanism\n");
+      hydra_report(stderr, _("[VERBOSE] using POP3 NTLM AUTH mechanism\n"));
       break;
 
     }

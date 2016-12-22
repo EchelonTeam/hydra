@@ -104,18 +104,18 @@ int start_pcnfs(int s, char *ip, int port, unsigned char options, char *miscptr,
   *(++authp) = htonl(0);
 
   if (hydra_send(s, buffer, sizeof(buffer), 0) < 0) {
-    fprintf(stderr, "[ERROR] Could not send data to remote server, reconnecting ...\n");
+    fprintf(stderr, _("[ERROR] Could not send data to remote server, reconnecting ...\n"));
     return 1;
   }
 
   if ((buf = hydra_receive_line(s)) == NULL) {
-    fprintf(stderr, "[ERROR] Timeout from remote server, reconnecting ...\n");
+    fprintf(stderr, _("[ERROR] Timeout from remote server, reconnecting ...\n"));
     return 1;
   }
 
 /* analyze the output */
   if (buf[2] != 'g' || buf[5] != 32) {
-    fprintf(stderr, "[ERROR] RPC answer status : bad proc/version/auth\n");
+    fprintf(stderr, _("[ERROR] RPC answer status : bad proc/version/auth\n"));
     free(buf);
     return 3;
   }
@@ -141,11 +141,11 @@ void service_pcnfs(char *ip, int sp, unsigned char options, char *miscptr, FILE 
 
   hydra_register_socket(sp);
   if (port == 0) {
-    fprintf(stderr, "[ERROR] pcnfs module called without -s port!\n");
+    fprintf(stderr, _("[ERROR] pcnfs module called without -s port!\n"));
     hydra_child_exit(0);
   }
   if ((options & OPTION_SSL) != 0) {
-    fprintf(stderr, "[ERROR] pcnfs module can not be used with SSL!\n");
+    fprintf(stderr, _("[ERROR] pcnfs module can not be used with SSL!\n"));
     hydra_child_exit(0);
   }
 
@@ -161,7 +161,7 @@ void service_pcnfs(char *ip, int sp, unsigned char options, char *miscptr, FILE 
           sock = hydra_disconnect(sock);
 //        usleep(275000);
         if ((sock = hydra_connect_udp(ip, port)) < 0) {
-          if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
         next_run = 2;
@@ -176,7 +176,7 @@ void service_pcnfs(char *ip, int sp, unsigned char options, char *miscptr, FILE 
       hydra_child_exit(0);
       return;
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

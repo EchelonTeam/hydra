@@ -54,13 +54,13 @@ int sasl_saslprep(const char *in, sasl_saslprep_flags flags, char **out) {
   for (i = 0; i < inlen; i++) {
     if (in[i] & 0x80) {
       *out = NULL;
-      hydra_report(stderr, "Error: Can't convert UTF-8, you should install libidn\n");
+      hydra_report(stderr, _("Error: Can't convert UTF-8, you should install libidn\n"));
       return -1;
     }
   }
   *out = malloc(inlen + 1);
   if (!*out) {
-    hydra_report(stderr, "Error: Can't allocate memory\n");
+    hydra_report(stderr, _("Error: Can't allocate memory\n"));
     return -1;
   }
   strcpy(*out, in);
@@ -394,7 +394,7 @@ void sasl_digest_md5(char *result, char *login, char *pass, char *buffer, char *
           for (j = 0; j < ind; j++)
             if (array[j] != NULL)
               free(array[j]);
-          hydra_report(stderr, "Error: DIGEST-MD5 nonce from server could not be extracted\n");
+          hydra_report(stderr, _("Error: DIGEST-MD5 nonce from server could not be extracted\n"));
           result = NULL;
           return;
         }
@@ -417,7 +417,7 @@ void sasl_digest_md5(char *result, char *login, char *pass, char *buffer, char *
           for (i = 0; i < ind; i++)
             if (array[i] != NULL)
               free(array[i]);
-          hydra_report(stderr, "Error: DIGEST-MD5 realm from server could not be extracted\n");
+          hydra_report(stderr, _("Error: DIGEST-MD5 realm from server could not be extracted\n"));
           result = NULL;
           return;
         }
@@ -439,7 +439,7 @@ void sasl_digest_md5(char *result, char *login, char *pass, char *buffer, char *
         for (j = 0; j < ind; j++)
           if (array[j] != NULL)
             free(array[j]);
-        hydra_report(stderr, "Error: DIGEST-MD5 quality of protection only authentication is not supported by server\n");
+        hydra_report(stderr, _("Error: DIGEST-MD5 quality of protection only authentication is not supported by server\n"));
         result = NULL;
         return;
       }
@@ -458,7 +458,7 @@ void sasl_digest_md5(char *result, char *login, char *pass, char *buffer, char *
           for (j = 0; j < ind; j++)
             if (array[j] != NULL)
               free(array[j]);
-          hydra_report(stderr, "Error: DIGEST-MD5 algorithm from server could not be extracted\n");
+          hydra_report(stderr, _("Error: DIGEST-MD5 algorithm from server could not be extracted\n"));
           result = NULL;
           return;
         }
@@ -472,7 +472,7 @@ void sasl_digest_md5(char *result, char *login, char *pass, char *buffer, char *
         for (j = 0; j < ind; j++)
           if (array[j] != NULL)
             free(array[j]);
-        hydra_report(stderr, "Error: DIGEST-MD5 algorithm not based on md5, based on %s\n", algo);
+        hydra_report(stderr, _("Error: DIGEST-MD5 algorithm not based on md5, based on %s\n"), algo);
         result = NULL;
         return;
       }
@@ -642,11 +642,11 @@ void sasl_scram_sha1(char *result, char *pass, char *clientfirstmessagebare, cha
 
   /*client-final-message */
   if (debug)
-    hydra_report(stderr, "DEBUG S: %s\n", serverfirstmessage);
+    hydra_report(stderr, _("DEBUG S: %s\n"), serverfirstmessage);
 
   //r=hydra28Bo7kduPpAZLzhRQiLxc8Y9tiwgw+yP,s=ldDgevctH+Kg7b8RnnA3qA==,i=4096
   if (strstr(serverfirstmessage, "r=") == NULL) {
-    hydra_report(stderr, "Error: Can't understand server message\n");
+    hydra_report(stderr, _("Error: Can't understand server message\n"));
     free(preppasswd);
     result = NULL;
     return;
@@ -660,7 +660,7 @@ void sasl_scram_sha1(char *result, char *pass, char *clientfirstmessagebare, cha
 
   iter = atoi(ic + 2);
   if (iter == 0) {
-    hydra_report(stderr, "Error: Can't understand server response\n");
+    hydra_report(stderr, _("Error: Can't understand server response\n"));
     free(preppasswd);
     result = NULL;
     return;
@@ -669,7 +669,7 @@ void sasl_scram_sha1(char *result, char *pass, char *clientfirstmessagebare, cha
   if ((nonce != NULL) && (strlen(nonce) > 2))
     snprintf(clientfinalmessagewithoutproof, sizeof(clientfinalmessagewithoutproof), "c=biws,%s", nonce);
   else {
-    hydra_report(stderr, "Error: Could not identify server nonce value\n");
+    hydra_report(stderr, _("Error: Could not identify server nonce value\n"));
     free(preppasswd);
     result = NULL;
     return;
@@ -679,7 +679,7 @@ void sasl_scram_sha1(char *result, char *pass, char *clientfirstmessagebare, cha
     //s=ghgIAfLl1+yUy/Xl1WD5Tw== remove the header s=
     strcpy(buffer, salt + 2);
   else {
-    hydra_report(stderr, "Error: Could not identify server salt value\n");
+    hydra_report(stderr, _("Error: Could not identify server salt value\n"));
     free(preppasswd);
     result = NULL;
     return;
@@ -689,7 +689,7 @@ void sasl_scram_sha1(char *result, char *pass, char *clientfirstmessagebare, cha
   saltlen = from64tobits((char *) salt, buffer);
 
   if (PKCS5_PBKDF2_HMAC_SHA1(preppasswd, strlen(preppasswd), (unsigned char *) salt, saltlen, iter, SHA_DIGEST_LENGTH, SaltedPassword) != 1) {
-    hydra_report(stderr, "Error: Failed to generate PBKDF2\n");
+    hydra_report(stderr, _("Error: Failed to generate PBKDF2\n"));
     free(preppasswd);
     result = NULL;
     return;
@@ -712,7 +712,7 @@ void sasl_scram_sha1(char *result, char *pass, char *clientfirstmessagebare, cha
 
   snprintf(result, 500, "%s,p=%s", clientfinalmessagewithoutproof, clientproof_b64);
   if (debug)
-    hydra_report(stderr, "DEBUG C: %s\n", result);
+    hydra_report(stderr, _("DEBUG C: %s\n"), result);
   free(preppasswd);
 }
 #endif

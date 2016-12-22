@@ -63,7 +63,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
     if ((buf = hydra_receive_line(s)) == NULL)
       return 1;
     if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL) {
-      hydra_report(stderr, "[ERROR] IMAP LOGIN AUTH : %s\n", buf);
+      hydra_report(stderr, _("[ERROR] IMAP LOGIN AUTH : %s\n"), buf);
       free(buf);
       return 3;
     }
@@ -78,7 +78,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
     if ((buf = hydra_receive_line(s)) == NULL)
       return 1;
     if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL) {
-      hydra_report(stderr, "[ERROR] IMAP LOGIN AUTH : %s\n", buf);
+      hydra_report(stderr, _("[ERROR] IMAP LOGIN AUTH : %s\n"), buf);
       free(buf);
       return 3;
     }
@@ -96,7 +96,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
     if ((buf = hydra_receive_line(s)) == NULL)
       return 1;
     if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL) {
-      hydra_report(stderr, "[ERROR] IMAP PLAIN AUTH : %s\n", buf);
+      hydra_report(stderr, _("[ERROR] IMAP PLAIN AUTH : %s\n"), buf);
       free(buf);
       return 3;
     }
@@ -140,13 +140,13 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL || strstr(buf, "BYE") != NULL) {
         switch (imap_auth_mechanism) {
         case AUTH_CRAMMD5:
-          hydra_report(stderr, "[ERROR] IMAP CRAM-MD5 AUTH : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] IMAP CRAM-MD5 AUTH : %s\n"), buf);
           break;
         case AUTH_CRAMSHA1:
-          hydra_report(stderr, "[ERROR] IMAP CRAM-SHA1 AUTH : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] IMAP CRAM-SHA1 AUTH : %s\n"), buf);
           break;
         case AUTH_CRAMSHA256:
-          hydra_report(stderr, "[ERROR] IMAP CRAM-SHA256 AUTH : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] IMAP CRAM-SHA256 AUTH : %s\n"), buf);
           break;
         }
         free(buf);
@@ -190,7 +190,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 1;
       if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL || strstr(buf, "BYE") != NULL) {
-        hydra_report(stderr, "[ERROR] IMAP DIGEST-MD5 AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] IMAP DIGEST-MD5 AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -199,14 +199,14 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
       free(buf);
 
       if (debug)
-        hydra_report(stderr, "DEBUG S: %s\n", buffer);
+        hydra_report(stderr, _("DEBUG S: %s\n"), buffer);
 
       fooptr = buffer2;
       sasl_digest_md5(fooptr, login, pass, buffer, miscptr, "imap", NULL, 0, NULL);
       if (fooptr == NULL)
         return 3;
       if (debug)
-        hydra_report(stderr, "DEBUG C: %s\n", buffer2);
+        hydra_report(stderr, _("DEBUG C: %s\n"), buffer2);
       hydra_tobase64((unsigned char *) buffer2, strlen(buffer2), sizeof(buffer2));
       sprintf(buffer, "%s\r\n", buffer2);
 
@@ -228,7 +228,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 1;
       if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL || strstr(buf, "BYE") != NULL) {
-        hydra_report(stderr, "[ERROR] IMAP SCRAM-SHA1 AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] IMAP SCRAM-SHA1 AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -249,7 +249,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
         return 1;
       if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL || strstr(buf, "BYE") != NULL) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Not a valid server challenge\n");
+          hydra_report(stderr, _("[ERROR] Not a valid server challenge\n"));
         free(buf);
         return 1;
       } else {
@@ -265,7 +265,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
         fooptr = buffer2;
         sasl_scram_sha1(fooptr, pass, clientfirstmessagebare, serverfirstmessage);
         if (fooptr == NULL) {
-          hydra_report(stderr, "[ERROR] Can't compute client response\n");
+          hydra_report(stderr, _("[ERROR] Can't compute client response\n"));
           return 1;
         }
         hydra_tobase64((unsigned char *) buffer2, strlen(buffer2), sizeof(buffer2));
@@ -287,7 +287,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 1;
       if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL || strstr(buf, "BYE") != NULL) {
-        hydra_report(stderr, "[ERROR] IMAP NTLM AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] IMAP NTLM AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -331,7 +331,7 @@ int start_imap(int s, char *ip, int port, unsigned char options, char *miscptr, 
 
   if (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL || strstr(buf, "BYE") != NULL) {
     if (verbose)
-      hydra_report(stderr, "[ERROR] %s\n", buf);
+      hydra_report(stderr, _("[ERROR] %s\n"), buf);
     free(buf);
     hydra_completed_pair();
     if (memcmp(hydra_get_next_pair(), &HYDRA_EXIT, sizeof(HYDRA_EXIT)) == 0)
@@ -376,14 +376,14 @@ void service_imap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       buf = hydra_receive_line(sock);
 
       if ((buf == NULL) || (strstr(buf, "OK") == NULL && buf[0] != '*')) {      /* check the first line */
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Not an IMAP protocol or service shutdown:\n");
+          hydra_report(stderr, _("[ERROR] Not an IMAP protocol or service shutdown:\n"));
         if (buf != NULL)
           free(buf);
         hydra_child_exit(2);
@@ -418,18 +418,18 @@ void service_imap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
           free(buf);
           buf = hydra_receive_line(sock);
           if (buf == NULL || (strstr(buf, " NO ") != NULL || strstr(buf, "failed") != NULL || strstr(buf, " BAD ") != NULL)) {
-            hydra_report(stderr, "[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n");
+            hydra_report(stderr, _("[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n"));
           } else {
             free(buf);
             if ((hydra_connect_to_ssl(sock) == -1)) {
               if (verbose)
-                hydra_report(stderr, "[ERROR] Can't use TLS\n");
+                hydra_report(stderr, _("[ERROR] Can't use TLS\n"));
               disable_tls = 1;
               run = 1;
               break;
             } else {
               if (verbose)
-                hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+                hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
             }
             /* ask again capability request but in TLS mode */
             if (hydra_send(sock, "3 CAPABILITY\r\n", strlen("3 CAPABILITY\r\n"), 0) < 0)
@@ -440,12 +440,12 @@ void service_imap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
               hydra_child_exit(2);
           }
         } else
-          hydra_report(stderr, "[ERROR] option to use TLS/SSL failed as it is not supported by the server\n");
+          hydra_report(stderr, _("[ERROR] option to use TLS/SSL failed as it is not supported by the server\n"));
       }
 #endif
 
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] CAPABILITY: %s", buf);
+        hydra_report(stderr, _("[VERBOSE] CAPABILITY: %s"), buf);
 
       //authentication should be listed AUTH= like in the extract below
       //STARTTLS LOGINDISABLED AUTH=GSSAPI AUTH=DIGEST-MD5 AUTH=CRAM-MD5
@@ -517,33 +517,33 @@ void service_imap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       if (verbose) {
         switch (imap_auth_mechanism) {
         case AUTH_CLEAR:
-          hydra_report(stderr, "[VERBOSE] using IMAP CLEAR LOGIN mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP CLEAR LOGIN mechanism\n"));
           break;
         case AUTH_LOGIN:
-          hydra_report(stderr, "[VERBOSE] using IMAP LOGIN AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP LOGIN AUTH mechanism\n"));
           break;
         case AUTH_PLAIN:
-          hydra_report(stderr, "[VERBOSE] using IMAP PLAIN AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP PLAIN AUTH mechanism\n"));
           break;
 #ifdef LIBOPENSSL
         case AUTH_CRAMMD5:
-          hydra_report(stderr, "[VERBOSE] using IMAP CRAM-MD5 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP CRAM-MD5 AUTH mechanism\n"));
           break;
         case AUTH_CRAMSHA1:
-          hydra_report(stderr, "[VERBOSE] using IMAP CRAM-SHA1 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP CRAM-SHA1 AUTH mechanism\n"));
           break;
         case AUTH_CRAMSHA256:
-          hydra_report(stderr, "[VERBOSE] using IMAP CRAM-SHA256 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP CRAM-SHA256 AUTH mechanism\n"));
           break;
         case AUTH_DIGESTMD5:
-          hydra_report(stderr, "[VERBOSE] using IMAP DIGEST-MD5 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP DIGEST-MD5 AUTH mechanism\n"));
           break;
         case AUTH_SCRAMSHA1:
-          hydra_report(stderr, "[VERBOSE] using IMAP SCRAM-SHA1 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP SCRAM-SHA1 AUTH mechanism\n"));
           break;
 #endif
         case AUTH_NTLM:
-          hydra_report(stderr, "[VERBOSE] using IMAP NTLM AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using IMAP NTLM AUTH mechanism\n"));
           break;
         }
       }
@@ -560,7 +560,7 @@ void service_imap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

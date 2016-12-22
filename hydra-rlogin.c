@@ -119,7 +119,7 @@ void service_rlogin(char *ip, int sp, unsigned char options, char *miscptr, FILE
           port = mysslport;
         }
         if (sock < 0) {
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
         next_run = 2;
@@ -134,7 +134,7 @@ void service_rlogin(char *ip, int sp, unsigned char options, char *miscptr, FILE
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

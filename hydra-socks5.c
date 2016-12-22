@@ -38,20 +38,20 @@ int start_socks5(int s, char *ip, int port, unsigned char options, char *miscptr
   fail_cnt = 0;
   if (buf[0] != 5) {
     if (buf[0] == 4) {
-      hydra_report(stderr, "[ERROR] Sorry Socks4 / Socks4a ident is not supported\n");
+      hydra_report(stderr, _("[ERROR] Sorry Socks4 / Socks4a ident is not supported\n"));
     } else {
-      hydra_report(stderr, "[ERROR] Socks5 protocol or service shutdown: %s\n", buf);
+      hydra_report(stderr, _("[ERROR] Socks5 protocol or service shutdown: %s\n"), buf);
     }
     free(buf);
     return (4);
   }
   if (buf[1] == 0 || buf[1] == 32) {
-    hydra_report(stderr, "[INFO] Socks5 server does NOT require any authentication!\n");
+    hydra_report(stderr, _("[INFO] Socks5 server does NOT require any authentication!\n"));
     free(buf);
     return (4);
   }
   if (buf[1] != 0x2) {
-    hydra_report(stderr, "[ERROR] Socks5 protocol or service shutdown: %s\n", buf);
+    hydra_report(stderr, _("[ERROR] Socks5 protocol or service shutdown: %s\n"), buf);
     free(buf);
     return (4);
   }
@@ -133,7 +133,7 @@ void service_socks5(char *ip, int sp, unsigned char options, char *miscptr, FILE
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       next_run = 2;
@@ -152,13 +152,13 @@ void service_socks5(char *ip, int sp, unsigned char options, char *miscptr, FILE
       hydra_child_exit(2);
       return;
     case 5:                    /* clean exit, server may blocking connections */
-      hydra_report(stderr, "[ERROR] Server may blocking connections\n");
+      hydra_report(stderr, _("[ERROR] Server may blocking connections\n"));
       if (sock >= 0)
         sock = hydra_disconnect(sock);
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

@@ -32,7 +32,7 @@ int start_vmauthd(int s, char *ip, int port, unsigned char options, char *miscpt
   if ((buf = hydra_receive_line(s)) == NULL)
     return (1);
   if (strncmp(buf, "331 ", 4) != 0) {
-    hydra_report(stderr, "[ERROR] vmware authd protocol or service shutdown: %s\n", buf);
+    hydra_report(stderr, _("[ERROR] vmware authd protocol or service shutdown: %s\n"), buf);
     free(buf);
     return (3);
   }
@@ -92,7 +92,7 @@ void service_vmauthd(char *ip, int sp, unsigned char options, char *miscptr, FIL
 
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       buf = hydra_receive_line(sock);
@@ -104,12 +104,12 @@ void service_vmauthd(char *ip, int sp, unsigned char options, char *miscptr, FIL
       if (buf == NULL || strstr(buf, "220 VMware Authentication Daemon Version ") == NULL) {
         /* check the first line */
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Not an vmware authd protocol or service shutdown: %s\n", buf);
+          hydra_report(stderr, _("[ERROR] Not an vmware authd protocol or service shutdown: %s\n"), buf);
         hydra_child_exit(2);
       }
       if ((strstr(buf, "Version 1.00") == NULL) && (strstr(buf, "Version 1.10") == NULL)) {
         free(buf);
-        hydra_report(stderr, "[ERROR] this vmware authd protocol is not supported, please report: %s\n", buf);
+        hydra_report(stderr, _("[ERROR] this vmware authd protocol is not supported, please report: %s\n"), buf);
         hydra_child_exit(2);
       }
       //by default this service is waiting for ssl connections      
@@ -118,7 +118,7 @@ void service_vmauthd(char *ip, int sp, unsigned char options, char *miscptr, FIL
           //reconnecting using SSL
           if (hydra_connect_to_ssl(sock) == -1) {
             free(buf);
-            hydra_report(stderr, "[ERROR] Can't use SSL\n");
+            hydra_report(stderr, _("[ERROR] Can't use SSL\n"));
             hydra_child_exit(2);
           }
         }
@@ -135,7 +135,7 @@ void service_vmauthd(char *ip, int sp, unsigned char options, char *miscptr, FIL
         sock = hydra_disconnect(sock);
       hydra_child_exit(0);
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

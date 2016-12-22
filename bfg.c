@@ -8,6 +8,10 @@
 #include <ctype.h>
 #include "bfg.h"
 
+#include <libintl.h>
+#define _(X) gettext(X)
+
+
 bf_option bf_options;
 
 #ifdef HAVE_MATH_H
@@ -25,7 +29,7 @@ int bf_init(char *arg) {
   char *tmp = strchr(arg, ':');
 
   if (!tmp) {
-    fprintf(stderr, "Error: Invalid option format for -x\n");
+    fprintf(stderr, _("Error: Invalid option format for -x\n"));
     return 1;
   } else {
     tmp[0] = '\0';
@@ -38,12 +42,12 @@ int bf_init(char *arg) {
   arg = tmp + 1;
   tmp++;
   if (!arg[0]) {
-    fprintf(stderr, "Error: no maximum length specified for -x min:max:types!\n");
+    fprintf(stderr, _("Error: no maximum length specified for -x min:max:types!\n"));
     return 1;
   }
   tmp = strchr(arg, ':');
   if (!tmp) {
-    fprintf(stderr, "Error: Invalid option format for -x\n");
+    fprintf(stderr, _("Error: Invalid option format for -x\n"));
     return 1;
   } else {
     tmp[0] = '\0';
@@ -52,18 +56,18 @@ int bf_init(char *arg) {
   tmp++;
 
   if (bf_options.from > bf_options.to) {
-    fprintf(stderr, "Error: you specified a minimum length higher than the maximum length!\n");
+    fprintf(stderr, _("Error: you specified a minimum length higher than the maximum length!\n"));
     return 1;
   }
 
   if (tmp[0] == 0) {
-    fprintf(stderr, "Error: charset not specified!\n");
+    fprintf(stderr, _("Error: charset not specified!\n"));
     return 1;
   }
   bf_options.crs = malloc(sizeof(char) * BF_CHARSMAX);
 
   if (bf_options.crs == NULL) {
-    fprintf(stderr, "Error: can't allocate enough memory!\n");
+    fprintf(stderr, _("Error: can't allocate enough memory!\n"));
     return 1;
   }
   bf_options.crs[0] = 0;
@@ -74,11 +78,11 @@ int bf_init(char *arg) {
       crs_len += 26;
       if (BF_CHARSMAX - crs_len < 1) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: charset specification exceeds %d characters.\n", BF_CHARSMAX);
+        fprintf(stderr, _("Error: charset specification exceeds %d characters.\n"), BF_CHARSMAX);
         return 1;
       } else if (flags & BF_LOWER) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: 'a' specified more than once in charset!\n");
+        fprintf(stderr, _("Error: 'a' specified more than once in charset!\n"));
         return 1;
       } else {
         strcat(bf_options.crs, "abcdefghijklmnopqrstuvwxyz");
@@ -90,11 +94,11 @@ int bf_init(char *arg) {
       crs_len += 26;
       if (BF_CHARSMAX - crs_len < 1) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: charset specification exceeds %d characters.\n", BF_CHARSMAX);
+        fprintf(stderr, _("Error: charset specification exceeds %d characters.\n"), BF_CHARSMAX);
         return 1;
       } else if (flags & BF_UPPER) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: 'A' specified more than once in charset!\n");
+        fprintf(stderr, _("Error: 'A' specified more than once in charset!\n"));
         return 1;
       } else {
         strcat(bf_options.crs, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -106,11 +110,11 @@ int bf_init(char *arg) {
       crs_len += 10;
       if (BF_CHARSMAX - crs_len < 1) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: charset specification exceeds %d characters.\n", BF_CHARSMAX);
+        fprintf(stderr, _("Error: charset specification exceeds %d characters.\n"), BF_CHARSMAX);
         return 1;
       } else if (flags & BF_NUMS) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: '1' specified more than once in charset!\n");
+        fprintf(stderr, _("Error: '1' specified more than once in charset!\n"));
         return 1;
       } else {
         strcat(bf_options.crs, "0123456789");
@@ -136,7 +140,7 @@ int bf_init(char *arg) {
       crs_len++;
       if (BF_CHARSMAX - crs_len < 1) {
         free(bf_options.crs);
-        fprintf(stderr, "Error: charset specification exceeds %d characters.\n", BF_CHARSMAX);
+        fprintf(stderr, _("Error: charset specification exceeds %d characters.\n"), BF_CHARSMAX);
         return 1;
       } else {
         bf_options.crs[crs_len - 1] = tmp[i];
@@ -173,7 +177,7 @@ char *bf_next() {
     return NULL;                // we are done
 
   if ((bf_options.ptr = malloc(BF_CHARSMAX)) == NULL) {
-    fprintf(stderr, "Error: Can not allocate memory for -x data!\n");
+    fprintf(stderr, _("Error: Can not allocate memory for -x data!\n"));
     return NULL;
   }
 

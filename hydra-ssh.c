@@ -48,7 +48,7 @@ int start_ssh(int s, char *ip, int port, unsigned char options, char *miscptr, F
     if (ssh_connect(session) != 0) {
       //if the connection was drop, exit and let hydra main handle it
       if (verbose)
-        hydra_report(stderr, "[ERROR] could not connect to target port %d\n", port);
+        hydra_report(stderr, _("[ERROR] could not connect to target port %d\n"), port);
       return 3;
     }
 
@@ -128,19 +128,19 @@ void service_ssh(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       ssh_finalize();
       ssh_free(session);
       if (verbose)
-        fprintf(stderr, "[ERROR] ssh protocol error\n");
+        fprintf(stderr, _("[ERROR] ssh protocol error\n"));
       hydra_child_exit(2);
     case 4:
       ssh_disconnect(session);
       ssh_finalize();
       ssh_free(session);
-      fprintf(stderr, "[ERROR] ssh target does not support password auth\n");
+      fprintf(stderr, _("[ERROR] ssh target does not support password auth\n"));
       hydra_child_exit(2);
     default:
       ssh_disconnect(session);
       ssh_finalize();
       ssh_free(session);
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;
@@ -186,11 +186,11 @@ int service_ssh_init(char *ip, int sp, unsigned char options, char *miscptr, FIL
 
   if ((method & SSH_AUTH_METHOD_INTERACTIVE) || (method & SSH_AUTH_METHOD_PASSWORD)) {
     if (verbose || debug)
-      printf("[INFO] Successful, password authentication is supported by ssh://%s:%d\n", hydra_address2string(ip), port);
+      printf(_("[INFO] Successful, password authentication is supported by ssh://%s:%d\n"), hydra_address2string(ip), port);
     return 0;
   }
 
-  fprintf(stderr, "[ERROR] target ssh://%s:%d/ does not support password authentication.\n", hydra_address2string(ip), port);
+  fprintf(stderr, _("[ERROR] target ssh://%s:%d/ does not support password authentication.\n"), hydra_address2string(ip), port);
   return 1;
 #else
   return 0;

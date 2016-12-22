@@ -147,7 +147,7 @@ void service_cisco(char *ip, int sp, unsigned char options, char *miscptr, FILE 
           port = mysslport;
         }
         if (sock < 0) {
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
         do {
@@ -159,11 +159,11 @@ void service_cisco(char *ip, int sp, unsigned char options, char *miscptr, FILE 
             if (failc < retry) {
               next_run = 1;
               failc++;
-              if (quiet != 1) hydra_report(stderr, "[ERROR] Child with pid %d was disconnected - retrying (%d of %d retries)\n", (int) getpid(), failc, retry);
+              if (quiet != 1) hydra_report(stderr, _("[ERROR] Child with pid %d was disconnected - retrying (%d of %d retries)\n"), (int) getpid(), failc, retry);
               sleep(3);
               break;
             } else {
-              if (quiet != 1) hydra_report(stderr, "[ERROR] Child with pid %d was disconnected - exiting\n", (int) getpid());
+              if (quiet != 1) hydra_report(stderr, _("[ERROR] Child with pid %d was disconnected - exiting\n"), (int) getpid());
               hydra_child_exit(0);
             }
           }
@@ -186,7 +186,7 @@ void service_cisco(char *ip, int sp, unsigned char options, char *miscptr, FILE 
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
 #ifdef PALM
       return;

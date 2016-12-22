@@ -40,7 +40,7 @@ int start_ftp(int s, char *ip, int port, unsigned char options, char *miscptr, F
   if (buf[0] != '3') {
     if (buf) {
       if (verbose || debug)
-        hydra_report(stderr, "[ERROR] Not an FTP protocol or service shutdown: %s\n", buf);
+        hydra_report(stderr, _("[ERROR] Not an FTP protocol or service shutdown: %s\n"), buf);
       free(buf);
     }
     return 3;
@@ -98,14 +98,14 @@ void service_ftp_core(char *ip, int sp, unsigned char options, char *miscptr, FI
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       usleep(250);
       buf = hydra_receive_line(sock);
       if (buf == NULL || buf[0] != '2') {       /* check the first line */
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Not an FTP protocol or service shutdown: %s\n", buf);
+          hydra_report(stderr, _("[ERROR] Not an FTP protocol or service shutdown: %s\n"), buf);
         hydra_child_exit(2);
         if (buf != NULL)
           free(buf);
@@ -126,19 +126,19 @@ void service_ftp_core(char *ip, int sp, unsigned char options, char *miscptr, FI
         buf = hydra_receive_line(sock);
         if (buf == NULL) {
           if (verbose || debug)
-            hydra_report(stderr, "[ERROR] Not an FTP protocol or service shutdown: %s\n", buf);
+            hydra_report(stderr, _("[ERROR] Not an FTP protocol or service shutdown: %s\n"), buf);
           hydra_child_exit(2);
         }
         if (buf[0] == '2') {
           if ((hydra_connect_to_ssl(sock) == -1) && verbose) {
-            hydra_report(stderr, "[ERROR] Can't use TLS\n");
+            hydra_report(stderr, _("[ERROR] Can't use TLS\n"));
             hydra_child_exit(2);
           } else {
             if (verbose)
-              hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+              hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
           }
         } else {
-          hydra_report(stderr, "[ERROR] TLS negotiation failed %s\n", buf);
+          hydra_report(stderr, _("[ERROR] TLS negotiation failed %s\n"), buf);
           hydra_child_exit(2);
         }
         free(buf);
@@ -158,7 +158,7 @@ void service_ftp_core(char *ip, int sp, unsigned char options, char *miscptr, FI
         sock = hydra_disconnect(sock);
       hydra_child_exit(0);
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

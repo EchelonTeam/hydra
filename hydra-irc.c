@@ -88,7 +88,7 @@ int start_pass_irc(int s, char *ip, int port, unsigned char options, char *miscp
 
   s = irc_server_connect(ip, s, port, options);
   if (s < 0) {
-    hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+    hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
     return 3;
   }
 
@@ -106,10 +106,10 @@ int start_pass_irc(int s, char *ip, int port, unsigned char options, char *miscp
 #endif
     hydra_report_pass_found(port, ip, "irc", fp);
     hydra_completed_pair_found();
-    hydra_report(stderr, "[INFO] Server password '%s' is working, you can pass it as argument\nto irc module to then try login/password oper mode\n", pass);
+    hydra_report(stderr, _("[INFO] Server password '%s' is working, you can pass it as argument\nto irc module to then try login/password oper mode\n"), pass);
   } else {
     if (verbose && (miscptr != NULL))
-      hydra_report(stderr, "[VERBOSE] Server is requesting a general password, '%s' you entered is not working\n", miscptr);
+      hydra_report(stderr, _("[VERBOSE] Server is requesting a general password, '%s' you entered is not working\n"), miscptr);
     hydra_completed_pair();
   }
 
@@ -133,7 +133,7 @@ void service_irc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
 
       sock = irc_server_connect(ip, sock, port, options);
       if (sock < 0) {
-        hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
 
@@ -155,7 +155,7 @@ void service_irc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       if ((ret > 0) && (strstr(buffer, "ERROR") != NULL)) {
 #endif
         if (verbose)
-          hydra_report(stderr, "[INFO] Server is requesting a password, will try to find it\n");
+          hydra_report(stderr, _("[INFO] Server is requesting a password, will try to find it\n"));
         if (sock >= 0)
           sock = hydra_disconnect(sock);
         next_run = 4;
@@ -170,21 +170,21 @@ void service_irc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       if ((ret > 0) && (strstr(buffer, " 432 ") != NULL)) {
         /* :irc.debian.org 432 * hydra_5075 :Erroneous nickname */
         if (verbose)
-          hydra_report(stderr, "[ERROR] Erroneous nickname\n");
+          hydra_report(stderr, _("[ERROR] Erroneous nickname\n"));
         hydra_child_exit(0);
       }
 
       if ((ret > 0) && (strstr(buffer, " 433 ") != NULL)) {
         /* :irc.debian.org 433 * hydra :Nickname already in use */
         if (verbose)
-          hydra_report(stderr, "[ERROR] Nickname already in use\n");
+          hydra_report(stderr, _("[ERROR] Nickname already in use\n"));
         hydra_child_exit(0);
       }
 
       /* ERROR :Bad password is returned from ngircd when it s waiting for a server password */
       if ((ret > 0) && (strstr(buffer, " 001 ") == NULL)) {
         /* seems we not successfully connected */
-        hydra_report(stderr, "[ERROR] should not be able to identify server msg, please report it\n%s\n", buffer);
+        hydra_report(stderr, _("[ERROR] should not be able to identify server msg, please report it\n%s\n"), buffer);
         hydra_child_exit(0);
       }
 
@@ -202,7 +202,7 @@ void service_irc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       next_run = start_pass_irc(sock, ip, port, options, miscptr, fp);
       break;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

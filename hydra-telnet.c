@@ -127,11 +127,11 @@ void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE
         port = mysslport;
       }
       if (sock < 0) {
-        hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       if ((buf = hydra_receive_line(sock)) == NULL) {   /* check the first line */
-        hydra_report(stderr, "[ERROR] Not a TELNET protocol or service shutdown\n");
+        hydra_report(stderr, _("[ERROR] Not a TELNET protocol or service shutdown\n"));
         hydra_child_exit(2);
 //        hydra_child_exit(2);
       }
@@ -139,14 +139,14 @@ void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE
         hydra_send(sock, "\r\n", 2, 0);
         free(buf);
         if ((buf = hydra_receive_line(sock)) == NULL) {
-          hydra_report(stderr, "[ERROR] Not a TELNET protocol or service shutdown\n");
+          hydra_report(stderr, _("[ERROR] Not a TELNET protocol or service shutdown\n"));
           hydra_child_exit(2);
         }
       }
       if (hydra_strcasestr(buf, "login") != NULL || hydra_strcasestr(buf, "sername:") != NULL) {
         waittime = 6;
         if (debug)
-          hydra_report(stdout, "DEBUG: waittime set to %d\n", waittime);
+          hydra_report(stdout, _("DEBUG: waittime set to %d\n"), waittime);
       }
       do {
         unsigned char *buf2 = (unsigned char *) buf;
@@ -154,14 +154,14 @@ void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE
         while (*buf2 == IAC) {
           if (first == 0) {
             if (debug)
-              hydra_report(stdout, "DEBUG: requested line mode\n");
+              hydra_report(stdout, _("DEBUG: requested line mode\n"));
             fck = write(sock, "\xff\xfb\x22", 3);
             first = 1;
           }
           if ((buf[1] == '\xfc' || buf[1] == '\xfe') && buf2[2] == '\x22') {
             no_line_mode = 1;
             if (debug)
-              hydra_report(stdout, "DEBUG: TELNETD peer does not like linemode!\n");
+              hydra_report(stdout, _("DEBUG: TELNETD peer does not like linemode!\n"));
           }
           if (buf2[2] != '\x22') {
             if (buf2[1] == WILL || buf2[1] == WONT) {
@@ -196,7 +196,7 @@ void service_telnet(char *ip, int sp, unsigned char options, char *miscptr, FILE
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

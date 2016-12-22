@@ -419,7 +419,7 @@ int analyze_server_response(int s) {
   }
   if (runs == 0) {
     if (debug)
-      hydra_report(stderr, "DEBUG: no response from server\n");
+      hydra_report(stderr, _("DEBUG: no response from server\n"));
     return -1;
   }
   return 0;
@@ -574,7 +574,7 @@ int start_http_form(int s, char *ip, int port, unsigned char options, char *misc
   found = analyze_server_response(s);
 
   if (auth_flag) {              // we received a 401 error - user using wrong module
-    hydra_report(stderr, "[ERROR] the target is using HTTP auth, not a web form, received HTTP error code 401. Use module \"http%s-get\" instead.\n",
+    hydra_report(stderr, _("[ERROR] the target is using HTTP auth, not a web form, received HTTP error code 401. Use module \"http%s-get\" instead.\n"),
                  (options & OPTION_SSL) > 0 ? "s" : "");
     return 4;
   }
@@ -585,7 +585,7 @@ int start_http_form(int s, char *ip, int port, unsigned char options, char *misc
   //if page was redirected, follow the location header
   redirected_cpt = MAX_REDIRECT;
   if (debug)
-    printf("[DEBUG] attempt result: found %d, redirect %d, location: %s\n", found, redirected_flag, redirected_url_buff);
+    printf(_("[DEBUG] attempt result: found %d, redirect %d, location: %s\n"), found, redirected_flag, redirected_url_buff);
 
   while (found == 0 && redirected_flag && (redirected_url_buff[0] != 0) && (redirected_cpt > 0)) {
     //we have to split the location
@@ -662,7 +662,7 @@ int start_http_form(int s, char *ip, int port, unsigned char options, char *misc
       }
 
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Page redirected to http://%s%s\n", str2, str3);
+        hydra_report(stderr, _("[VERBOSE] Page redirected to http://%s%s\n"), str2, str3);
 
       //re-use the code above to check for proxy use
       if (use_proxy == 1 && proxy_authentication != NULL) {
@@ -750,7 +750,7 @@ void service_http_form(char *ip, int sp, unsigned char options, char *miscptr, F
           port = mysslport;
         }
         if (sock < 0) {
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, cannot connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, cannot connect\n"), (int) getpid());
           if (freemischttpform)
             free(miscptr);
           freemischttpform = 0;
@@ -782,7 +782,7 @@ void service_http_form(char *ip, int sp, unsigned char options, char *miscptr, F
       if (freemischttpform)
         free(miscptr);
       freemischttpform = 0;
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;
@@ -797,7 +797,7 @@ void service_http_get_form(char *ip, int sp, unsigned char options, char *miscpt
   if (ptr_head)
     service_http_form(ip, sp, options, miscptr, fp, port, "GET", &ptr_head);
   else {
-    hydra_report(stderr, "[ERROR] Could not launch head. Error while initializing.\n");
+    hydra_report(stderr, _("[ERROR] Could not launch head. Error while initializing.\n"));
     hydra_child_exit(1);
   }
 }
@@ -808,7 +808,7 @@ void service_http_post_form(char *ip, int sp, unsigned char options, char *miscp
   if (ptr_head)
     service_http_form(ip, sp, options, miscptr, fp, port, "POST", &ptr_head);
   else {
-    hydra_report(stderr, "[ERROR] Could not launch head. Error while initializing.\n");
+    hydra_report(stderr, _("[ERROR] Could not launch head. Error while initializing.\n"));
     hydra_child_exit(1);
   }
 }

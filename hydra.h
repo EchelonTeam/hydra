@@ -22,6 +22,9 @@
 #include <sys/wait.h>
 #include <errno.h>
 
+#include <libintl.h>
+#define _(X) gettext(X)
+
 #ifdef HAVE_OPENSSL
 #define HYDRA_SSL
 #endif

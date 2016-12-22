@@ -18,6 +18,9 @@ void dummy_oracle_sid() {
 #include <openssl/des.h>
 #define HASHSIZE 16
 
+#include <libintl.h>
+#define _(X) gettext(X)
+
 extern char *HYDRA_EXIT;
 char *buf;
 unsigned char *hash;
@@ -110,7 +113,7 @@ void service_oracle_sid(char *ip, int sp, unsigned char options, char *miscptr, 
         port = mysslport;
       }
       if (sock < 0) {
-        hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       /* run the cracking function */
@@ -127,7 +130,7 @@ void service_oracle_sid(char *ip, int sp, unsigned char options, char *miscptr, 
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

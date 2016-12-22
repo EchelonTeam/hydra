@@ -61,7 +61,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
     if ((buf = hydra_receive_line(s)) == NULL)
       return 1;
     if (strstr(buf, "334") == NULL) {
-      hydra_report(stderr, "[ERROR] SMTP PLAIN AUTH : %s\n", buf);
+      hydra_report(stderr, _("[ERROR] SMTP PLAIN AUTH : %s\n"), buf);
       free(buf);
       return 3;
     }
@@ -90,7 +90,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 1;
       if (strstr(buf, "334") == NULL || strlen(buf) < 8) {
-        hydra_report(stderr, "[ERROR] SMTP CRAM-MD5 AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] SMTP CRAM-MD5 AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -117,7 +117,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 1;
       if (strstr(buf, "334") == NULL) {
-        hydra_report(stderr, "[ERROR] SMTP DIGEST-MD5 AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] SMTP DIGEST-MD5 AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -126,7 +126,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
       free(buf);
 
       if (debug)
-        hydra_report(stderr, "DEBUG S: %s\n", buffer);
+        hydra_report(stderr, _("DEBUG S: %s\n"), buffer);
 
       fooptr = buffer2;
       sasl_digest_md5(fooptr, login, pass, buffer, miscptr, "smtp", NULL, 0, NULL);
@@ -134,7 +134,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
         return 3;
 
       if (debug)
-        hydra_report(stderr, "DEBUG C: %s\n", buffer2);
+        hydra_report(stderr, _("DEBUG C: %s\n"), buffer2);
       hydra_tobase64((unsigned char *) buffer2, strlen(buffer2), sizeof(buffer2));
       sprintf(buffer, "%s\r\n", buffer2);
     }
@@ -155,7 +155,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
       if ((buf = hydra_receive_line(s)) == NULL)
         return 1;
       if (strstr(buf, "334") == NULL || strlen(buf) < 8) {
-        hydra_report(stderr, "[ERROR] SMTP NTLM AUTH : %s\n", buf);
+        hydra_report(stderr, _("[ERROR] SMTP NTLM AUTH : %s\n"), buf);
         free(buf);
         return 3;
       }
@@ -180,7 +180,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
 
     /* 504 5.7.4 Unrecognized authentication type  */
     if (strstr(buf, "334") == NULL) {
-      hydra_report(stderr, "[ERROR] SMTP LOGIN AUTH, either this auth is disabled\nor server is not using auth: %s\n", buf);
+      hydra_report(stderr, _("[ERROR] SMTP LOGIN AUTH, either this auth is disabled\nor server is not using auth: %s\n"), buf);
       free(buf);
       return 3;
     }
@@ -195,7 +195,7 @@ int start_smtp(int s, char *ip, int port, unsigned char options, char *miscptr, 
     if ((buf = hydra_receive_line(s)) == NULL)
       return (1);
     if (strstr(buf, "334") == NULL) {
-      hydra_report(stderr, "[ERROR] SMTP LOGIN AUTH : %s\n", buf);
+      hydra_report(stderr, _("[ERROR] SMTP LOGIN AUTH : %s\n"), buf);
       free(buf);
       return (3);
     }
@@ -274,7 +274,7 @@ void service_smtp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
 
@@ -282,7 +282,7 @@ void service_smtp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       if ((buf = hydra_receive_line(sock)) == NULL)
         hydra_child_exit(2);
       if (strstr(buf, "220") == NULL) {
-        hydra_report(stderr, "[WARNING] SMTP does not allow to connect: %s\n", buf);
+        hydra_report(stderr, _("[WARNING] SMTP does not allow to connect: %s\n"), buf);
         free(buf);
         hydra_child_exit(2);
       }
@@ -317,18 +317,18 @@ void service_smtp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
             free(buf);
             buf = hydra_receive_line(sock);
             if (buf[0] != '2') {
-              hydra_report(stderr, "[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n");
+              hydra_report(stderr, _("[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n"));
             } else {
               free(buf);
               if ((hydra_connect_to_ssl(sock) == -1)) {
                 if (verbose)
-                  hydra_report(stderr, "[ERROR] Can't use TLS\n");
+                  hydra_report(stderr, _("[ERROR] Can't use TLS\n"));
                 disable_tls = 1;
                 run = 1;
                 break;
               } else {
                 if (verbose)
-                  hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+                  hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
               }
               /* ask again capability request but in TLS mode */
               if (hydra_send(sock, buffer1, strlen(buffer1), 0) < 0)
@@ -338,9 +338,9 @@ void service_smtp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
                 hydra_child_exit(2);
             }
           } else
-            hydra_report(stderr, "[ERROR] option to use TLS/SSL failed as it is not supported by the server\n");
+            hydra_report(stderr, _("[ERROR] option to use TLS/SSL failed as it is not supported by the server\n"));
         } else
-          hydra_report(stderr, "[ERROR] option to use TLS/SSL failed as it is not supported by the server\n");
+          hydra_report(stderr, _("[ERROR] option to use TLS/SSL failed as it is not supported by the server\n"));
       }
 #endif
 
@@ -397,21 +397,21 @@ void service_smtp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       if (verbose) {
         switch (smtp_auth_mechanism) {
         case AUTH_LOGIN:
-          hydra_report(stderr, "[VERBOSE] using SMTP LOGIN AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using SMTP LOGIN AUTH mechanism\n"));
           break;
         case AUTH_PLAIN:
-          hydra_report(stderr, "[VERBOSE] using SMTP PLAIN AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using SMTP PLAIN AUTH mechanism\n"));
           break;
 #ifdef LIBOPENSSL
         case AUTH_CRAMMD5:
-          hydra_report(stderr, "[VERBOSE] using SMTP CRAM-MD5 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using SMTP CRAM-MD5 AUTH mechanism\n"));
           break;
         case AUTH_DIGESTMD5:
-          hydra_report(stderr, "[VERBOSE] using SMTP DIGEST-MD5 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using SMTP DIGEST-MD5 AUTH mechanism\n"));
           break;
 #endif
         case AUTH_NTLM:
-          hydra_report(stderr, "[VERBOSE] using SMTP NTLM AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using SMTP NTLM AUTH mechanism\n"));
           break;
         }
       }
@@ -428,7 +428,7 @@ void service_smtp(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

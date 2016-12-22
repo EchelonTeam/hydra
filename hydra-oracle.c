@@ -37,7 +37,7 @@ sb4 o_errorcode;
 void print_oracle_error(char *err) {
   if (verbose) {
     OCIErrorGet(o_error, 1, NULL, &o_errorcode, o_errormsg, sizeof(o_errormsg), OCI_HTYPE_ERROR);
-    fprintf(stderr, "[ERROR] Oracle_error: %s - %s\n", o_errormsg, err);
+    fprintf(stderr, _("[ERROR] Oracle_error: %s - %s\n"), o_errormsg, err);
   }
 }
 
@@ -91,13 +91,13 @@ int start_oracle(int s, char *ip, int port, unsigned char options, char *miscptr
     //database: oracle_error: ORA-28000: the account is locked
     //Failed login attempts is set to 10 by default
     if (verbose) {
-      hydra_report(stderr, "[VERBOSE] database: oracle_error: %s\n", o_errormsg);
+      hydra_report(stderr, _("[VERBOSE] database: oracle_error: %s\n"), o_errormsg);
     }
     if (strstr((const char *) o_errormsg, "ORA-12514") != NULL) {
-      hydra_report(stderr, "[ERROR] ORACLE SID is not valid, you should try to enumerate them.\n");
+      hydra_report(stderr, _("[ERROR] ORACLE SID is not valid, you should try to enumerate them.\n"));
     }
     if (strstr((const char *) o_errormsg, "ORA-28000") != NULL) {
-      hydra_report(stderr, "[ERROR] ORACLE account %s is locked.\n", login);
+      hydra_report(stderr, _("[ERROR] ORACLE account %s is locked.\n"), login);
     }
 
     if (o_error) {
@@ -136,7 +136,7 @@ void service_oracle(char *ip, int sp, unsigned char options, char *miscptr, FILE
 
   if ((miscptr == NULL) || (strlen(miscptr) == 0)) {
     //SID is required as miscptr
-    hydra_report(stderr, "[ERROR] Oracle SID is required, using ORCL as default\n");
+    hydra_report(stderr, _("[ERROR] Oracle SID is required, using ORCL as default\n"));
     miscptr = "ORCL";
   }
 
@@ -152,7 +152,7 @@ void service_oracle(char *ip, int sp, unsigned char options, char *miscptr, FILE
 
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       next_run = 2;
@@ -167,7 +167,7 @@ void service_oracle(char *ip, int sp, unsigned char options, char *miscptr, FILE
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

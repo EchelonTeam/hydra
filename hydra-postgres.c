@@ -47,7 +47,7 @@ int start_postgres(int s, char *ip, int port, unsigned char options, char *miscp
   snprintf(connection_string, sizeof(connection_string), "host = '%s' dbname = '%s' user = '%s' password = '%s' ", hydra_address2string(ip), database, login, pass);
 
   if (verbose)
-    hydra_report(stderr, "connection string: %s\n", connection_string);
+    hydra_report(stderr, _("connection string: %s\n"), connection_string);
 
   pgconn = PQconnectdb(connection_string);
   if (PQstatus(pgconn) == CONNECTION_OK) {
@@ -93,7 +93,7 @@ void service_postgres(char *ip, int sp, unsigned char options, char *miscptr, FI
         port = mysslport;
       }
       if (sock < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       next_run = 2;
@@ -110,7 +110,7 @@ void service_postgres(char *ip, int sp, unsigned char options, char *miscptr, FI
       hydra_child_exit(0);
       return;
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

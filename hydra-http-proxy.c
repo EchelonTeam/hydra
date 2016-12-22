@@ -46,7 +46,7 @@ int start_http_proxy(int s, char *ip, int port, unsigned char options, char *mis
 
     if (http_proxy_buf == NULL) {
       if (verbose)
-        hydra_report(stderr, "[ERROR] Server did not answer\n");
+        hydra_report(stderr, _("[ERROR] Server did not answer\n"));
       return 3;
     }
 
@@ -62,7 +62,7 @@ int start_http_proxy(int s, char *ip, int port, unsigned char options, char *mis
 
     if (http_proxy_buf == NULL) {
       if (verbose)
-        hydra_report(stderr, "[ERROR] Proxy seems not to require authentication\n");
+        hydra_report(stderr, _("[ERROR] Proxy seems not to require authentication\n"));
       return 3;
     }
 
@@ -98,7 +98,7 @@ int start_http_proxy(int s, char *ip, int port, unsigned char options, char *mis
     //this will be an infinite loop
     if (http_proxy_buf == NULL) {
       if (verbose)
-        hydra_report(stderr, "[ERROR] Server did not answer\n");
+        hydra_report(stderr, _("[ERROR] Server did not answer\n"));
       return 3;
     }
 
@@ -207,11 +207,11 @@ int start_http_proxy(int s, char *ip, int port, unsigned char options, char *mis
       {
         if (http_proxy_buf != NULL) {
 //          buf[strlen(http_proxy_buf) - 1] = '\0';
-          hydra_report(stderr, "Unsupported Auth type:\n%s\n", http_proxy_buf);
+          hydra_report(stderr, _("Unsupported Auth type:\n%s\n"), http_proxy_buf);
           free(http_proxy_buf);
           http_proxy_buf = NULL;
         } else {
-          hydra_report(stderr, "Unsupported Auth type\n");
+          hydra_report(stderr, _("Unsupported Auth type\n"));
         }
         return 3;
       }
@@ -226,9 +226,9 @@ int start_http_proxy(int s, char *ip, int port, unsigned char options, char *mis
     http_proxy_buf = NULL;
   } else {
     if (*ptr != '4')
-      hydra_report(stderr, "[INFO] Unusual return code: %c for %s:%s\n", (char) *(index(http_proxy_buf, ' ') + 1), login, pass);
+      hydra_report(stderr, _("[INFO] Unusual return code: %c for %s:%s\n"), (char) *(index(http_proxy_buf, ' ') + 1), login, pass);
     else if (verbose && *(ptr + 2) == '3')
-      hydra_report(stderr, "[INFO] Potential success, could be false positive: %s:%s\n", login, pass);
+      hydra_report(stderr, _("[INFO] Potential success, could be false positive: %s:%s\n"), login, pass);
     hydra_completed_pair();
     free(http_proxy_buf);
     http_proxy_buf = hydra_receive_line(s);
@@ -277,7 +277,7 @@ void service_http_proxy(char *ip, int sp, unsigned char options, char *miscptr, 
         }
 
         if (sock < 0) {
-          if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
         next_run = 2;
@@ -292,7 +292,7 @@ void service_http_proxy(char *ip, int sp, unsigned char options, char *miscptr, 
       hydra_child_exit(0);
       return;
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

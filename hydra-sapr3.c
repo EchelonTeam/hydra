@@ -103,12 +103,12 @@ void service_sapr3(char *ip, int sp, unsigned char options, char *miscptr, FILE 
     case 2:
       hydra_child_exit(0);
     case 3:                    /* clean exit */
-      fprintf(stderr, "[ERROR] could not connect to target port %d\n", port);
+      fprintf(stderr, _("[ERROR] could not connect to target port %d\n"), port);
       hydra_child_exit(1);
     case 4:
       hydra_child_exit(2);
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

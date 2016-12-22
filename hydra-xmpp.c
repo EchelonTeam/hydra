@@ -52,7 +52,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
     return 3;
 
   if (debug)
-    hydra_report(stderr, "DEBUG S: %s\n", buf);
+    hydra_report(stderr, _("DEBUG S: %s\n"), buf);
 
   if ((strstr(buf, CHALLENGE_STR) != NULL) || (strstr(buf, CHALLENGE_STR2) != NULL)) {
     /*
@@ -73,7 +73,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
       memset(buffer, 0, sizeof(buffer));
       from64tobits((char *) buffer, buffer2);
       if (debug)
-        hydra_report(stderr, "DEBUG S: %s\n", buffer);
+        hydra_report(stderr, _("DEBUG S: %s\n"), buffer);
     }
 
     switch (xmpp_auth_mechanism) {
@@ -85,7 +85,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
           hydra_tobase64((unsigned char *) buffer2, strlen(buffer2), sizeof(buffer2));
           sprintf(buffer, "%s%.250s%s", RESPONSE_STR, buffer2, RESPONSE_END_STR);
           if (debug)
-            hydra_report(stderr, "DEBUG C: %s\n", buffer);
+            hydra_report(stderr, _("DEBUG C: %s\n"), buffer);
           if (hydra_send(s, buffer, strlen(buffer), 0) < 0) {
             free(buf);
             return 1;
@@ -113,7 +113,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
                 sprintf(buffer, "%s%.250s%s", RESPONSE_STR, buffer2, RESPONSE_END_STR);
               }
             } else {
-              hydra_report(stderr, "[ERROR] xmpp could not extract challenge from server\n");
+              hydra_report(stderr, _("[ERROR] xmpp could not extract challenge from server\n"));
               free(buf);
               return 1;
             }
@@ -127,7 +127,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
         sasl_plain(buffer2, login, pass);
         sprintf(buffer, "%s%.250s%s", RESPONSE_STR, buffer2, RESPONSE_END_STR);
         if (debug)
-          hydra_report(stderr, "DEBUG C: %s\n", buffer);
+          hydra_report(stderr, _("DEBUG C: %s\n"), buffer);
 
       }
       break;
@@ -146,7 +146,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
 
         sprintf(buffer, "%.200s %.250s", preplogin, buffer2);
         if (debug)
-          hydra_report(stderr, "DEBUG C: %s\n", buffer);
+          hydra_report(stderr, _("DEBUG C: %s\n"), buffer);
         hydra_tobase64((unsigned char *) buffer, strlen(buffer), sizeof(buffer));
         sprintf(buffer2, "%s%.250s%s", RESPONSE_STR, buffer, RESPONSE_END_STR);
         strncpy(buffer, buffer2, sizeof(buffer) - 1);
@@ -163,7 +163,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
           return 3;
         }
         if (debug)
-          hydra_report(stderr, "DEBUG C: %s\n", buffer2);
+          hydra_report(stderr, _("DEBUG C: %s\n"), buffer2);
         hydra_tobase64((unsigned char *) buffer2, strlen(buffer2), sizeof(buffer2));
         snprintf(buffer, sizeof(buffer), "%s%s%s", RESPONSE_STR, buffer2, RESPONSE_END_STR);
       }
@@ -206,7 +206,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
             strncpy(buffer2, ptr + strlen(CHALLENGE_STR), chglen);
             buffer2[chglen] = '\0';
           } else {
-            hydra_report(stderr, "[ERROR] xmpp could not extract challenge from server\n");
+            hydra_report(stderr, _("[ERROR] xmpp could not extract challenge from server\n"));
             free(buf);
             return 1;
           }
@@ -229,7 +229,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
           snprintf(buffer, sizeof(buffer), "%s%s%s", RESPONSE_STR, buffer2, RESPONSE_END_STR);
         } else {
           if (verbose || debug)
-            hydra_report(stderr, "[ERROR] Not a valid server challenge\n");
+            hydra_report(stderr, _("[ERROR] Not a valid server challenge\n"));
           free(buf);
           return 1;
         }
@@ -261,7 +261,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
     }
 
     if (verbose)
-      hydra_report(stderr, "[ERROR] %s\n", buf);
+      hydra_report(stderr, _("[ERROR] %s\n"), buf);
 
     free(buf);
     hydra_completed_pair();
@@ -271,7 +271,7 @@ int start_xmpp(int s, char *ip, int port, unsigned char options, char *miscptr, 
     return 2;
   }
   if (strstr(buf, "<failure")) {
-    hydra_report(stderr, "[ERROR] Protocol failure, try using another auth method. %s\n", strstr(buf, "<failure"));
+    hydra_report(stderr, _("[ERROR] Protocol failure, try using another auth method. %s\n"), strstr(buf, "<failure"));
   }
   free(buf);
   return 3;
@@ -290,7 +290,7 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
 
   domain = strchr(target, '.');
   if (!domain) {
-    hydra_report(stderr, "[ERROR] can't extract the domain name, you have to specify a fqdn xmpp server, the domain name will be used in the jabber init request\n");
+    hydra_report(stderr, _("[ERROR] can't extract the domain name, you have to specify a fqdn xmpp server, the domain name will be used in the jabber init request\n"));
     hydra_child_exit(1);
   }
 
@@ -324,7 +324,7 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       memset(buffer, 0, sizeof(buffer));
@@ -341,16 +341,16 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
 
       if (strstr(buf, "<stream:stream") == NULL) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Not an xmpp protocol or service shutdown: %s\n", buf);
+          hydra_report(stderr, _("[ERROR] Not an xmpp protocol or service shutdown: %s\n"), buf);
         free(buf);
         hydra_child_exit(1);
       }
 
       if (strstr(buf, "<stream:error")) {
         if (strstr(buf, "<host-unknown"))
-          hydra_report(stderr, "[ERROR] %s host unknown, you have to specify a fqdn xmpp server, the domain name will be used in the jabber init request : %s\n", domain, buf);
+          hydra_report(stderr, _("[ERROR] %s host unknown, you have to specify a fqdn xmpp server, the domain name will be used in the jabber init request : %s\n"), domain, buf);
         else
-          hydra_report(stderr, "[ERROR] xmpp protocol : %s\n", buf);
+          hydra_report(stderr, _("[ERROR] xmpp protocol : %s\n"), buf);
         free(buf);
         hydra_child_exit(1);
       }
@@ -379,7 +379,7 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
       }
       if (xmpp_auth_mechanism == AUTH_ERROR) {
         /* no auth method identified */
-        hydra_report(stderr, "[ERROR] no authentication methods can be identified %s\n", buf);
+        hydra_report(stderr, _("[ERROR] no authentication methods can be identified %s\n"), buf);
         free(buf);
         hydra_child_exit(1);
       }
@@ -412,20 +412,20 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
       if (verbose) {
         switch (xmpp_auth_mechanism) {
         case AUTH_LOGIN:
-          hydra_report(stderr, "[VERBOSE] using XMPP LOGIN AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using XMPP LOGIN AUTH mechanism\n"));
           break;
         case AUTH_PLAIN:
-          hydra_report(stderr, "[VERBOSE] using XMPP PLAIN AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using XMPP PLAIN AUTH mechanism\n"));
           break;
 #ifdef LIBOPENSSL
         case AUTH_CRAMMD5:
-          hydra_report(stderr, "[VERBOSE] using XMPP CRAM-MD5 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using XMPP CRAM-MD5 AUTH mechanism\n"));
           break;
         case AUTH_SCRAMSHA1:
-          hydra_report(stderr, "[VERBOSE] using XMPP SCRAM-SHA1 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using XMPP SCRAM-SHA1 AUTH mechanism\n"));
           break;
         case AUTH_DIGESTMD5:
-          hydra_report(stderr, "[VERBOSE] using XMPP DIGEST-MD5 AUTH mechanism\n");
+          hydra_report(stderr, _("[VERBOSE] using XMPP DIGEST-MD5 AUTH mechanism\n"));
           break;
 #endif
         }
@@ -441,18 +441,18 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
 
         if (buf == NULL || strstr(buf, "<failure") != NULL) {
           if (verbose)
-            hydra_report(stderr, "[VERBOSE] TLS negotiation failed\n");
+            hydra_report(stderr, _("[VERBOSE] TLS negotiation failed\n"));
         } else {
           free(buf);
           if ((hydra_connect_to_ssl(sock) == -1)) {
             if (verbose)
-              hydra_report(stderr, "[ERROR] Can't use TLS\n");
+              hydra_report(stderr, _("[ERROR] Can't use TLS\n"));
             disable_tls = 1;
             run = 1;
             break;
           } else {
             if (verbose)
-              hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+              hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
           }
           /* we have to resend the init stream */
           memset(buffer, 0, sizeof(buffer));
@@ -480,7 +480,7 @@ void service_xmpp(char *target, char *ip, int sp, unsigned char options, char *m
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

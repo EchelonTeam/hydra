@@ -128,7 +128,7 @@ int start_smtp_enum(int s, char *ip, int port, unsigned char options, char *misc
 //      hydra_report(stderr, "Server %s", err);
 //    }
     if (strncmp(buf, "500 ", 4) == 0) {
-      hydra_report(stderr, "[ERROR] command is disabled on the server (choose different method): %s", buf);
+      hydra_report(stderr, _("[ERROR] command is disabled on the server (choose different method): %s"), buf);
       free(buf);
       return 3;
     }
@@ -175,14 +175,14 @@ void service_smtp_enum(char *ip, int sp, unsigned char options, char *miscptr, F
         port = mysslport;
       }
       if (sock < 0) {
-        hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       /* receive initial header */
       if ((buf = hydra_receive_line(sock)) == NULL)
         hydra_child_exit(2);
       if (strstr(buf, "220") == NULL) {
-        hydra_report(stderr, "Warning: SMTP does not allow to connect: %s\n", buf);
+        hydra_report(stderr, _("Warning: SMTP does not allow to connect: %s\n"), buf);
         hydra_child_exit(2);
       }
 //      while (strstr(buf, "220 ") == NULL) {
@@ -201,7 +201,7 @@ void service_smtp_enum(char *ip, int sp, unsigned char options, char *miscptr, F
       if ((buf = hydra_receive_line(sock)) == NULL)
         hydra_child_exit(2);
       if (buf[0] != '2') {
-        hydra_report(stderr, "Warning: SMTP does not respond correctly to HELO: %s\n", buf);
+        hydra_report(stderr, _("Warning: SMTP does not respond correctly to HELO: %s\n"), buf);
         hydra_child_exit(2);
       }
 
@@ -219,13 +219,13 @@ void service_smtp_enum(char *ip, int sp, unsigned char options, char *miscptr, F
         switch (smtp_enum_cmd) {
           hydra_report(stdout, "[VERBOSE] ");
         case VRFY:
-          hydra_report(stdout, "using SMTP VRFY command\n");
+          hydra_report(stdout, _("using SMTP VRFY command\n"));
           break;
         case EXPN:
-          hydra_report(stdout, "using SMTP EXPN command\n");
+          hydra_report(stdout, _("using SMTP EXPN command\n"));
           break;
         case RCPT:
-          hydra_report(stdout, "using SMTP RCPT TO command\n");
+          hydra_report(stdout, _("using SMTP RCPT TO command\n"));
           break;
         }
       }
@@ -242,7 +242,7 @@ void service_smtp_enum(char *ip, int sp, unsigned char options, char *miscptr, F
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

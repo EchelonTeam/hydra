@@ -78,11 +78,11 @@ int start_teamspeak(int s, char *ip, int port, unsigned char options, char *misc
       hydra_completed_pair_found();
     }
     if (buf[0x4B] != 0) {
-      hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+      hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
       hydra_child_exit(1);
     }
   } else {
-    hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+    hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
     hydra_child_exit(1);
   }
 
@@ -114,7 +114,7 @@ void service_teamspeak(char *ip, int sp, unsigned char options, char *miscptr, F
         sock = hydra_connect_udp(ip, myport);
         port = myport;
         if (sock < 0) {
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
       }
@@ -126,7 +126,7 @@ void service_teamspeak(char *ip, int sp, unsigned char options, char *miscptr, F
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

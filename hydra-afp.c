@@ -55,7 +55,7 @@ static int server_subconnect(struct afp_url url) {
 
   if (strlen(url.uamname) > 0) {
     if ((conn_req->uam_mask = find_uam_by_name(url.uamname)) == 0) {
-      fprintf(stderr, "[ERROR] Unknown UAM: %s", url.uamname);
+      fprintf(stderr, _("[ERROR] Unknown UAM: %s", url.uamname));
       FREE(conn_req);
       FREE(server);
       return -1;
@@ -140,7 +140,7 @@ void service_afp(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
         port = myport;
       }
       if (sock < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
 
@@ -164,7 +164,7 @@ void service_afp(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
 
     default:
 
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

@@ -102,6 +102,8 @@ http://technet.microsoft.com/en-us/library/cc960646.aspx
 
 #define TIME_FIXUP_CONSTANT_INT 11644473600LL
 
+#include <libintl.h>
+#define _(X) gettext(X)
 
 extern char *HYDRA_EXIT;
 static unsigned char challenge[8];
@@ -222,18 +224,18 @@ int HashLM(unsigned char **lmhash, unsigned char *pass, unsigned char *challenge
     }
 
     if (*p == '\0') {
-      hydra_report(stderr, "[ERROR] Reading PwDump file.\n");
+      hydra_report(stderr, _("[ERROR] Reading PwDump file.\n"));
       return -1;
     } else if (*p == 'N') {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Found \"NO PASSWORD\" for LM Hash.\n");
+        hydra_report(stderr, _("[VERBOSE] Found \"NO PASSWORD\" for LM Hash.\n"));
 
       /* Generate 16-byte LM hash */
       DesEncrypt(magic, &password[0], &lm_hash[0]);
       DesEncrypt(magic, &password[7], &lm_hash[8]);
     } else {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Convert ASCII PwDump LM Hash (%s).\n", p);
+        hydra_report(stderr, _("[VERBOSE] Convert ASCII PwDump LM Hash (%s).\n"), p);
       for (i = 0; i < 16; i++) {
         HexValue = 0x0;
         for (j = 0; j < 2; j++) {
@@ -245,7 +247,7 @@ int HashLM(unsigned char **lmhash, unsigned char *pass, unsigned char *challenge
           if (!(((HexChar >= 0x30) && (HexChar <= 0x39)) ||     /* 0 - 9 */
                 ((HexChar >= 0x61) && (HexChar <= 0x66)))) {    /* a - f */
 
-            hydra_report(stderr, "[ERROR] Invalid char (%c) for hash.\n", HexChar);
+            hydra_report(stderr, _("[ERROR] Invalid char (%c) for hash.\n"), HexChar);
             HexChar = 0x30;
           }
 
@@ -321,7 +323,7 @@ int MakeNTLM(unsigned char *ntlmhash, unsigned char *pass) {
     }
 
     if (*p == '\0') {
-      hydra_report(stderr, "[ERROR] reading PWDUMP file.\n");
+      hydra_report(stderr, _("[ERROR] reading PWDUMP file.\n"));
       return -1;
     }
 
@@ -792,7 +794,7 @@ int SMBNegProt(int s) {
 
   if (smb_auth_mechanism == AUTH_LM) {
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Setting Negotiate Protocol Response for LM.\n");
+      hydra_report(stderr, _("[VERBOSE] Setting Negotiate Protocol Response for LM.\n"));
     buf[3] = 0xA3;              // Set message length
     buf[37] = 0x80;             // Set byte count for dialects
     iLength = 167;
@@ -820,34 +822,34 @@ int SMBNegProt(int s) {
   case 0x01:
     //real plaintext should be used with LM auth
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Server requested PLAINTEXT password.\n");
+      hydra_report(stderr, _("[VERBOSE] Server requested PLAINTEXT password.\n"));
     security_mode = PLAINTEXT;
 
     if (hashFlag == 1) {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Server requested PLAINTEXT password. HASH password mode not supported for this configuration.\n");
+        hydra_report(stderr, _("[VERBOSE] Server requested PLAINTEXT password. HASH password mode not supported for this configuration.\n"));
       return 3;
     }
     if (hashFlag == 2) {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Server requested PLAINTEXT password. MACHINE password mode not supported for this configuration.\n");
+        hydra_report(stderr, _("[VERBOSE] Server requested PLAINTEXT password. MACHINE password mode not supported for this configuration.\n"));
       return 3;
     }
     break;
   case 0x03:
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Server requested ENCRYPTED password without security signatures.\n");
+      hydra_report(stderr, _("[VERBOSE] Server requested ENCRYPTED password without security signatures.\n"));
     security_mode = ENCRYPTED;
     break;
   case 0x07:
   case 0x0F:
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Server requested ENCRYPTED password.\n");
+      hydra_report(stderr, _("[VERBOSE] Server requested ENCRYPTED password.\n"));
     security_mode = ENCRYPTED;
     break;
   default:
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Unknown security mode request: %2.2X. Proceeding using ENCRYPTED password mode.\n", rbuf[39]);
+      hydra_report(stderr, _("[VERBOSE] Unknown security mode request: %2.2X. Proceeding using ENCRYPTED password mode.\n"), rbuf[39]);
     security_mode = ENCRYPTED;
     break;
   }
@@ -879,8 +881,8 @@ int SMBNegProt(int s) {
   }
 
   if (verbose) {
-    hydra_report(stderr, "[VERBOSE] Server machine name: %s\n", machine_name);
-    hydra_report(stderr, "[VERBOSE] Server primary domain: %s\n", workgroup);
+    hydra_report(stderr, _("[VERBOSE] Server machine name: %s\n"), machine_name);
+    hydra_report(stderr, _("[VERBOSE] Server primary domain: %s\n"), workgroup);
   }
   //success
   return 2;
@@ -949,7 +951,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
     /* Session Setup AndX Request */
     if (smb_auth_mechanism == AUTH_LM) {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Attempting LM password authentication.\n");
+        hydra_report(stderr, _("[VERBOSE] Attempting LM password authentication.\n"));
 
       unsigned char szSessionRequest[23] = {
         0x0a,                   /* Word Count */
@@ -987,7 +989,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
 
     } else if (smb_auth_mechanism == AUTH_NTLM) {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Attempting NTLM password authentication.\n");
+        hydra_report(stderr, _("[VERBOSE] Attempting NTLM password authentication.\n"));
 
       unsigned char szSessionRequest[29] = {
         0x0d,                   /* Word Count */
@@ -1025,7 +1027,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
       free(NTLMhash);
     } else if (smb_auth_mechanism == AUTH_LMv2) {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Attempting LMv2 password authentication.\n");
+        hydra_report(stderr, _("[VERBOSE] Attempting LMv2 password authentication.\n"));
 
       unsigned char szSessionRequest[29] = {
         0x0d,                   /* Word Count */
@@ -1064,7 +1066,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
       free(LMv2hash);
     } else if (smb_auth_mechanism == AUTH_NTLMv2) {
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Attempting LMv2/NTLMv2 password authentication.\n");
+        hydra_report(stderr, _("[VERBOSE] Attempting LMv2/NTLMv2 password authentication.\n"));
 
       unsigned char szSessionRequest[29] = {
         0x0d,                   /* Word Count */
@@ -1103,7 +1105,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
       /* Set NTLMv2 Response Length */
       memset(buf + iOffset - 12, iByteCount, 1);
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] HashNTLMv2 response length: %d\n", iByteCount);
+        hydra_report(stderr, _("[VERBOSE] HashNTLMv2 response length: %d\n"), iByteCount);
 
       memcpy(buf + iOffset + 24, NTLMv2hash, iByteCount);
       free(NTLMv2hash);
@@ -1112,7 +1114,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
     }
   } else if (security_mode == PLAINTEXT) {
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Attempting PLAINTEXT password authentication.\n");
+      hydra_report(stderr, _("[VERBOSE] Attempting PLAINTEXT password authentication.\n"));
 
     unsigned char szSessionRequest[23] = {
       0x0a,                     /* Word Count */
@@ -1154,7 +1156,7 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
      */
     strncpy((char *) (buf + iOffset), szPassword, 256);
   } else {
-    hydra_report(stderr, "[ERROR] Security_mode was not properly set. This should not happen.\n");
+    hydra_report(stderr, _("[ERROR] Security_mode was not properly set. This should not happen.\n"));
     return -1;
   }
 
@@ -1179,12 +1181,12 @@ unsigned long SMBSessionSetup(int s, char *szLogin, char *szPassword, char *misc
   buf[3] = (iOffset - 4 + iByteCount) % 256;
 
   if (verbose)
-    hydra_report(stderr, "[VERBOSE] Set NBSS header length: %2.2X\n", buf[3]);
+    hydra_report(stderr, _("[VERBOSE] Set NBSS header length: %2.2X\n"), buf[3]);
 
   /* Set data byte count */
   buf[iOffset - 2] = iByteCount;
   if (verbose)
-    hydra_report(stderr, "[VERBOSE] Set byte count: %2.2X\n", buf[57]);
+    hydra_report(stderr, _("[VERBOSE] Set byte count: %2.2X\n"), buf[57]);
 
   hydra_send(s, (char *) buf, iOffset + iByteCount, 0);
 
@@ -1221,7 +1223,7 @@ int start_smb(int s, char *ip, int port, unsigned char options, char *miscptr, F
   SMBaction = ((unsigned long) SMBSessionRet & 0xFF000000) >> 24;
 
   if (verbose)
-    hydra_report(stderr, "[VERBOSE] SMBSessionRet: %8.8X SMBerr: %4.4X SMBaction: %2.2X\n", (unsigned int) SMBSessionRet, SMBerr, SMBaction);
+    hydra_report(stderr, _("[VERBOSE] SMBSessionRet: %8.8X SMBerr: %4.4X SMBaction: %2.2X\n"), (unsigned int) SMBSessionRet, SMBerr, SMBaction);
 
   /*
      some error code are available here:
@@ -1230,70 +1232,70 @@ int start_smb(int s, char *ip, int port, unsigned char options, char *miscptr, F
 
   if (SMBerr == 0x000000) {     /* success */
     if (SMBaction == 0x01) {    /* invalid account - anonymous connection */
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: Invalid account (Anonymous success)\n", port, ipaddr_str, login);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: Invalid account (Anonymous success)\n"), port, ipaddr_str, login);
       hydra_completed_pair_skip();
     } else {                    /* valid account */
       hydra_report_found_host(port, ip, "smb", fp);
       hydra_completed_pair_found();
     }
   } else if ((SMBerr == 0x00000D) && (SMBaction == 0x00)) {
-    hydra_report(stderr, "[ERROR] Invalid parameter status received, either the account or the method used are not valid\n");
+    hydra_report(stderr, _("[ERROR] Invalid parameter status received, either the account or the method used are not valid\n"));
     hydra_completed_pair_skip();
   } else if (SMBerr == 0x00006E) {      /* Valid password, GPO Disabling Remote Connections Using NULL Passwords */
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Valid password, GPO Disabling Remote Connections Using NULL Passwords\n");
+      hydra_report(stderr, _("[VERBOSE] Valid password, GPO Disabling Remote Connections Using NULL Passwords\n"));
     hydra_report_found_host(port, ip, "smb", fp);
     hydra_completed_pair_found();
   } else if (SMBerr == 0x00015B) {      /* Valid password, GPO "Deny access to this computer from the network" */
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Valid password, GPO Deny access to this computer from the network\n");
+      hydra_report(stderr, _("[VERBOSE] Valid password, GPO Deny access to this computer from the network\n"));
     hydra_report_found_host(port, ip, "smb", fp);
     hydra_completed_pair_found();
   } else if (SMBerr == 0x000193) {      /* Valid password, account expired  */
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Valid password, account expired\n");
+      hydra_report(stderr, _("[VERBOSE] Valid password, account expired\n"));
     hydra_report_found_host(port, ip, "smb", fp);
     hydra_completed_pair_found();
   } else if ((SMBerr == 0x000224) || (SMBerr == 0xC20002)) {    /* Valid password, account expired  */
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Valid password, password expired and must be changed on next logon\n");
+      hydra_report(stderr, _("[VERBOSE] Valid password, password expired and must be changed on next logon\n"));
     hydra_report_found_host(port, ip, "smb", fp);
     hydra_completed_pair_found();
   } else if ((SMBerr == 0x00006F) || (SMBerr == 0xC10002)) {    /* Invalid logon hours  */
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Valid password, but logon hours invalid\n");
+      hydra_report(stderr, _("[VERBOSE] Valid password, but logon hours invalid\n"));
     hydra_report_found_host(port, ip, "smb", fp);
     hydra_completed_pair_found();
   } else if (SMBerr == 0x050001) {      /* AS/400 -- Incorrect password */
     if (verbose)
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: Incorrect password or account disabled\n", port, ipaddr_str, login);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: Incorrect password or account disabled\n"), port, ipaddr_str, login);
     if ((miscptr) && (strstr(miscptr, "LM")))
-      hydra_report(stderr, "[INFO] LM dialect may be disabled, try LMV2 instead\n");
+      hydra_report(stderr, _("[INFO] LM dialect may be disabled, try LMV2 instead\n"));
     hydra_completed_pair_skip();
   } else if (SMBerr == 0x000024) {      /* change password on next login [success] */
-    fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: ACCOUNT_CHANGE_PASSWORD\n", port, ipaddr_str, login);
+    fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: ACCOUNT_CHANGE_PASSWORD\n"), port, ipaddr_str, login);
     hydra_completed_pair_found();
   } else if (SMBerr == 0x00006D) {      /* STATUS_LOGON_FAILURE */
     hydra_completed_pair();
   } else if (SMBerr == 0x000071) {      /* password expired */
     if (verbose)
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: PASSWORD EXPIRED\n", port, ipaddr_str, login);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: PASSWORD EXPIRED\n"), port, ipaddr_str, login);
     hydra_completed_pair_skip();
   } else if ((SMBerr == 0x000072) || (SMBerr == 0xBF0002)) {    /* account disabled *//* BF0002 on w2k */
     if (verbose)
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: ACCOUNT_DISABLED\n", port, ipaddr_str, login);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: ACCOUNT_DISABLED\n"), port, ipaddr_str, login);
     hydra_completed_pair_skip();
   } else if (SMBerr == 0x000034 || SMBerr == 0x000234) {        /* account locked out */
     if (verbose)
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: ACCOUNT_LOCKED\n", port, ipaddr_str, login);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: ACCOUNT_LOCKED\n"), port, ipaddr_str, login);
     hydra_completed_pair_skip();
   } else if (SMBerr == 0x00008D) {      /* ummm... broken client-domain membership  */
     if (verbose)
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Error: NT_STATUS_TRUSTED_RELATIONSHIP_FAILURE\n", port, ipaddr_str, login);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Error: NT_STATUS_TRUSTED_RELATIONSHIP_FAILURE\n"), port, ipaddr_str, login);
     hydra_completed_pair();
   } else {                      /* failed */
     if (verbose)
-      fprintf(stderr, "[%d][smb] Host: %s Account: %s Unknown Error: %6.6X\n", port, ipaddr_str, login, SMBerr);
+      fprintf(stderr, _("[%d][smb] Host: %s Account: %s Unknown Error: %6.6X\n"), port, ipaddr_str, login, SMBerr);
     hydra_completed_pair();
   }
 
@@ -1337,7 +1339,7 @@ void service_smb(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
 
       if (err) {
         if (verbose)
-          hydra_report(stdout, "[VERBOSE] requested line mode\n");
+          hydra_report(stdout, _("[VERBOSE] requested line mode\n"));
         accntFlag = 2;
       }
     } else if (strstr(miscptr, "LOCAL") != NULL) {
@@ -1363,8 +1365,8 @@ void service_smb(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
     }
   }
   if (verbose) {
-    hydra_report(stdout, "[VERBOSE] accntFlag is %d\n", accntFlag);
-    hydra_report(stdout, "[VERBOSE] hashFlag is %d\n", accntFlag);
+    hydra_report(stdout, _("[VERBOSE] accntFlag is %d\n"), accntFlag);
+    hydra_report(stdout, _("[VERBOSE] hashFlag is %d\n"), accntFlag);
   }
 
   hydra_register_socket(sp);
@@ -1382,11 +1384,11 @@ void service_smb(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
         if (port == PORT_SMB) {
           protoFlag = WIN_NETBIOSMODE;
           if (verbose)
-            hydra_report(stderr, "[VERBOSE] Attempting NETBIOS mode.\n");
+            hydra_report(stderr, _("[VERBOSE] Attempting NETBIOS mode.\n"));
         } else {
           protoFlag = WIN2000_NATIVEMODE;
           if (verbose)
-            hydra_report(stderr, "[VERBOSE] Attempting WIN2K Native mode.\n");
+            hydra_report(stderr, _("[VERBOSE] Attempting WIN2K Native mode.\n"));
         }
       } else {
         sock = hydra_connect_tcp(ip, PORT_SMBNT);
@@ -1394,18 +1396,18 @@ void service_smb(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
           port = PORT_SMBNT;
           protoFlag = WIN2000_NATIVEMODE;
         } else {
-          hydra_report(stderr, "Failed to establish WIN2000_NATIVE mode. Attempting WIN_NETBIOS mode.\n");
+          hydra_report(stderr, _("Failed to establish WIN2000_NATIVE mode. Attempting WIN_NETBIOS mode.\n"));
           port = PORT_SMB;
           protoFlag = WIN_NETBIOSMODE;
           sock = hydra_connect_tcp(ip, PORT_SMB);
         }
       }
       if (sock < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       if (NBSSessionRequest(sock) < 0) {
-        fprintf(stderr, "[ERROR] Session Setup Failed (is the server service running?)\n");
+        fprintf(stderr, _("[ERROR] Session Setup Failed (is the server service running?)\n"));
         hydra_child_exit(2);
       }
       next_run = SMBNegProt(sock);
@@ -1419,7 +1421,7 @@ void service_smb(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       hydra_child_exit(0);
       return;
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code (%d), exiting!\n", run);
+      fprintf(stderr, _("[ERROR] Caught unknown return code (%d), exiting!\n"), run);
       hydra_child_exit(0);
     }
     run = next_run;

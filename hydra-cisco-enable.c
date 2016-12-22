@@ -87,7 +87,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
           port = mysslport;
         }
         if (sock < 0) {
-          if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
           hydra_child_exit(1);
         }
 
@@ -101,7 +101,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
 
           sprintf(buffer, "%.250s\r\n", login);
           if (hydra_send(sock, buffer, strlen(buffer), 0) < 0) {
-            if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not send login\n", (int) getpid());
+            if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not send login\n"), (int) getpid());
             hydra_child_exit(2);
           }
         }
@@ -117,7 +117,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
 
           sprintf(buffer, "%.250s\r\n", miscptr);
           if (hydra_send(sock, buffer, strlen(buffer), 0) < 0) {
-            if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not send login\n", (int) getpid());
+            if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not send login\n"), (int) getpid());
             hydra_child_exit(2);
           }
         }
@@ -132,7 +132,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
         }
 
         if (strstr(buf, "assw") != NULL) {
-          if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating - can not login, can not login\n", (int) getpid());
+          if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating - can not login, can not login\n"), (int) getpid());
           hydra_child_exit(2);
         }
         free(buf);
@@ -147,7 +147,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
 
         sprintf(buffer, "%.250s\r\n", "ena");
         if (hydra_send(sock, buffer, strlen(buffer), 0) < 0) {
-          if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not send 'ena'\n", (int) getpid());
+          if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not send 'ena'\n"), (int) getpid());
           hydra_child_exit(2);
         }
 
@@ -160,11 +160,11 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
             if (failc < retry) {
               next_run = 1;
               failc++;
-              if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d was disconnected - retrying (%d of %d retries)\n", (int) getpid(), failc, retry);
+              if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d was disconnected - retrying (%d of %d retries)\n"), (int) getpid(), failc, retry);
               sleep(3);
               break;
             } else {
-              fprintf(stderr, "[ERROR] Child with pid %d was disconnected - exiting\n", (int) getpid());
+              fprintf(stderr, _("[ERROR] Child with pid %d was disconnected - exiting\n"), (int) getpid());
               hydra_child_exit(0);
             }
           }
@@ -180,7 +180,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
     case 3:                    /* clean exit */
       sprintf(buffer, "%.250s\r\n", "exit");
       if (hydra_send(sock, buffer, strlen(buffer), 0) < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not send 'exit'\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not send 'exit'\n"), (int) getpid());
         hydra_child_exit(0);
       }
       if (sock >= 0)
@@ -188,7 +188,7 @@ void service_cisco_enable(char *ip, int sp, unsigned char options, char *miscptr
       hydra_child_exit(0);
       return;
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
       hydra_child_exit(2);
     }

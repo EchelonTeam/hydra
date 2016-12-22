@@ -9,6 +9,9 @@
 #include <config.h>
 #endif
 
+#include <libintl.h>
+#define _(X) gettext(X)
+
 #include <gtk/gtk.h>
 
 #include "callbacks.h"
@@ -436,7 +439,7 @@ int read_into(int fd) {
   gtk_text_buffer_get_iter_at_offset(outputbuf, &outputiter, -1);
 
 
-  if ((passline = strstr(in_buf, "password: ")) == NULL) {
+  if ((passline = strstr(in_buf, _("password: "))) == NULL) {
     gtk_text_buffer_insert(outputbuf, &outputiter, in_buf, result);
   } else {
     start = in_buf;
@@ -457,8 +460,8 @@ int read_into(int fd) {
   }
 
 
-  if (strstr(in_buf, " finished at ") != NULL) {
-    gtk_text_buffer_insert_with_tags_by_name(outputbuf, &outputiter, "<finished>\n\n", -1, "bold", NULL);
+  if (strstr(in_buf, _(" finished at ")) != NULL) {
+    gtk_text_buffer_insert_with_tags_by_name(outputbuf, &outputiter, _("<finished>\n\n"), -1, "bold", NULL);
   }
 
   if (result == BUF_S - 1)      /* there might be more available, recurse baby! */
@@ -642,27 +645,27 @@ void on_wndMain_destroy(GtkObject * object, gpointer user_data) {
 
 
 gboolean on_entTargetFile_button_press_event(GtkWidget * widget, GdkEventButton * event, gpointer user_data) {
-  hydra_select_file((GtkEntry *) widget, "Select target list");
+  hydra_select_file((GtkEntry *) widget, _("Select target list"));
   gtk_widget_grab_focus(widget);
   return TRUE;
 }
 
 
 gboolean on_entUsernameFile_button_press_event(GtkWidget * widget, GdkEventButton * event, gpointer user_data) {
-  hydra_select_file((GtkEntry *) widget, "Select username list");
+  hydra_select_file((GtkEntry *) widget, _("Select username list"));
   gtk_widget_grab_focus(widget);
   return TRUE;
 }
 
 
 gboolean on_entPassFile_button_press_event(GtkWidget * widget, GdkEventButton * event, gpointer user_data) {
-  hydra_select_file((GtkEntry *) widget, "Select password list");
+  hydra_select_file((GtkEntry *) widget, _("Select password list"));
   gtk_widget_grab_focus(widget);
   return TRUE;
 }
 
 gboolean on_entColonFile_button_press_event(GtkWidget * widget, GdkEventButton * event, gpointer user_data) {
-  hydra_select_file((GtkEntry *) widget, "Select colon separated user,password list");
+  hydra_select_file((GtkEntry *) widget, _("Select colon separated user,password list"));
   gtk_widget_grab_focus(widget);
   return TRUE;
 }
@@ -678,7 +681,7 @@ void on_btnSave_clicked(GtkButton * button, gpointer user_data) {
   GtkTextIter start;
   GtkTextIter end;
 
-  dialog = gtk_file_chooser_dialog_new("Save output", (GtkWindow *) wndMain, GTK_FILE_CHOOSER_ACTION_SAVE,
+  dialog = gtk_file_chooser_dialog_new(_("Save output"), (GtkWindow *) wndMain, GTK_FILE_CHOOSER_ACTION_SAVE,
                                        GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
   if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
     filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));

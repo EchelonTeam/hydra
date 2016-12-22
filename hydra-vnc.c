@@ -59,7 +59,7 @@ int start_vnc(int s, char *ip, int port, unsigned char options, char *miscptr, F
 
     //fprintf(stderr,"number of security types supported: %d\n", buf2[0]);
     if (buf2[0] == 0 || buf2[0] > CHALLENGESIZE + 4) {
-      hydra_report(stderr, "[ERROR] VNC server connection failed\n");
+      hydra_report(stderr, _("[ERROR] VNC server connection failed\n"));
       hydra_child_exit(0);
     }
 
@@ -75,12 +75,12 @@ int start_vnc(int s, char *ip, int port, unsigned char options, char *miscptr, F
   //supported security type
   switch (buf2[3]) {
   case 0x0:
-    hydra_report(stderr, "[ERROR] VNC server told us to quit %c\n", buf[3]);
+    hydra_report(stderr, _("[ERROR] VNC server told us to quit %c\n"), buf[3]);
     hydra_child_exit(0);
   case 0x1:
-    hydra_report(fp, "VNC server does not require authentication.\n");
+    hydra_report(fp, _("VNC server does not require authentication.\n"));
     if (fp != stdout)
-      hydra_report(stdout, "VNC server does not require authentication.\n");
+      hydra_report(stdout, _("VNC server does not require authentication.\n"));
     hydra_report_found_host(port, ip, "vnc", fp);
     hydra_completed_pair_found();
     hydra_child_exit(2);
@@ -108,7 +108,7 @@ int start_vnc(int s, char *ip, int port, unsigned char options, char *miscptr, F
     }
     break;
   default:
-    hydra_report(stderr, "[ERROR] unknown VNC security type\n");
+    hydra_report(stderr, _("[ERROR] unknown VNC security type\n"));
     hydra_child_exit(2);
   }
 
@@ -129,14 +129,14 @@ int start_vnc(int s, char *ip, int port, unsigned char options, char *miscptr, F
   case 0x1:
     free(buf);
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Authentication failed for password %s\n", pass);
+      hydra_report(stderr, _("[VERBOSE] Authentication failed for password %s\n"), pass);
     hydra_completed_pair();
     if (memcmp(hydra_get_next_pair(), &HYDRA_EXIT, sizeof(HYDRA_EXIT)) == 0)
       return 3;
     return 1;
   default:
     free(buf);
-    hydra_report(stderr, "[ERROR] unknown VNC server security result %d\n", buf[3]);
+    hydra_report(stderr, _("[ERROR] unknown VNC server security result %d\n"), buf[3]);
     return 1;
   }
 
@@ -167,14 +167,14 @@ void service_vnc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
         port = mysslport;
       }
       if (sock < 0) {
-        hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       usleep(300000);
       buf = hydra_receive_line(sock);
 
       if (buf == NULL || (strncmp(buf, "RFB", 3) != 0)) {       /* check the first line */
-        hydra_report(stderr, "[ERROR] Not a VNC protocol or service shutdown: %s\n", buf);
+        hydra_report(stderr, _("[ERROR] Not a VNC protocol or service shutdown: %s\n"), buf);
         hydra_child_exit(2);
       }
       if (strstr(buf, " security failures") != NULL) {  /* check the first line */
@@ -186,14 +186,14 @@ void service_vnc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
            This is built in to VNC Server and does not rely on operating system support.
          */
         failed_auth++;
-        hydra_report(stderr, "VNC server reported too many authentication failures, have to wait some seconds ...\n");
+        hydra_report(stderr, _("VNC server reported too many authentication failures, have to wait some seconds ...\n"));
         sleep(12 * failed_auth);
         free(buf);
         next_run = 1;
         break;
       }
       if (verbose)
-        hydra_report(stderr, "[VERBOSE] Server banner is %s\n", buf);
+        hydra_report(stderr, _("[VERBOSE] Server banner is %s\n"), buf);
       if (((strstr(buf, "RFB 004.001") != NULL) || (strstr(buf, "RFB 003.007") != NULL) || (strstr(buf, "RFB 003.008") != NULL))) {
         //using proto version 003.008 to talk to server 004.001 same for 3.7 and 3.8
         vnc_client_version = RFB37;
@@ -222,7 +222,7 @@ void service_vnc(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

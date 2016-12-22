@@ -69,7 +69,7 @@ int start_cvs(int s, char *ip, int port, unsigned char options, char *miscptr, F
       }
     } else if (strstr(buf, "no such user") || strstr(buf, "E PAM start error: Critical error - immediate abort\n")) {
       if (verbose) {
-        hydra_report(stderr, "[VERBOSE] User %s does not exist\n", login);
+        hydra_report(stderr, _("[VERBOSE] User %s does not exist\n"), login);
       }
       hydra_completed_pair_skip();
       free(buf);
@@ -118,7 +118,7 @@ void service_cvs(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       }
 
       if (sock < 0) {
-        hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       next_run = start_cvs(sock, ip, port, options, miscptr, fp);
@@ -129,7 +129,7 @@ void service_cvs(char *ip, int sp, unsigned char options, char *miscptr, FILE * 
       hydra_child_exit(2);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

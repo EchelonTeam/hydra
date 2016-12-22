@@ -94,21 +94,21 @@ int start_ldap(int s, char *ip, int port, unsigned char options, char *miscptr, 
 
   if (buf[0] != 0 && buf[0] != 32 && buf[9] == 2) {
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Protocol invalid\n");
+      hydra_report(stderr, _("[VERBOSE] Protocol invalid\n"));
     free(buf);
     return 3;
   }
 
   if (buf[0] != 0 && buf[0] != 32 && buf[9] == 13) {
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Confidentiality required, TLS has to be enabled\n");
+      hydra_report(stderr, _("[VERBOSE] Confidentiality required, TLS has to be enabled\n"));
     tls_required = 1;
     free(buf);
     return 1;
   }
 
   if ((buf[0] != 0 && buf[0] != 32) && buf[9] == 34) {
-    hydra_report(stderr, "[ERROR] Invalid DN Syntax\n");
+    hydra_report(stderr, _("[ERROR] Invalid DN Syntax\n"));
     hydra_child_exit(2);
     free(buf);
     return 3;
@@ -299,20 +299,20 @@ int start_ldap(int s, char *ip, int port, unsigned char options, char *miscptr, 
   }
 
   if ((buf[0] != 0 && buf[0] != 32) && buf[9] == 7) {
-    hydra_report(stderr, "[ERROR] Unknown authentication method\n");
+    hydra_report(stderr, _("[ERROR] Unknown authentication method\n"));
     free(buf);
     hydra_child_exit(2);
   }
 
   if ((buf[0] != 0 && buf[0] != 32) && buf[9] == 53) {
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] Server unwilling to perform action, maybe deny by server config or too busy when tried login: %s   password: %s\n", login, pass);
+      hydra_report(stderr, _("[VERBOSE] Server unwilling to perform action, maybe deny by server config or too busy when tried login: %s   password: %s\n"), login, pass);
     free(buf);
     return 1;
   }
 
   if ((buf[0] != 0 && buf[0] != 32) && buf[9] == 2) {
-    hydra_report(stderr, "[ERROR] Invalid protocol version, you tried ldap%c, better try ldap%c\n", version + '0', version == 2 ? '3' : '2');
+    hydra_report(stderr, _("[ERROR] Invalid protocol version, you tried ldap%c, better try ldap%c\n"), version + '0', version == 2 ? '3' : '2');
     free(buf);
     hydra_child_exit(2);
     sleep(1);
@@ -337,7 +337,7 @@ int start_ldap(int s, char *ip, int port, unsigned char options, char *miscptr, 
   } else {
 
     if (buf[9] != 49 && buf[9] != 2 && buf[9] != 53) {
-      hydra_report(stderr, "[ERROR] Uh, unknown LDAP response! Please report this: \n");
+      hydra_report(stderr, _("[ERROR] Uh, unknown LDAP response! Please report this: \n"));
       print_hex((unsigned char *) buf, 24);
       free(buf);
       return 3;
@@ -377,7 +377,7 @@ void service_ldap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       }
       if (sock < 0) {
         if (verbose || debug)
-          hydra_report(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+          hydra_report(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       counter = 1;
@@ -394,15 +394,15 @@ void service_ldap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
         if ((buf[0] != 0 && buf[9] == 0) || (buf[0] != 32 && buf[9] == 32)) {
           /* TLS option negociation goes well, now trying to connect */
           if ((hydra_connect_to_ssl(sock) == -1) && verbose) {
-            hydra_report(stderr, "[ERROR] Can't use TLS\n");
+            hydra_report(stderr, _("[ERROR] Can't use TLS\n"));
             hydra_child_exit(1);
           } else {
             if (verbose)
-              hydra_report(stderr, "[VERBOSE] TLS connection done\n");
+              hydra_report(stderr, _("[VERBOSE] TLS connection done\n"));
             counter++;
           }
         } else {
-          hydra_report(stderr, "[ERROR] Can't use TLS %s\n", buf);
+          hydra_report(stderr, _("[ERROR] Can't use TLS %s\n"), buf);
           hydra_child_exit(1);
         }
       }
@@ -418,7 +418,7 @@ void service_ldap(char *ip, int sp, unsigned char options, char *miscptr, FILE *
       hydra_child_exit(0);
       return;
     default:
-      hydra_report(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      hydra_report(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;

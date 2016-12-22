@@ -89,7 +89,7 @@ void pca_decrypt(char *password) {
 
 void debugprintf(char *msg) {
   if (pcadebug)
-    printf("debug: %s\n", msg);
+    printf(_("debug: %s\n"), msg);
 }
 
 int start_pcanywhere(int s, char *ip, int port, unsigned char options, char *miscptr, FILE * fp) {
@@ -125,7 +125,7 @@ int start_pcanywhere(int s, char *ip, int port, unsigned char options, char *mis
   if (strlen(pass = hydra_get_next_password()) == 0)
     pass = empty;
 
-  debugprintf("dans pcanywhere start");
+  debugprintf(_("dans pcanywhere start"));
 
   /*printf("testing %s:%s\n",login,pass); */
 
@@ -164,14 +164,14 @@ int start_pcanywhere(int s, char *ip, int port, unsigned char options, char *mis
       clean_buffer(buffer, ret);
       buffer[sizeof(buffer) - 1] = 0;
       if (strstr(buffer, server[i + 2]) != NULL) {
-        fprintf(stderr, "[ERROR] PC Anywhere host denying connection because you have requested a lower encrypt level\n");
+        fprintf(stderr, _("[ERROR] PC Anywhere host denying connection because you have requested a lower encrypt level\n"));
         return 3;
       }
     }
 
     if (strstr(buffer, server[i]) == NULL) {
       if (i == 3) {
-        debugprintf("problem receiving login banner");
+        debugprintf(_("problem receiving login banner"));
       }
       return 1;
     }
@@ -188,7 +188,7 @@ int start_pcanywhere(int s, char *ip, int port, unsigned char options, char *mis
   clean_buffer(buffer, ret);
   /*show_buffer(buffer,ret); */
   if (strstr(buffer, "Enter password:") == NULL) {
-    debugprintf("problem receiving password banner");
+    debugprintf(_("problem receiving password banner"));
     return 1;
   }
 
@@ -206,14 +206,14 @@ int start_pcanywhere(int s, char *ip, int port, unsigned char options, char *mis
   /*show_buffer(buffer,ret); */
 
   if ((strstr(buffer, "Invalid login") != NULL) || (strstr(buffer, "Enter password") != NULL)) {
-    debugprintf("login/passwd wrong");
+    debugprintf(_("login/passwd wrong"));
 
     hydra_completed_pair();
     if (memcmp(hydra_get_next_pair(), &HYDRA_EXIT, sizeof(HYDRA_EXIT)) == 0)
       return 3;
     return 2;
   } else {
-    debugprintf("cool find login/passwd");
+    debugprintf(_("cool find login/passwd"));
 
     hydra_report_found_host(port, ip, "pcanywhere", fp);
     hydra_completed_pair_found();
@@ -251,7 +251,7 @@ void service_pcanywhere(char *ip, int sp, unsigned char options, char *miscptr, 
         port = mysslport;
       }
       if (sock < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
 
@@ -271,7 +271,7 @@ void service_pcanywhere(char *ip, int sp, unsigned char options, char *miscptr, 
 
     default:
 
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(0);
     }
     run = next_run;

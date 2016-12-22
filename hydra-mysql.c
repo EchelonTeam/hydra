@@ -99,7 +99,7 @@ char hydra_mysql_init(int sock) {
   if (protocol == 0xff) {
     pos = &buf[6];
 //    *(strchr(pos, '.')) = '\0';
-    hydra_report(stderr, "[ERROR] %s\n", pos);
+    hydra_report(stderr, _("[ERROR] %s\n"), pos);
     free(buf);
     return 2;
   }
@@ -108,7 +108,7 @@ char hydra_mysql_init(int sock) {
     return 2;
   }
   if (protocol > 10) {
-    fprintf(stderr, "[INFO] This is protocol version %d, only v10 is supported, not sure if it will work\n", protocol);
+    fprintf(stderr, _("[INFO] This is protocol version %d, only v10 is supported, not sure if it will work\n"), protocol);
   }
   server_version = &buf[5];
   pos = buf + strlen(server_version) + 10;
@@ -116,7 +116,7 @@ char hydra_mysql_init(int sock) {
 
   if (!strstr(server_version, "3.") && !strstr(server_version, "4.") && strstr(server_version, "5.")) {
 #ifndef LIBMYSQLCLIENT
-    hydra_report(stderr, "[ERROR] Not an MySQL protocol or unsupported version,\ncheck configure to see if libmysql is found\n");
+    hydra_report(stderr, _("[ERROR] Not an MySQL protocol or unsupported version,\ncheck configure to see if libmysql is found\n"));
 #endif
     free(buf);
     return 2;
@@ -137,7 +137,7 @@ char *hydra_mysql_prepare_auth(char *login, char *pass) {
 
   response = (unsigned char *) malloc(response_len + 4);
   if (response == NULL) {
-    fprintf(stderr, "[ERROR] could not allocate memory\n");
+    fprintf(stderr, _("[ERROR] could not allocate memory\n"));
     return NULL;
   }
   memset(response, 0, response_len + 4);
@@ -190,7 +190,7 @@ int start_mysql(int sock, char *ip, int port, unsigned char options, char *miscp
   else {
     strncpy(database, DEFAULT_DB, sizeof(database) - 1);
     if (verbose)
-      hydra_report(stderr, "[VERBOSE] using default db 'mysql'\n");
+      hydra_report(stderr, _("[VERBOSE] using default db 'mysql'\n"));
   }
   database[sizeof(database) - 1] = 0;
 
@@ -207,7 +207,7 @@ int start_mysql(int sock, char *ip, int port, unsigned char options, char *miscp
     if (mysql == NULL) {
       mysql = mysql_init(NULL);
       if (mysql == NULL) {
-        hydra_report(stderr, "[ERROR] Insufficient memory to allocate new mysql object\n");
+        hydra_report(stderr, _("[ERROR] Insufficient memory to allocate new mysql object\n"));
         return 1;
       }
     }
@@ -216,14 +216,14 @@ int start_mysql(int sock, char *ip, int port, unsigned char options, char *miscp
       int my_errno = mysql_errno(mysql);
 
       if (debug)
-        hydra_report(stderr, "[ERROR] Failed to connect to database: %s\n", mysql_error(mysql));
+        hydra_report(stderr, _("[ERROR] Failed to connect to database: %s\n"), mysql_error(mysql));
 
       /*
          Error: 1049 SQLSTATE: 42000 (ER_BAD_DB_ERROR)
          Message: Unknown database '%s'
        */
       if (my_errno == 1049) {
-        hydra_report(stderr, "[ERROR] Unknown database: %s\n", database);
+        hydra_report(stderr, _("[ERROR] Unknown database: %s\n"), database);
       }
 
       if (my_errno == 1251) {
@@ -330,7 +330,7 @@ void service_mysql(char *ip, int sp, unsigned char options, char *miscptr, FILE 
         port = myport;
       }
       if (sock < 0) {
-        if (quiet != 1) fprintf(stderr, "[ERROR] Child with pid %d terminating, can not connect\n", (int) getpid());
+        if (quiet != 1) fprintf(stderr, _("[ERROR] Child with pid %d terminating, can not connect\n"), (int) getpid());
         hydra_child_exit(1);
       }
       next_run = 2;
@@ -346,7 +346,7 @@ void service_mysql(char *ip, int sp, unsigned char options, char *miscptr, FILE 
       hydra_child_exit(0);
       return;
     default:
-      fprintf(stderr, "[ERROR] Caught unknown return code, exiting!\n");
+      fprintf(stderr, _("[ERROR] Caught unknown return code, exiting!\n"));
       hydra_child_exit(2);
     }
     run = next_run;
