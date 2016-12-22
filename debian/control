@@ -1,7 +1,7 @@
 Source: hydra
 Section: net
 Priority: extra
-Maintainer: Julián Moreno Patiño <julian@debian.org>
+Maintainer: Vasily Laur <v.laur@cnpo.ru>
 Uploaders: Daniel Echeverry <epsilon77@gmail.com>
 Build-Depends: autotools-dev,
  debhelper (>= 9),
