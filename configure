@@ -1013,6 +1013,8 @@ else
     XHYDRA_SUPPORT="xhydra"
 fi
 
+XDEFINES="$XDEFINES -DPACKAGE=\\\"hydra\\\" -DPACKAGE_LOCALE_DIR=\\\"$PREFIX/share/locale\\\""
+
 echo "Hydra will be installed into .../bin of: $PREFIX"
 echo "  (change this by running ./configure --prefix=path)"
 echo

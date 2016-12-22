@@ -10,6 +10,7 @@
 
 #include <gtk/gtk.h>
 #include <string.h>
+#include <locale.h>
 #include "interface.h"
 #include "support.h"
 #include "callbacks.h"
@@ -25,6 +26,10 @@ int main(int argc, char *argv[]) {
   extern guint message_id;
   GtkWidget *output;
   GtkTextBuffer *outputbuf;
+
+  setlocale (LC_ALL, "");
+  bindtextdomain(PACKAGE, PACKAGE_LOCALE_DIR);
+  textdomain(PACKAGE);
 
   gtk_set_locale();
   gtk_init(&argc, &argv);

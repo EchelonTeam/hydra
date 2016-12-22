@@ -2055,6 +2055,10 @@ int main(int argc, char *argv[]) {
   struct sockaddr_in6 *ipv6 = NULL;
   struct sockaddr_in *ipv4 = NULL;
 
+  setlocale (LC_ALL, "");
+  bindtextdomain(PACKAGE, PACKAGE_LOCALE_DIR);
+  textdomain(PACKAGE);
+
   printf("%s %s (c) 2014 by %s - Please do not use in military or secret service organizations, or for illegal purposes.\n\n", PROGRAM, VERSION, AUTHOR);
 #ifndef LIBPOSTGRES
   SERVICES = hydra_string_replace(SERVICES, "postgres ", "");

@@ -12,9 +12,10 @@ Last-Update: 2012-02-16
 -	cp -f Makefile.orig Makefile
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -69,5 +69,4 @@ install:	strip
+@@ -70,6 +70,5 @@
  
  clean:
  	rm -rf xhydra pw-inspector hydra *.o core *.core *.stackdump *~ Makefile.in Makefile dev_rfc hydra.restore arm/*.ipk arm/ipkg/usr/bin/* hydra-gtk/src/*.o hydra-gtk/src/xhydra hydra-gtk/stamp-h hydra-gtk/config.status hydra-gtk/errors hydra-gtk/config.log hydra-gtk/src/.deps hydra-gtk/src/Makefile hydra-gtk/Makefile
 -	cp -f Makefile.orig Makefile
+ 	cd po && make clean
  

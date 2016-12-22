@@ -42,6 +42,7 @@ hydra:	hydra.c $(OBJ)
 	@echo
 	@echo If men could get pregnant, abortion would be a sacrament
 	@echo
+	cd po && make
 
 xhydra:	
 	-cd hydra-gtk && sh ./make_xhydra.sh
@@ -70,4 +71,5 @@ install:	strip
 clean:
 	rm -rf xhydra pw-inspector hydra *.o core *.core *.stackdump *~ Makefile.in Makefile dev_rfc hydra.restore arm/*.ipk arm/ipkg/usr/bin/* hydra-gtk/src/*.o hydra-gtk/src/xhydra hydra-gtk/stamp-h hydra-gtk/config.status hydra-gtk/errors hydra-gtk/config.log hydra-gtk/src/.deps hydra-gtk/src/Makefile hydra-gtk/Makefile
 	cp -f Makefile.orig Makefile
+	cd po && make clean
 

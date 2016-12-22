@@ -2,7 +2,7 @@
 
 INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
-	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DPACKAGE_LOCALE_DIR=\""$(datadir)/locale"\" \
 	@PACKAGE_CFLAGS@
 
 bin_PROGRAMS = xhydra

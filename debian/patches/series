@@ -4,5 +4,4 @@
 02_using_supported_protocols.diff
 03_use_bin_path.diff
 04_fix_hyphen-used-as-minus-sign.diff
-06_show_xhydra_build_output.diff
 07_remove_troubled_files.diff
