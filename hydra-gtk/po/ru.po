@@ -1,0 +1,462 @@
+#
+# Vasia Pupkin <v.pupkin@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xhydra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-16 15:16+0400\n"
+"PO-Revision-Date: 2011-08-16 14:15+0400\n"
+"Last-Translator: Vasia Pupkin <v.pupkin@gmail.com>\n"
+"Language-Team: Echelon <coder@cnpo.ru>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+
+#: ../src/interface.c:181
+msgid "xHydra"
+msgstr "Сетевой аудит паролей"
+
+#: ../src/interface.c:277
+msgid "The protocol to use for the login/password cracking attempt"
+msgstr "Протокол, который будет использован для перебора"
+
+#: ../src/interface.c:279
+msgid "Protocol"
+msgstr "Протокол"
+
+#: ../src/interface.c:290
+msgid ""
+"select the port on which the daemon you want to brute force runs, 0 means "
+"default"
+msgstr "выбор порта, который прослушивает целевой сервис, 0 - стандартный порт"
+
+#: ../src/interface.c:292
+msgid "Port"
+msgstr "Порт"
+
+#: ../src/interface.c:305
+msgid "Target List"
+msgstr "Список целей"
+
+#: ../src/interface.c:316
+msgid ""
+"A file which contains the targets to attack. One entry per line. IP\n"
+"addresses and/or DNS names."
+msgstr ""
+"Файл, содержащий цели для перебора, по одной в строке. \n"
+" IP адрес или DNS имя."
+
+#: ../src/interface.c:322
+msgid "The target to attack - DNS name or IP address"
+msgstr "Цель перебора - DNS имя или IP адрес"
+
+#: ../src/interface.c:325
+msgid "Single Target"
+msgstr "Одиночная цель"
+
+#: ../src/interface.c:333 ../src/interface.c:377
+msgid "Target"
+msgstr "Цель"
+
+#: ../src/interface.c:348
+msgid "Be Verbose"
+msgstr "Подробный вывод"
+
+#: ../src/interface.c:352
+msgid "be verbose"
+msgstr "подробный вывод"
+
+#: ../src/interface.c:354
+msgid "Debug"
+msgstr "Отладка"
+
+#: ../src/interface.c:358
+msgid "Enable debug mode"
+msgstr "Включить режим отладки"
+
+#: ../src/interface.c:360
+msgid "Show Attempts"
+msgstr "Показывать попытки"
+
+#: ../src/interface.c:364
+msgid "Show attempts"
+msgstr "Показывать попытки"
+
+#: ../src/interface.c:366
+msgid "Use SSL"
+msgstr "Использовать SSL"
+
+#: ../src/interface.c:370
+msgid "Enable to use SSL (the target must have SSL enabled!)"
+msgstr "Включить использование SSL (SSL должен поддерживаться целью!)"
+
+#: ../src/interface.c:372
+msgid "Output Options"
+msgstr "Параметры вывода"
+
+#: ../src/interface.c:401
+msgid "File with user logins, one entry per line"
+msgstr "Файл, содержащий имена пользователей, по одному в строке"
+
+#: ../src/interface.c:407
+msgid "The login to use"
+msgstr "Имя пользователя для подбора"
+
+#: ../src/interface.c:408 ../src/interface.c:567
+msgid "yourname"
+msgstr "вашеимя"
+
+#: ../src/interface.c:410 ../src/interface.c:425 ../src/interface.c:556
+msgid "Username"
+msgstr "Логин"
+
+#: ../src/interface.c:418
+msgid "Username List"
+msgstr "Список имен"
+
+#: ../src/interface.c:444
+msgid "File with passwords to try, one entry per line"
+msgstr "Файл с паролями, по одному в строке"
+
+#: ../src/interface.c:450
+msgid "The password to try"
+msgstr "Пароль для подбора"
+
+#: ../src/interface.c:451 ../src/interface.c:580
+msgid "yourpass"
+msgstr "вашпароль"
+
+#: ../src/interface.c:453 ../src/interface.c:468 ../src/interface.c:569
+msgid "Password"
+msgstr "Пароль"
+
+#: ../src/interface.c:461
+msgid "Password List"
+msgstr "Список паролей"
+
+#: ../src/interface.c:483
+msgid "Use Colon separated file"
+msgstr "Использовать файл разделенного двоеточием списка"
+
+#: ../src/interface.c:487
+msgid "\"Enable this option to use a colon file for login/password attempts"
+msgstr "Использовать файл с именами/паролями, разделенными двоеточием"
+
+#: ../src/interface.c:493
+msgid ""
+"The colon file to use, each line has to be structured like \"mylogin:mypass\""
+msgstr "Файл, каждая строка которого имеет вид \"логин:пароль\""
+
+#: ../src/interface.c:495
+msgid "Colon separated file"
+msgstr "Файл, разделенный двоеточием"
+
+#: ../src/interface.c:505
+msgid "Try login as password"
+msgstr "Пробовать имя как пароль"
+
+#: ../src/interface.c:511
+msgid "Try empty password"
+msgstr "Пробовать пустой пароль"
+
+#: ../src/interface.c:515
+msgid ""
+"Enable this option to try an empty password, in addition to the password/file"
+msgstr ""
+"Использовать пустой пароль для подбора в дополнение к паролю/списку паролей"
+
+#: ../src/interface.c:517
+msgid "Passwords"
+msgstr "Пароли"
+
+#: ../src/interface.c:537
+msgid "Proxy "
+msgstr "Прокси"
+
+#: ../src/interface.c:547
+msgid "The address of the proxy. Syntax: \"http://123.45.67.89:8080\""
+msgstr "Адрес прокси-сервера. Синтаксис: \"http://123.45.67.89:8080\""
+
+#: ../src/interface.c:550
+msgid "Proxy needs authentication"
+msgstr "Прокси требует авторизации"
+
+#: ../src/interface.c:554
+msgid "Enable this if the proxy requires authentication"
+msgstr "Включите, если прокси требует авторизации"
+
+#: ../src/interface.c:566
+msgid "The user name for proxy authentication"
+msgstr "Имя пользователя прокси"
+
+#: ../src/interface.c:579
+msgid "The password for proxy authentication"
+msgstr "Пароль прокси"
+
+#: ../src/interface.c:593
+msgid "No Proxy"
+msgstr "Нет прокси"
+
+#: ../src/interface.c:601
+msgid "HTTP Method"
+msgstr "Метод HTTP"
+
+#: ../src/interface.c:609
+msgid "CONNECT Method"
+msgstr "Метод CONNECT"
+
+#: ../src/interface.c:613
+msgid "Enable this to use a proxy for scanning"
+msgstr "Включите, чтобы использовать прокси для сканирования"
+
+#: ../src/interface.c:617
+msgid "Use a HTTP/HTTPS Proxy"
+msgstr "Использовать HTTP/HTTTPS прокси"
+
+#: ../src/interface.c:632
+msgid "Exit after first found pair"
+msgstr "Закончить после первой подобранной пары"
+
+#: ../src/interface.c:636
+msgid ""
+"Enable this to stop all attacking processes once a valid login/password pair "
+"is found"
+msgstr ""
+"Включите, чтобы остановить подбор после того как была найдена первая пара "
+"имя/пароль"
+
+#: ../src/interface.c:643
+msgid ""
+"The maximum timeout an attack process is waiting for a response from the "
+"target"
+msgstr "Максимальное время ожидания ответа сервера"
+
+#: ../src/interface.c:650
+msgid ""
+"The number of attack tasks to run in parallel. The more the faster, the "
+"most: computer lockup :-) 16-64 is a good choice"
+msgstr ""
+"Число параллельных задач. Чем больше, тем быстрее, в разумных пределах. "
+"16-64 лучше всего"
+
+#: ../src/interface.c:658
+msgid "Number of Tasks"
+msgstr "Число задач"
+
+#: ../src/interface.c:664
+msgid "Performance Options"
+msgstr "Параметры быстродействия"
+
+#: ../src/interface.c:669
+msgid "Tuning"
+msgstr "Тонкая настройка"
+
+#: ../src/interface.c:688
+msgid "URL to connect to via the proxy"
+msgstr "URL для соединения через прокси"
+
+#: ../src/interface.c:689
+msgid "www.suse.com"
+msgstr "www.cnpo.ru"
+
+#: ../src/interface.c:691
+msgid "http-proxy module"
+msgstr "модуль http-proxy"
+
+#: ../src/interface.c:705
+msgid "The protected URL you want to access"
+msgstr "Защищенный URL для доступа"
+
+#: ../src/interface.c:706
+msgid "/foo/bar/protected.html"
+msgstr ""
+
+#: ../src/interface.c:708
+msgid "http / https url"
+msgstr ""
+
+#: ../src/interface.c:722
+msgid "The password to the cisco device"
+msgstr "Пароль устройства cisco"
+
+#: ../src/interface.c:723
+msgid "password"
+msgstr "пароль"
+
+#: ../src/interface.c:725
+msgid "Cisco Enable, Login for Cisco device"
+msgstr "Вкл cisco, логин для устройства cisco"
+
+#: ../src/interface.c:739
+msgid "The DN scope of ldap to authenticate against"
+msgstr "Область видимости домена LDAP для авторизации"
+
+#: ../src/interface.c:740
+msgid "dn-scope"
+msgstr ""
+
+#: ../src/interface.c:757
+msgid "local accounts"
+msgstr "Локальные записи"
+
+#: ../src/interface.c:761
+msgid "Just attack local accounts"
+msgstr "Подбирать только локальные учетные записи"
+
+#: ../src/interface.c:763
+msgid "domain accounts"
+msgstr "Доменные записи"
+
+#: ../src/interface.c:767
+msgid "Attack domain and local accounts"
+msgstr "Подбирать доменный учетные записи"
+
+#: ../src/interface.c:769
+msgid "Interpret passes as NTLM hashes"
+msgstr "Интерпретировать пароли как хэши NTLM"
+
+#: ../src/interface.c:773
+msgid "Interpret passes as NTML hashes"
+msgstr "Интерпретировать пароли как хэши NTLM"
+
+#: ../src/interface.c:790
+msgid "The client id you want to attack, something between 0 and 99"
+msgstr "ID клиента для авторизации, от 0 до 99"
+
+#: ../src/interface.c:806
+msgid "Directory of the CVS/SVN repository"
+msgstr "Каталог репозитория CVS/SVN"
+
+#: ../src/interface.c:807
+msgid "trunk"
+msgstr "trunk"
+
+#: ../src/interface.c:809
+msgid "CVS/SVN Repository"
+msgstr "CVS/SVN Репозиторий"
+
+#: ../src/interface.c:828
+msgid "Insert the return string for a succesfull login"
+msgstr "Строка, возвращаемая при успешной авторизации"
+
+#: ../src/interface.c:830
+msgid "Telnet - Successful Login String"
+msgstr "Telnet - Строка успешного входа"
+
+#: ../src/interface.c:846
+msgid "Write Password"
+msgstr "Пароль на запись"
+
+#: ../src/interface.c:853
+msgid "Read Password"
+msgstr "Пароль на чтение"
+
+#: ../src/interface.c:860
+msgid "Version 2"
+msgstr "Версия 2"
+
+#: ../src/interface.c:867
+msgid "Version 1"
+msgstr "Версия 1"
+
+#: ../src/interface.c:879
+msgid "Specific"
+msgstr "Особые параметры"
+
+#: ../src/interface.c:911
+msgid "Output"
+msgstr "Вывод"
+
+#: ../src/interface.c:921 ../src/interface.c:952
+msgid "Start"
+msgstr "Пуск"
+
+#: ../src/interface.c:925
+msgid "start hydra"
+msgstr "запуск аудита"
+
+#: ../src/interface.c:927
+msgid "Stop"
+msgstr "Стоп"
+
+#: ../src/interface.c:931
+msgid "stop hydra"
+msgstr "останов аудита"
+
+#: ../src/interface.c:933
+msgid "Save Output"
+msgstr "Сохранить"
+
+#: ../src/interface.c:937
+msgid "save output"
+msgstr "сохранить вывод"
+
+#: ../src/interface.c:939
+msgid "Clear Output"
+msgstr "Очистить"
+
+#: ../src/interface.c:943
+msgid "clear screen"
+msgstr "очистить окно"
+
+#: ../src/interface.c:945
+msgid "Autoscroll"
+msgstr "Автопрокрутка"
+
+#: ../src/interface.c:949
+msgid "toggles autoscroll"
+msgstr "включить/выключить прокрутку"
+
+#: ../src/callbacks.c:394
+msgid "password: "
+msgstr "пароль:"
+
+#: ../src/callbacks.c:415
+msgid " finished at "
+msgstr "завершено в"
+
+#: ../src/callbacks.c:416
+msgid ""
+"<finished>\n"
+"\n"
+msgstr ""
+"<завершено>\n"
+"\n"
+
+#: ../src/callbacks.c:614
+msgid "Select target list"
+msgstr "Выберите файл со списком целей"
+
+#: ../src/callbacks.c:621
+msgid "Select username list"
+msgstr "Выберите файл со списком логинов"
+
+#: ../src/callbacks.c:628
+msgid "Select password list"
+msgstr "Выберите файл со списком паролей"
+
+#: ../src/callbacks.c:634
+msgid "Select colon separated user,password list"
+msgstr "Выберите файл со списком имя пользователя,пароль"
+
+#: ../src/callbacks.c:650
+msgid "Save output"
+msgstr "Сохранить отчет"
+
+#~ msgid ""
+#~ "Enable this option to try the login as password, in addition to the "
+#~ "password/file"
+#~ msgstr ""
+#~ "Использовать имя пользователя в качестве пароля дополнительно к паролю/"
+#~ "списку паролей"
+
+#~ msgid "Enable this to use a proxy for scanning ( Only for HTTP Module )"
+#~ msgstr ""
+#~ "Включите, чтобы использовать прокси для сканирования (только для HTTP "
+#~ "модуля)"
+
+#~ msgid "Timeout"
+#~ msgstr "Таймаут"

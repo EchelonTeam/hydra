@@ -1,0 +1,2801 @@
+# Russian translations for hydra package.
+# Copyright (C) 2011 THE hydra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the hydra package.
+# Vasily Laur <v.laur@npo-echelon.ru>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hydra 6.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-12 18:59+0300\n"
+"PO-Revision-Date: 2016-12-19 21:33+0300\n"
+"Last-Translator: Vasily Laur <v.laur@npo-echelon.ru>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: ../bfg.c:32 ../bfg.c:50
+#, c-format
+msgid "Error: Invalid option format for -x\n"
+msgstr "Ошибка: неверный формат для опции -x\n"
+
+#: ../bfg.c:45
+#, c-format
+msgid "Error: no maximum length specified for -x min:max:types!\n"
+msgstr "Ошибка: no maximum length specified for -x min:max:types!\n"
+
+#: ../bfg.c:59
+#, c-format
+msgid "Error: you specified a minimum length higher than the maximum length!\n"
+msgstr ""
+
+#: ../bfg.c:64
+#, c-format
+msgid "Error: charset not specified!\n"
+msgstr "Ошибка: кодировка не задана\n"
+
+#: ../bfg.c:70
+#, c-format
+msgid "Error: can't allocate enough memory!\n"
+msgstr "Ошибка: невозможно выделить достаточно памяти!\n"
+
+#: ../bfg.c:81 ../bfg.c:97 ../bfg.c:113 ../bfg.c:143
+#, c-format
+msgid "Error: charset specification exceeds %d characters.\n"
+msgstr "Ошибка: charset specification exceeds %d characters.\n"
+
+#: ../bfg.c:85
+#, c-format
+msgid "Error: 'a' specified more than once in charset!\n"
+msgstr "Ошибка: 'a' specified more than once in charset!\n"
+
+#: ../bfg.c:101
+#, c-format
+msgid "Error: 'A' specified more than once in charset!\n"
+msgstr "Ошибка: 'A' specified more than once in charset!\n"
+
+#: ../bfg.c:117
+#, c-format
+msgid "Error: '1' specified more than once in charset!\n"
+msgstr "Ошибка: '1' specified more than once in charset!\n"
+
+#: ../bfg.c:180
+#, c-format
+msgid "Error: Can not allocate memory for -x data!\n"
+msgstr "Ошибка: Невозможно выделить памяти для данных параметра -x!\n"
+
+#: ../hydra-afp.c:58
+#, c-format
+msgid "[ERROR] Unknown UAM: %s"
+msgstr "[Ошибка] Неизвестный UAM: %s"
+
+#: ../hydra-afp.c:143 ../hydra-cisco.c:150 ../hydra-cisco-enable.c:90
+#: ../hydra-cvs.c:121 ../hydra-firebird.c:116 ../hydra-ftp.c:101
+#: ../hydra-http.c:294 ../hydra-http-proxy.c:280 ../hydra-icq.c:224
+#: ../hydra-imap.c:379 ../hydra-irc.c:91 ../hydra-irc.c:136 ../hydra-ldap.c:380
+#: ../hydra-mssql.c:132 ../hydra-mysql.c:333 ../hydra-ncp.c:154
+#: ../hydra-nntp.c:289 ../hydra-oracle.c:155 ../hydra-oracle-sid.c:116
+#: ../hydra-pcanywhere.c:254 ../hydra-pcnfs.c:164 ../hydra-pop3.c:443
+#: ../hydra-postgres.c:96 ../hydra-rexec.c:75 ../hydra-rlogin.c:122
+#: ../hydra-rsh.c:92 ../hydra-sip.c:221 ../hydra-smb.c:1406 ../hydra-smtp.c:277
+#: ../hydra-smtp-enum.c:178 ../hydra-socks5.c:136 ../hydra-svn.c:169
+#: ../hydra-teamspeak.c:81 ../hydra-teamspeak.c:85 ../hydra-teamspeak.c:117
+#: ../hydra-telnet.c:130 ../hydra-vmauthd.c:95 ../hydra-vnc.c:170
+#: ../hydra-xmpp.c:327
+#, c-format
+msgid "[ERROR] Child with pid %d terminating, can not connect\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности соединиться\n"
+
+#: ../hydra-afp.c:167 ../hydra-cisco.c:189 ../hydra-cisco-enable.c:191
+#: ../hydra-cvs.c:132 ../hydra-firebird.c:140 ../hydra-ftp.c:161
+#: ../hydra-http.c:313 ../hydra-http-form.c:785 ../hydra-http-proxy.c:295
+#: ../hydra-icq.c:237 ../hydra-imap.c:563 ../hydra-irc.c:205
+#: ../hydra-ldap.c:421 ../hydra-mssql.c:149 ../hydra-mysql.c:349
+#: ../hydra-ncp.c:176 ../hydra-nntp.c:461 ../hydra-oracle.c:170
+#: ../hydra-oracle-sid.c:133 ../hydra-pcanywhere.c:274 ../hydra-pcnfs.c:179
+#: ../hydra-pop3.c:500 ../hydra-postgres.c:113 ../hydra-rexec.c:90
+#: ../hydra-rlogin.c:137 ../hydra-rsh.c:107 ../hydra-sapr3.c:111
+#: ../hydra-sip.c:241 ../hydra-smtp.c:431 ../hydra-smtp-enum.c:245
+#: ../hydra-socks5.c:161 ../hydra-ssh.c:143 ../hydra-teamspeak.c:129
+#: ../hydra-telnet.c:199 ../hydra-vmauthd.c:138 ../hydra-vnc.c:225
+#: ../hydra-xmpp.c:483
+#, c-format
+msgid "[ERROR] Caught unknown return code, exiting!\n"
+msgstr "Неизвестный код возврата, выход!\n"
+
+#: ../hydra.c:160
+msgid "Hydra"
+msgstr "Сетевой аудит паролей"
+
+#: ../hydra.c:638
+#, c-format
+msgid "[DEBUG] Code: %s   Time: %lu\n"
+msgstr "[Отладка] Код: %s   Время: %lu\n"
+
+#: ../hydra.c:639
+#, c-format
+msgid ""
+"[DEBUG] Options: mode %d  ssl %d  restore %d  showAttempt %d  tasks %d  "
+"max_use %d tnp %d  tpsal %d  tprl %d  exit_found %d  miscptr %s  service %s\n"
+msgstr ""
+"[Отладка] Опции: mode %d  ssl %d  restore %d  showAttempt %d  tasks %d  "
+"max_use %d tnp %d  tpsal %d  tprl %d  exit_found %d  miscptr %s  service %s\n"
+"\n"
+
+#: ../hydra.c:643
+#, c-format
+msgid ""
+"[DEBUG] Brains: active %d  targets %d  finished %d  todo_all %lu  todo %lu  "
+"sent %lu  found %lu  countlogin %lu  sizelogin %lu  countpass %lu  sizepass "
+"%lu\n"
+msgstr ""
+"[Отладка] Brains: active %d  targets %d  finished %d  todo_all %lu  todo "
+"%lu  sent %lu  found %lu  countlogin %lu  sizelogin %lu  countpass %lu  "
+"sizepass %lu\n"
+
+#: ../hydra.c:649
+#, c-format
+msgid ""
+"[DEBUG] Target %d - target %s  ip %s  login_no %lu  pass_no %lu  sent %lu  "
+"pass_state %d  use_count %d  failed %d  done %d  fail_count %d  login_ptr "
+"%s  pass_ptr %s\n"
+msgstr ""
+"[Отладка] Цель %d - target %s  ip %s  login_no %lu  pass_no %lu  sent %lu  "
+"pass_state %d  use_count %d  failed %d  done %d  fail_count %d  login_ptr "
+"%s  pass_ptr %s\n"
+"\n"
+
+#: ../hydra.c:656
+#, c-format
+msgid ""
+"[DEBUG] Task %d - pid %d  active %d  redo %d  current_login_ptr %s  "
+"current_pass_ptr %s\n"
+msgstr ""
+"[Отладка] Задача %d - pid %d  active %d  redo %d  current_login_ptr %s  "
+"current_pass_ptr %s\n"
+
+#: ../hydra.c:686
+#, c-format
+msgid "[ERROR] Can not create restore file (%s) - \n"
+msgstr "[Ошибка] Невозможно создать файл восстановаления (%s) - \n"
+
+#: ../hydra.c:691
+#, c-format
+msgid "[DEBUG] Writing restore file... "
+msgstr "[Отладка] Запись файла восстановления... "
+
+#: ../hydra.c:734
+#, c-format
+msgid ""
+"[DEBUG] we will redo the following combination: target %s  login \"%s\"  "
+"pass \"%s\"\n"
+msgstr ""
+"[Отладка] пропуск следующей комбинации: цель %s логин \"%s\"  пароль \"%s\"\n"
+
+#: ../hydra.c:747 ../hydra.c:3500
+#, c-format
+msgid "done\n"
+msgstr "завершено\n"
+
+#: ../hydra.c:749
+#, c-format
+msgid ""
+"The session file ./hydra.restore was written. Type \"hydra -R\" to resume "
+"session.\n"
+msgstr ""
+"Файл сессии ./hydra.restore был записан. Наберите \"hydra -R\" для "
+"восстановления сессии.\n"
+
+#: ../hydra.c:760
+#, c-format
+msgid "[ERROR] restore file (%s) not found - "
+msgstr "[Ошибка] файл восстановления (%s) не найден - "
+
+#: ../hydra.c:769
+#, c-format
+msgid "[ERROR] invalid restore file (begin)\n"
+msgstr "[Ошибка] неверный файл восстановления (начало)\n"
+
+#: ../hydra.c:911
+#, c-format
+msgid "[ERROR] invalid restore file (end)\n"
+msgstr "[Ошибка] неверный файл восстановления (конец)\n"
+
+#: ../hydra.c:1004
+#, c-format
+msgid "[ERROR] invalid line in colon file (-C), missing colon in line: %s\n"
+msgstr ""
+"[Ошибка] неверная строка в файле (-C), пропущено двоеточие в строке: %s\n"
+
+#: ../hydra.c:1557
+#, c-format
+msgid "[ERROR] Too many connect errors to target, disabling %s://%s%s%s:%d\n"
+msgstr ""
+"[Ошибка] Слишком много ошибок соединения с целью, отключение %s://%s%s%s:%d\n"
+
+#: ../hydra.c:1949
+#, c-format
+msgid "[ERROR] can not write to child %d, restarting it ...\n"
+msgstr "[Ошибка] Невозможно передать информацию потомку %d, перезапуск ...\n"
+
+#: ../hydra.c:2023
+#, c-format
+msgid "[ERROR] all children were disabled due too many connection errors\n"
+msgstr ""
+
+#: ../hydra.c:2209
+#, c-format
+msgid ""
+"[ERROR] unknown mode %c for option -e, only supporting \"n\", \"s\" and \"r"
+"\"\n"
+msgstr ""
+"[Ошибка] неизвестное значение %c для опции -e, поддерживающей только \"n\", "
+"\"s\" и \"r\"\n"
+
+#: ../hydra.c:2258
+#, c-format
+msgid "[ERROR] waittime must be larger than 0\n"
+msgstr ""
+
+#: ../hydra.c:2261
+#, c-format
+msgid ""
+"[WARNING] the waittime you set is low, this can result in errornous results\n"
+msgstr ""
+
+#: ../hydra.c:2271
+#, c-format
+msgid ""
+"[WARNING] hydra was compiled without SSL support. Install openssl and "
+"recompile! Option ignored...\n"
+msgstr ""
+"[Предупреждение] Извините, гидра скомпилирована без поддержки SSL. "
+"Установите OpenSSL и перекомпилируйте! Опция проигнорирована...\n"
+
+#: ../hydra.c:2289
+#, c-format
+msgid ""
+"[ERROR] -x option is not available as math.h was not found at compile time\n"
+msgstr ""
+
+#: ../hydra.c:2356
+#, c-format
+msgid ""
+"[WARNING] With the -M FILE option you can not specify a server on the "
+"commandline. Lets hope you did everything right!\n"
+msgstr ""
+"[Предупреждение] С опцией -M ИМЯФАЙЛА вы не можете задать имя сервера из "
+"командной строки. Надеемся вы сделали все правильно!\n"
+
+#: ../hydra.c:2443
+#, c-format
+msgid "[WARNING] module %s does not support HYDRA_PROXY* !\n"
+msgstr ""
+
+#: ../hydra.c:2452
+#, c-format
+msgid ""
+"[WARNING] The service http has been replaced with http-head and http-get, "
+"using by default GET method. Same for https.\n"
+msgstr ""
+"[Предупреждение] Служба http была заменена на http-head и http-get, "
+"использую метод GET по умолчанию. Аналогичное было сделано для https.\n"
+
+#: ../hydra.c:2477
+#, c-format
+msgid ""
+"[WARNING] telnet is by its nature unreliable to analyze, if possible better "
+"choose FTP, SSH, etc. if available\n"
+msgstr ""
+
+#: ../hydra.c:2483
+#, c-format
+msgid ""
+"[WARNING] you enabled ftp-SSL (auth tls) mode. If you want to use direct SSL "
+"ftp, use -S and the ftp module instead.\n"
+msgstr ""
+
+#: ../hydra.c:2487 ../hydra.c:2491 ../hydra.c:2600
+#, c-format
+msgid ""
+"[INFO] several providers have implemented cracking protection, check with a "
+"small wordlist first - and stay legal!\n"
+msgstr ""
+
+#: ../hydra.c:2511
+#, c-format
+msgid ""
+"[WARNING] The icq module is not working with the modern protocol version! "
+"(somebody else will need to fix this as I don't care for icq)\n"
+msgstr ""
+"[Предупреждение] Модуль icq не работает с современной версией протокола! "
+"(это может быть исправлено обновлением исходного кода службы)\n"
+
+#: ../hydra.c:2517
+#, c-format
+msgid ""
+"[INFO] Reduced number of tasks to 4 (mysql does not like many parallel "
+"connections)\n"
+msgstr ""
+"[Информация] Количество задач уменьшено до 4 (mysql не любит использование "
+"параллельных соединений)\n"
+
+#: ../hydra.c:2544
+msgid "Compiled without LIBPOSTGRES support, module not available!"
+msgstr "Программа скомпилирована без поддержки LIBPOSTGRES, модуль недоступен!"
+
+#: ../hydra.c:2550
+msgid "Compiled without LIBFIREBIRD support, module not available!"
+msgstr "Программа скомпилирована без поддержки LIBFIREBIRD, модуль недоступен!"
+
+#: ../hydra.c:2556
+msgid "Compiled without LIBAFP support, module not available!"
+msgstr "Программа скомпилирована без поддержки LIBAFP, модуль недоступен!"
+
+#: ../hydra.c:2562
+msgid "Compiled without LIBSVN support, module not available!"
+msgstr "Программа скомпилирована без поддержки LIBSVN, модуль недоступен!"
+
+#: ../hydra.c:2568
+msgid "Compiled without LIBNCP support, module not available!"
+msgstr "Программа скомпилирована без поддержки LIBNCP, модуль недоступен!"
+
+#: ../hydra.c:2581
+#, c-format
+msgid ""
+"[INFO] The CVS repository path wasn't passed so using /root by default\n"
+msgstr ""
+"[INFO] The CVS repository path wasn't passed so using /root by default\n"
+
+#: ../hydra.c:2587
+#, c-format
+msgid ""
+"[INFO] The SVN repository path wasn't passed so using /trunk by default\n"
+msgstr ""
+"[INFO] The SVN repository path wasn't passed so using /trunk by default\n"
+
+#: ../hydra.c:2592
+#, c-format
+msgid ""
+"[WARNING] Many SSH configurations limit the number of parallel tasks, it is "
+"recommended to reduce the tasks: use -t 4\n"
+msgstr ""
+
+#: ../hydra.c:2596
+msgid "Compiled without LIBSSH v0.4.x support, module is not available!"
+msgstr ""
+"Программа скомпилирована без поддержки LIBSSH v0.4.x, модуль недоступен!"
+
+#: ../hydra.c:2609 ../hydra.c:2617
+#, c-format
+msgid ""
+"[INFO] Reduced number of tasks to 1 (smb does not like parallel "
+"connections)\n"
+msgstr ""
+"[Информация] Количество задач уменьшено до 1 (samba не любит использование "
+"параллельных соединений)\n"
+
+#: ../hydra.c:2627
+msgid "Compiled without OPENSSL support, module not available!"
+msgstr "Программа скомпилирована без поддержки OPENSSL, модуль недоступен!"
+
+#: ../hydra.c:2633
+#, c-format
+msgid ""
+"You must set the port for pcnfs with -s (run \"rpcinfo -p %s\" and look for "
+"the pcnfs v2 UDP port)"
+msgstr ""
+"Вы должны задать порт для pcnfs с помощью опции -s (выполните \"rpcinfo -p %s"
+"\" и найдите порт UDP pcnfs v2)"
+
+#: ../hydra.c:2639
+msgid ""
+"You must set the port for sapr3 with -s <port>, it should lie between 3200 "
+"and 3699."
+msgstr ""
+"Вы должны задать порт для sapr3 с помощью опции -s <port>, он должен быть от "
+"3200 до 3699."
+
+#: ../hydra.c:2641
+#, c-format
+msgid ""
+"[WARNING] The port is not in the range 3200 to 3399 - please ensure it is "
+"ok!\n"
+msgstr ""
+"[Предупреждение] Порт не лежит в диапазоне от 3200 до 3399 - пожалуйста "
+"убедитесь, что он задан верно!\n"
+
+#: ../hydra.c:2643
+msgid "You must set the client ID (0-999) as an additional option or via -m"
+msgstr ""
+"Вы должны задать ID клиента (0-999) как дополнительную опцию или с помощью "
+"ключа -m"
+
+#: ../hydra.c:2645
+msgid "Compiled without LIBSAPR3 support, module not available!"
+msgstr "Программа скомпилирована без поддержки LIBSAPR, модуль недоступен!"
+
+#: ../hydra.c:2651
+#, c-format
+msgid ""
+"[WARNING] you should set the number of parallel task to 4 for cisco "
+"services.\n"
+msgstr ""
+"[Предупреждение] для служб cisco вам следует установить 4 параллельных "
+"задачи\n"
+
+#: ../hydra.c:2701
+#, c-format
+msgid "[ERROR] unknown parameter in module option: %s\n"
+msgstr "[Ошибка] неизвестный параметр в опции модуля: %s\n"
+
+#: ../hydra.c:2708
+#, c-format
+msgid ""
+"[WARNING] SNMPv1 and SNMPv2 do not support hash and encryption, ignored\n"
+msgstr ""
+
+#: ../hydra.c:2710
+#, c-format
+msgid ""
+"[WARNING] SNMPv3 is still in beta state, use at own risk and report "
+"problems\n"
+msgstr ""
+
+#: ../hydra.c:2712
+msgid ""
+"The SNMPv3 module so far only support authentication (md5/sha), not yet "
+"encryption\n"
+msgstr ""
+
+#: ../hydra.c:2717
+#, c-format
+msgid ""
+"[ERROR] you specified SNMPv3, defined hashing/encryption but only gave one "
+"of login or password list. Either supply both logins and passwords (this is "
+"what is usually used in SNMPv3), or remove the hashing/encryption option "
+"(unusual)\n"
+msgstr ""
+
+#: ../hydra.c:2720
+#, c-format
+msgid ""
+"[WARNING] you specified SNMPv3 but gave no logins, NoAuthNoPriv is assumed. "
+"This is an unusual case, you should know what you are doing\n"
+msgstr ""
+
+#: ../hydra.c:2729
+msgid ""
+"hydra was not compiled with OPENSSL support, snmpv3 can only be used on "
+"NoAuthNoPriv mode (only logins, no passwords)!"
+msgstr ""
+
+#: ../hydra.c:2731
+#, c-format
+msgid "[INFO] Using %s SNMPv3 with %s authentication and %s privacy\n"
+msgstr ""
+
+#: ../hydra.c:2742
+msgid "The sip module does not work with multiple servers (-M)\n"
+msgstr "Модуль sip не работает с многими серверами (-M)\n"
+
+#: ../hydra.c:2749
+msgid ""
+"Please select ldap2 or ldap3 for simple authentication or ldap3-crammd5 or "
+"ldap3-digestmd5\n"
+msgstr ""
+
+#: ../hydra.c:2755
+msgid "you may only use one of -l, -L or -m\n"
+msgstr "следует использовать одну из опций -l, -L или -m\n"
+
+#: ../hydra.c:2757
+#, c-format
+msgid ""
+"[WARNING] no DN to authenticate is defined, using DN of null (use -m, -l or -"
+"L to define DNs)\n"
+msgstr ""
+"[Предупреждение] не задан DN для аутентификации, использование пустого DN "
+"(используйте -m, -l или -L для задания DN'ов)\n"
+
+#: ../hydra.c:2784
+#, c-format
+msgid ""
+"[WARNING] You did not supply the initial support to the Cisco via -l, "
+"assuming direct console access\n"
+msgstr ""
+"[Предупреждение] вы не задали начальную поддержку Cisco с опцией -l, "
+"предполагается прямой доступ к консоли\n"
+
+#: ../hydra.c:2787
+#, c-format
+msgid ""
+"[WARNING] you should set the number of parallel task to 4 for cisco enable "
+"services.\n"
+msgstr ""
+"[Предупреждение] вам следует установить 4 параллельных задачи для cisco-"
+"служб.\n"
+
+#: ../hydra.c:2801
+#, c-format
+msgid ""
+"[WARNING] you should set the number of parallel task to 4 for vnc services.\n"
+msgstr ""
+"[Предупреждение] вам следует установить 4 параллельных задачи для vnc-"
+"служб.\n"
+
+#: ../hydra.c:2812 ../hydra.c:2849
+msgid "Compiled without SSL support, module not available"
+msgstr "Программа скомпилирована без поддержки SSL, модуль недоступен!"
+
+#: ../hydra.c:2818 ../hydra.c:2853
+#, c-format
+msgid ""
+"[WARNING] You must supply the web page as an additional option or via -m, "
+"default path set to /\n"
+msgstr ""
+"[Предупреждение] Вы должны задать веб-страницу в качестве отдельной опции "
+"или с помощью опции -m, по умолчанию используется /\n"
+
+#: ../hydra.c:2823
+msgid ""
+"The web page you supplied must start with a \"/\", \"http://\" or \"https://"
+"\", e.g. \"/protected/login\""
+msgstr ""
+"Заданная вами веб-страница должна начинаться с \"/\", \"http://\" или "
+"\"https://\", например, \"/protected/login\""
+
+#: ../hydra.c:2825 ../hydra.c:2862
+msgid ""
+"Found HYDRA_PROXY_HTTP *and* HYDRA_PROXY environment variables - you can use "
+"only ONE for the service http-head/http-get!"
+msgstr ""
+"Найдены переменные окружения HYDRA_PROXY_HTTP *и* HYDRA_PROXY_CONNECT - вы "
+"можете использовать только ОДНУ из них для службы http-head/http-get!"
+
+#: ../hydra.c:2827 ../hydra.c:2864
+#, c-format
+msgid "[INFO] Using HTTP Proxy: %s\n"
+msgstr "[Информация] Использование HTTP прокси: %s\n"
+
+#: ../hydra.c:2860
+msgid "optional parameter must start with a '/' slash!\n"
+msgstr ""
+
+#: ../hydra.c:2877
+#, c-format
+msgid ""
+"[ERROR] the variables argument needs at least the strings ^USER^ or ^PASS^: "
+"%s\n"
+msgstr ""
+
+#: ../hydra.c:2881
+#, c-format
+msgid ""
+"[ERROR] Wrong syntax, requires three arguments separated by a colon which "
+"may not be null: %s\n"
+msgstr ""
+
+#: ../hydra.c:2886
+#, c-format
+msgid "[ERROR] Wrong syntax of optional argument: %s\n"
+msgstr ""
+
+#: ../hydra.c:2893
+#, c-format
+msgid ""
+"[ERROR] Wrong syntax of parameter C, must look like 'C=/url/of/page', not "
+"http:// etc.: %s\n"
+msgstr ""
+
+#: ../hydra.c:2900
+#, c-format
+msgid ""
+"[ERROR] Wrong syntax of parameter H, must look like 'H=X-My-Header: "
+"MyValue', no http:// : %s\n"
+msgstr ""
+
+#: ../hydra.c:2905
+#, c-format
+msgid "[ERROR] Unknown optional argument: %s"
+msgstr ""
+
+#: ../hydra.c:2918
+#, c-format
+msgid ""
+"[WARNING] rdp servers often don't like many connections, use -t 1 or -t 4 to "
+"reduce the number of parallel connections and -W 1 or -W 3 to wait between "
+"connection to allow the server to recover\n"
+msgstr ""
+
+#: ../hydra.c:2930
+#, c-format
+msgid "[ERROR] Unknown service: %s\n"
+msgstr "[Ошибка] Неизвестный сервис: %s\n"
+
+#: ../hydra.c:2935
+#, c-format
+msgid ""
+"[ERROR] No valid port set or no default port available. Use the -s Option.\n"
+msgstr ""
+"[Ошибка] Задан неверный номер порта или нет порта по умолчанию. Используйте "
+"опцию -s\n"
+
+#: ../hydra.c:2943
+#, c-format
+msgid ""
+"[WARNING] you specified port 443 for attacking a http service, however did "
+"not specify the -S ssl switch nor used https-..., therefore using plain "
+"HTTP\n"
+msgstr ""
+
+#: ../hydra.c:2946
+msgid ""
+"The loop mode option (-u) works with all modes - except colon files (-C)\n"
+msgstr ""
+
+#: ../hydra.c:2948
+#, c-format
+msgid ""
+"[WARNING] the HYDRA_PROXY_HTTP environment variable works only with the http-"
+"head/http-get module, ignored...\n"
+msgstr ""
+"[Предупреждение] переменная окружения HYDRA_PROXY_HTTP работает только "
+"вместе с http-head/http-get модулем, игнорирование...\n"
+
+#: ../hydra.c:2953
+msgid ""
+"The redis, cisco, oracle-listener, s7-300, snmp and vnc modules are only "
+"using the -p or -P option, not login (-l, -L) or colon file (-C).\n"
+"Use the telnet module for cisco using \"Username:\" authentication.\n"
+msgstr ""
+"Модули redis, cisco, oracle-listener, s7-300, snmp и vnc используют только "
+"опцию -p или -P, а не логин (-l, -L) или файл с аутентификационными данными "
+"(-C).\n"
+"Используйте модуль telnet для cisco, используя \"Username:\" "
+"аутентификацию.\n"
+
+#: ../hydra.c:2964
+msgid ""
+"The rsh, oracle-sid login is neither using the -p, -P or -x options nor "
+"colon file (-C)\n"
+msgstr ""
+
+#: ../hydra.c:2973
+msgid "I need at least either the -l or -L option to know the login"
+msgstr "Необходимо задать одну из опций: -l или -L для логина"
+
+#: ../hydra.c:2975
+msgid ""
+"I need at least either the -p, -P or -x option to have a password to try"
+msgstr "Необходимо задать одну из опций: -p, -P или -x для паролей!"
+
+#: ../hydra.c:2977
+msgid "I need at least either the -l, -L or -C option to know the login"
+msgstr "Необходимо задать одну из опций: -l, -L или -C для логина"
+
+#: ../hydra.c:2980
+msgid "The -C option is standalone, don't use it with -l/L, -p/P or -x!"
+msgstr "Опция -C - независимая, не используйте её с -l/L, -p/P или -x!"
+
+#: ../hydra.c:2984
+msgid ""
+"The -x (password bruteforce generation option) doesn't work with -p/P, -C or "
+"-e!\n"
+msgstr ""
+
+#: ../hydra.c:2991
+msgid "I need at least the -e, -p, -P or -x option to have some passwords!"
+msgstr "Необходимо задать одну из опций: -e, -p, -P или -x для паролей!"
+
+#: ../hydra.c:2994
+#, c-format
+msgid "[ERROR] Option -t needs to be a number between 1 and %d\n"
+msgstr "[Ошибка] Опция -t требует число от 1 до %d\n"
+
+#: ../hydra.c:2998
+#, c-format
+msgid "[WARNING] reducing maximum tasks to MAXTASKS (%d)\n"
+msgstr ""
+
+#: ../hydra.c:3005
+#, c-format
+msgid "[ERROR] File for logins not found: %s"
+msgstr "[Ошибка] Не найден файл с логинами! %s"
+
+#: ../hydra.c:3011
+#, c-format
+msgid "[ERROR] File for logins is empty: %s"
+msgstr "[Ошибка] файл логинов пуст! %s"
+
+#: ../hydra.c:3015
+#, c-format
+msgid "[ERROR] Maximum number of logins is %d, this file has %lu entries.\n"
+msgstr ""
+
+#: ../hydra.c:3019
+#, c-format
+msgid ""
+"[ERROR] Maximum size of the login file is %d, this file has %lu bytes.\n"
+msgstr ""
+
+#: ../hydra.c:3024
+msgid "Could not allocate enough memory for login file data"
+msgstr "Невозможно выделить достаточно памяти для данных в файле логинов"
+
+#: ../hydra.c:3034
+#, c-format
+msgid "[ERROR] File for passwords not found: %s"
+msgstr "[Ошибка] файл паролей не найден: %s"
+
+#: ../hydra.c:3040
+#, c-format
+msgid "[ERROR] File for passwords is empty: %s"
+msgstr "[Ошибка] Файл паролей пуст: %s"
+
+#: ../hydra.c:3044
+#, c-format
+msgid "[ERROR] Maximum number of passwords is %d, this file has %lu entries.\n"
+msgstr ""
+
+#: ../hydra.c:3048
+#, c-format
+msgid ""
+"[ERROR] Maximum size of the password file is %d, this file has %lu bytes.\n"
+msgstr ""
+
+#: ../hydra.c:3053
+msgid "Could not allocate enough memory for password file data"
+msgstr "Невозможно выделить достаточно памяти для данных в файле паролей"
+
+#: ../hydra.c:3081
+#, c-format
+msgid "[ERROR] File for colon files (login:pass) not found: %s"
+msgstr "[Ошибка] Не найден файл списка логин:пароль %s"
+
+#: ../hydra.c:3087
+#, c-format
+msgid "[ERROR] File for colon files (login:pass) is empty: %s"
+msgstr "[Ошибка] файл списка логин:пароль пуст: %s"
+
+#: ../hydra.c:3091
+#, c-format
+msgid ""
+"[ERROR] Maximum number of colon file entries is %d, this file has %lu "
+"entries.\n"
+msgstr ""
+
+#: ../hydra.c:3095
+#, c-format
+msgid ""
+"[ERROR] Maximum size of the colon file is %d, this file has %lu bytes.\n"
+msgstr ""
+
+#: ../hydra.c:3100
+msgid "Could not allocate enough memory for colon file data"
+msgstr ""
+"Невозможно выделить достаточно памяти для данных в файле с "
+"аутентификационными данными"
+
+#: ../hydra.c:3114
+#, c-format
+msgid "[ERROR] your wordlist is too large, not enough memory!\n"
+msgstr ""
+
+#: ../hydra.c:3119
+#, c-format
+msgid ""
+"[WARNING] Restorefile (%s) from a previous session found, to prevent "
+"overwriting, you have 10 seconds to abort...\n"
+msgstr ""
+"[Предупреждение] Найден файл восстановления (%s) от предыдущей сессии, у вас "
+"есть 10 секунд для того, чтобы не допустить его перезапись...\n"
+
+#: ../hydra.c:3126
+#, c-format
+msgid "[ERROR] File for targets not found: %s"
+msgstr "[Ошибка] файл IP адресов не найден: %s"
+
+#: ../hydra.c:3131
+#, c-format
+msgid "[ERROR] File for targets is empty: %s"
+msgstr "[Ошибка] Файл IP адресов пуст: %s"
+
+#: ../hydra.c:3137
+msgid "Could not allocate enough memory for target data"
+msgstr "Невозможно выделить достаточно памяти для целевых данных"
+
+#: ../hydra.c:3140
+#, c-format
+msgid ""
+"[ERROR] Maximum number of target file entries is %d, this file has %d "
+"entries.\n"
+msgstr ""
+
+#: ../hydra.c:3144
+#, c-format
+msgid ""
+"[ERROR] Maximum size of the server file is %d, this file has %d bytes.\n"
+msgstr ""
+
+#: ../hydra.c:3148
+msgid "Could not allocate enough memory for target file data"
+msgstr "Невозможно выделить достаточно памяти для данных в целевом файле"
+
+#: ../hydra.c:3187
+#, c-format
+msgid "Error: can not allocate memory\n"
+msgstr "[Ошибка] Невозможно выделить память\n"
+
+#: ../hydra.c:3194
+#, c-format
+msgid "Error: network size may only be between /16 and /31: %s\n"
+msgstr ""
+
+#: ../hydra.c:3198
+#, c-format
+msgid "Error: option is not a valid IPv4 address: %s\n"
+msgstr "[Ошибка] параметр не является допустимым IPv4 адресом: %s\n"
+
+#: ../hydra.c:3225
+#, c-format
+msgid "[VERBOSE] CIDR attack from %s to %s\n"
+msgstr ""
+"[Подробности] атака на CIDR с %s по %s\n"
+"\n"
+
+#: ../hydra.c:3226
+#, c-format
+msgid "[WARNING] The CIDR attack mode is still beta. Please report issues.\n"
+msgstr ""
+
+#: ../hydra.c:3254
+#, c-format
+msgid "[INFO] Using Connect Proxy: %s\n"
+msgstr "[Информация] Использование прокси для соединения: %s\n"
+
+#: ../hydra.c:3285
+#, c-format
+msgid "[ERROR] could not resolve proxy address: %s\n"
+msgstr "[Ошибка] Невозможно найти адрес прокси: %s\n"
+
+#: ../hydra.c:3309
+#, c-format
+msgid ""
+"[ERROR] The proxy address is a link local address, link local addresses "
+"require the interface being defined like this: fe80::1%%eth0\n"
+msgstr ""
+
+#: ../hydra.c:3319 ../hydra.c:3492
+#, c-format
+msgid "[ERROR] Could not resolve proxy address: %s\n"
+msgstr "[Ошибка] Невозможно определить адрес прокси %s\n"
+
+#: ../hydra.c:3326
+#, c-format
+msgid ""
+"[WARNING] invalid proxy definition. Syntax: \"HYDRA_PROXY=[connect|socks[4|"
+"5]]://1.2.3.4:3128/\".\n"
+msgstr ""
+"[Предупреждение] прокси задана не верно. Синтаксис: \\\"HYDRA_PROXY=[connect|"
+"socks[4|5]]://1.2.3.4:3128/\\\".\n"
+
+#: ../hydra.c:3331
+#, c-format
+msgid ""
+"[WARNING] invalid proxy authentication. Syntax: \"login:password\". "
+"Ignoring ...\n"
+msgstr ""
+"[Предупреждение] неверно заданы данные для прокси аутентификации. Синтаксис: "
+"\"логин:пароль\". Игнорирование ...\n"
+
+#: ../hydra.c:3356
+msgid "No login/password combination given!"
+msgstr "Не задана комбинация логин/пароль!"
+
+#: ../hydra.c:3359
+#, c-format
+msgid ""
+"[VERBOSE] More tasks defined than login/pass pairs exist. Tasks reduced to "
+"%lu\n"
+msgstr ""
+"[Подробности] Задано большее число задач, чем количество пар логин/пароль. "
+"Количество задач сокращено до %lu.\n"
+
+#: ../hydra.c:3391
+#, c-format
+msgid ""
+"[DATA] max %d task%s per %d server%s, overall %d tasks, %lu login tr%s, ~%lu "
+"tr%s per task\n"
+msgstr ""
+"[Данные] максимум %d задач%s на %d серверов%s, всего %d задач, %lu попыток "
+"входа%s, ~%lu попыток%s на задачу\n"
+
+#: ../hydra.c:3395
+#, c-format
+msgid ""
+"[DATA] max %d task%s per %d server%s, overall %d tasks, %lu login tr%s (l:"
+"%lu/p:%lu), ~%lu tr%s per task\n"
+msgstr ""
+"[Данные] максимум %d задач%s на %d серверов%s, всего %d задач, %lu попыток "
+"входа%s (логины:%lu/пароли:%lu), ~%lu попыток%s на задачу\n"
+
+#: ../hydra.c:3399
+#, c-format
+msgid "[DATA] attacking service %s on port %d%s\n"
+msgstr "[Данные] атака службы %s на порту %d%s\n"
+
+#: ../hydra.c:3403
+msgid "[ERROR] Error creating outputfile"
+msgstr "[Ошибка] Ошибка при создании выходного файла"
+
+#: ../hydra.c:3432
+#, c-format
+msgid "[DEBUG] resolving %s\n"
+msgstr "[Отладка] S: %s\n"
+
+#: ../hydra.c:3445
+#, c-format
+msgid "[ERROR] could not resolve address: %s\n"
+msgstr "[Ошибка] Невозможно найти %s\n"
+
+#: ../hydra.c:3466
+#, c-format
+msgid ""
+"[ERROR] Target %s resolves to an IPv6 address, however module %s does not "
+"support this. Maybe try \"-4\" option. Sending in patches helps.\n"
+msgstr ""
+
+#: ../hydra.c:3477
+#, c-format
+msgid ""
+"[ERROR] The target %s address is a link local address, link local addresses "
+"require the interface being defined like this: fe80::1%%eth0\n"
+msgstr ""
+"[Ошибка] Конечный адрес %s - это адрес локального линка. Адреса локального "
+"линка требуют, чтобы интерфейс был определен следующим образом: "
+"fe80::1%%eth0\n"
+
+#: ../hydra.c:3502
+msgid "No server to scan!"
+msgstr "Отсутствуют сервера для сканирования!"
+
+#: ../hydra.c:3506
+#, c-format
+msgid ""
+"[ERROR] your operating system does not support SO_BINDTODEVICE or "
+"IP_FORCE_OUT_IFP, dunno how to bind the IPv6 address to the interface %s!\n"
+msgstr ""
+
+#: ../hydra.c:3561
+#, c-format
+msgid "[DEBUG] child %d got target %d selected\n"
+msgstr "[Отладка] потомок %d выбрал цель %d\n"
+
+#: ../hydra.c:3563
+#, c-format
+msgid "[DEBUG] hydra_select_target() reports no more targets left\n"
+msgstr ""
+
+#: ../hydra.c:3576
+#, c-format
+msgid "[DEBUG] head_no[%d] read %c\n"
+msgstr ""
+
+#: ../hydra.c:3636
+#, c-format
+msgid "[STATUS] attack finished for %s (valid pair found)\n"
+msgstr "[Статус] атака завершена для %s (найдена подходящая пара)\n"
+
+#: ../hydra.c:3680
+#, c-format
+msgid "[DEBUG] child %d reported it quit\n"
+msgstr "[Отладка] потомок %d сообщил о своём завершении\n"
+
+#: ../hydra.c:3685
+#, c-format
+msgid "[ERROR] child %d sent nonsense data, killing and restarting it!\n"
+msgstr ""
+"[Ошибка] потомок %d послал бессмысленный набор данных, завершение потомка и "
+"его перезапуск!\n"
+
+#: ../hydra.c:3691
+#, c-format
+msgid ""
+"[WARNING] child %d seems to have died, restarting (this only happens if a "
+"module is bad) ... \n"
+msgstr ""
+
+#: ../hydra.c:3700
+#, c-format
+msgid "[WARNING] child %d seems to be dead, restarting it ...\n"
+msgstr "[Предупреждение] потомок %d, неожиданно завершился, перезапуск ...\n"
+
+#: ../hydra.c:3707
+#, c-format
+msgid "[WARNING] timeout from child %d, restarting\n"
+msgstr "[Предупреждение] Превышено время ожидания от потомка %d, перезапуск\n"
+
+#: ../hydra.c:3714
+#, c-format
+msgid "[ERROR] child %d in unknown state, restarting!\n"
+msgstr "[Ошибка] потомок %d находится в неизвестном состоянии, перезапуск!\n"
+
+#: ../hydra.c:3745
+#, c-format
+msgid ""
+"[STATUS] %.2f tries/min, %lu tries in %02lu:%02luh, %lu todo in %02lu:"
+"%02luh, %d active\n"
+msgstr ""
+"[Статус] %.2f попыток/мин, %lu прошло попыток %02lu:%02luh, %lu осталось "
+"%02lu:%02luh, %d активно\n"
+
+#: ../hydra.c:3762
+#, c-format
+msgid "[DEBUG] while loop left with %d\n"
+msgstr "[Отладка] цикл завершился с кодом %d\n"
+
+#: ../hydra.c:3786
+#, c-format
+msgid "[ERROR] illegal target result value (%d=>%d)\n"
+msgstr ""
+
+#: ../hydra.c:3789
+#, c-format
+msgid "[DEBUG] killing all remaining children now that might be stuck\n"
+msgstr ""
+
+#: ../hydra.c:3795
+#, c-format
+msgid "%d of %d target%s%scompleted, %lu valid password%s found\n"
+msgstr ""
+
+#: ../hydra.c:3802
+#, c-format
+msgid ""
+"[INFO] Writing restore file because %d server scan%s could not be completed\n"
+msgstr ""
+"[Информация] Запись файла для восстановления, по причине того, что %d "
+"сканирований%s не могут быть завершены\n"
+
+#: ../hydra.c:3807
+#, c-format
+msgid "[ERROR] %d target%s disabled because of too many errors\n"
+msgstr ""
+
+#: ../hydra.c:3811
+#, c-format
+msgid "[ERROR] %d target%s did not resolve or could not be connected\n"
+msgstr ""
+
+#: ../hydra.c:3815
+#, c-format
+msgid "[ERROR] %d target%s did not complete\n"
+msgstr "[Ошибка] %d целей%s не завершены\n"
+
+#: ../hydra.c:3819
+#, c-format
+msgid "%s (%s) finished at %s\n"
+msgstr "%s (%s) завершено в %s\n"
+
+#: ../hydra-cisco.c:162 ../hydra-cisco-enable.c:163
+#, c-format
+msgid ""
+"[ERROR] Child with pid %d was disconnected - retrying (%d of %d retries)\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d отсоединился - повторная попытка (%d "
+"из %d)\n"
+
+#: ../hydra-cisco.c:166 ../hydra-cisco-enable.c:167
+#, c-format
+msgid "[ERROR] Child with pid %d was disconnected - exiting\n"
+msgstr "[Ошибка] Потомок с идентификатором %d отсоединился - выход\n"
+
+#: ../hydra-cisco-enable.c:104 ../hydra-cisco-enable.c:120
+#, c-format
+msgid "[ERROR] Child with pid %d terminating, can not send login\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности послать команду логина\n"
+
+#: ../hydra-cisco-enable.c:135
+#, c-format
+msgid "[ERROR] Child with pid %d terminating - can not login, can not login\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности залогиниться\n"
+
+#: ../hydra-cisco-enable.c:150
+#, c-format
+msgid "[ERROR] Child with pid %d terminating, can not send 'ena'\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности послать 'ena'\n"
+
+#: ../hydra-cisco-enable.c:183
+#, c-format
+msgid "[ERROR] Child with pid %d terminating, can not send 'exit'\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности послать 'exit'\n"
+
+#: ../hydra-cvs.c:72
+#, c-format
+msgid "[VERBOSE] User %s does not exist\n"
+msgstr "[VERBOSE] User %s does not exist\n"
+
+#: ../hydra-ftp.c:43 ../hydra-ftp.c:108 ../hydra-ftp.c:129
+#, c-format
+msgid "[ERROR] Not an FTP protocol or service shutdown: %s\n"
+msgstr "[Ошибка] Это не FTP протокол или служба выключена: %s\n"
+
+#: ../hydra-ftp.c:134 ../hydra-imap.c:426 ../hydra-ldap.c:397
+#: ../hydra-nntp.c:325 ../hydra-pop3.c:474 ../hydra-smtp.c:325
+#: ../hydra-xmpp.c:449
+msgid "[ERROR] Can't use TLS\n"
+msgstr "[Ошибка] Невозможно использовать TLS\n"
+
+#: ../hydra-ftp.c:138 ../hydra-imap.c:432 ../hydra-ldap.c:401
+#: ../hydra-nntp.c:331 ../hydra-pop3.c:478 ../hydra-pop3.c:596
+#: ../hydra-smtp.c:331 ../hydra-xmpp.c:455
+msgid "[VERBOSE] TLS connection done\n"
+msgstr "[Подробности] TLS соединение установлено\n"
+
+#: ../hydra-ftp.c:141
+#, c-format
+msgid "[ERROR] TLS negotiation failed %s\n"
+msgstr "[Ошибка] TLS взаимодействие завершилось неудачей %s\n"
+
+#: ../hydra-http.c:202
+#, c-format
+msgid "[WARNING] Unusual return code: %c for %s:%s\n"
+msgstr "[Предупреждение] Необычный код возврата: %c для %s:%s\n"
+
+#: ../hydra-http-form.c:422
+msgid "DEBUG: no response from server\n"
+msgstr "[Отладка] Нет ответа от сервера\n"
+
+#: ../hydra-http-form.c:577
+#, c-format
+msgid ""
+"[ERROR] the target is using HTTP auth, not a web form, received HTTP error "
+"code 401. Use module \"http%s-get\" instead.\n"
+msgstr ""
+
+#: ../hydra-http-form.c:588
+#, c-format
+msgid "[DEBUG] attempt result: found %d, redirect %d, location: %s\n"
+msgstr ""
+
+#: ../hydra-http-form.c:665
+#, c-format
+msgid "[VERBOSE] Page redirected to http://%s%s\n"
+msgstr "[VERBOSE] Page redirected to http://%s%s\n"
+
+#: ../hydra-http-form.c:753
+#, fuzzy, c-format
+msgid "[ERROR] Child with pid %d terminating, cannot connect\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности соединиться\n"
+
+#: ../hydra-http-form.c:800 ../hydra-http-form.c:811
+msgid "[ERROR] Could not launch head. Error while initializing.\n"
+msgstr ""
+
+#: ../hydra-http-proxy.c:49 ../hydra-http-proxy.c:101
+msgid "[ERROR] Server did not answer\n"
+msgstr "[Ошибка] сервер не ответил\n"
+
+#: ../hydra-http-proxy.c:65
+msgid "[ERROR] Proxy seems not to require authentication\n"
+msgstr ""
+
+#: ../hydra-http-proxy.c:210
+#, c-format
+msgid ""
+"Unsupported Auth type:\n"
+"%s\n"
+msgstr ""
+
+#: ../hydra-http-proxy.c:214
+msgid "Unsupported Auth type\n"
+msgstr ""
+
+#: ../hydra-http-proxy.c:229
+#, c-format
+msgid "[INFO] Unusual return code: %c for %s:%s\n"
+msgstr "[Информация] Необычный код возврата: %c для %s:%s\n"
+
+#: ../hydra-http-proxy.c:231
+#, c-format
+msgid "[INFO] Potential success, could be false positive: %s:%s\n"
+msgstr ""
+
+#: ../hydra-icq.c:157
+#, c-format
+msgid ""
+"[ERROR] Invalid UIN %s\n"
+", ignoring."
+msgstr ""
+"[Ошибка] Неверный UIN %s\n"
+", игнорирование."
+
+#: ../hydra-icq.c:171
+#, c-format
+msgid "[ERROR] Process %d: Can not connect [unreachable]\n"
+msgstr "[Ошибка] Процесс %d: Невозможно соединиться [недостижимо]\n"
+
+#: ../hydra-icq.c:209
+#, c-format
+msgid "[ERROR] You can not use SSL with ICQ!\n"
+msgstr "[Ошибка] Вы не можете использовать SSL вместе с ICQ!\n"
+
+#: ../hydra-imap.c:66 ../hydra-imap.c:81
+#, c-format
+msgid "[ERROR] IMAP LOGIN AUTH : %s\n"
+msgstr "[Ошибка] IMAP LOGIN AUTH : %s\n"
+
+#: ../hydra-imap.c:99
+#, c-format
+msgid "[ERROR] IMAP PLAIN AUTH : %s\n"
+msgstr "[Ошибка] IMAP PLAIN AUTH : %s\n"
+
+#: ../hydra-imap.c:143
+#, c-format
+msgid "[ERROR] IMAP CRAM-MD5 AUTH : %s\n"
+msgstr "[Ошибка] IMAP CRAM-MD5 AUTH : %s\n"
+
+#: ../hydra-imap.c:146
+#, c-format
+msgid "[ERROR] IMAP CRAM-SHA1 AUTH : %s\n"
+msgstr "[Ошибка] IMAP CRAM-SHA1 AUTH : %s\n"
+
+#: ../hydra-imap.c:149
+#, c-format
+msgid "[ERROR] IMAP CRAM-SHA256 AUTH : %s\n"
+msgstr "[Ошибка] IMAP CRAM-SHA256 AUTH : %s\n"
+
+#: ../hydra-imap.c:193
+#, c-format
+msgid "[ERROR] IMAP DIGEST-MD5 AUTH : %s\n"
+msgstr "[Ошибка] IMAP DIGEST-MD5 AUTH : %s\n"
+
+#: ../hydra-imap.c:202 ../hydra-nntp.c:173 ../hydra-smtp.c:129
+#: ../hydra-xmpp.c:55 ../hydra-xmpp.c:76 ../sasl.c:645
+#, c-format
+msgid "DEBUG S: %s\n"
+msgstr "Отладка S: %s\n"
+
+#: ../hydra-imap.c:209 ../hydra-nntp.c:180 ../hydra-smtp.c:137
+#: ../hydra-xmpp.c:88 ../hydra-xmpp.c:130 ../hydra-xmpp.c:149
+#: ../hydra-xmpp.c:166 ../sasl.c:715
+#, c-format
+msgid "DEBUG C: %s\n"
+msgstr "Отладка C: %s\n"
+
+#: ../hydra-imap.c:231
+#, c-format
+msgid "[ERROR] IMAP SCRAM-SHA1 AUTH : %s\n"
+msgstr "[Ошибка] IMAP CRAM-SHA1 AUTH : %s\n"
+
+#: ../hydra-imap.c:252 ../hydra-xmpp.c:232
+msgid "[ERROR] Not a valid server challenge\n"
+msgstr "[ERROR] Not a valid server challenge\n"
+
+#: ../hydra-imap.c:268
+msgid "[ERROR] Can't compute client response\n"
+msgstr "[Ошибка] Невозможно вычислить ответ клиента\n"
+
+#: ../hydra-imap.c:290
+#, c-format
+msgid "[ERROR] IMAP NTLM AUTH : %s\n"
+msgstr "[Ошибка] IMAP NTLM AUTH : %s\n"
+
+#: ../hydra-imap.c:334 ../hydra-mysql.c:102 ../hydra-xmpp.c:264
+#, c-format
+msgid "[ERROR] %s\n"
+msgstr "[Ошибка] %s\n"
+
+#: ../hydra-imap.c:386
+msgid "[ERROR] Not an IMAP protocol or service shutdown:\n"
+msgstr "Ошибка: Это не IMAP протокол или служба выключена: %s\n"
+
+#: ../hydra-imap.c:421 ../hydra-pop3.c:469 ../hydra-pop3.c:587
+#: ../hydra-smtp.c:320
+msgid ""
+"[ERROR] TLS negotiation failed, no answer received from STARTTLS request\n"
+msgstr ""
+"[Подробности] TLS взаимодействие завершилось неудачей, не получен ответ от "
+"STARTTLS запроса\n"
+
+#: ../hydra-imap.c:443 ../hydra-pop3.c:613 ../hydra-smtp.c:341
+#: ../hydra-smtp.c:343
+msgid ""
+"[ERROR] option to use TLS/SSL failed as it is not supported by the server\n"
+msgstr ""
+
+#: ../hydra-imap.c:448 ../hydra-pop3.c:624
+#, c-format
+msgid "[VERBOSE] CAPABILITY: %s"
+msgstr "[Подробности] Возможности: %s"
+
+#: ../hydra-imap.c:520
+msgid "[VERBOSE] using IMAP CLEAR LOGIN mechanism\n"
+msgstr "[Подробности] использование IMAP CLEAR LOGIN механизма\n"
+
+#: ../hydra-imap.c:523
+msgid "[VERBOSE] using IMAP LOGIN AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP LOGIN AUTH механизма\n"
+
+#: ../hydra-imap.c:526
+msgid "[VERBOSE] using IMAP PLAIN AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP PLAIN AUTH механизма\n"
+
+#: ../hydra-imap.c:530
+msgid "[VERBOSE] using IMAP CRAM-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP CRAM-MD5 AUTH механизма\n"
+
+#: ../hydra-imap.c:533
+msgid "[VERBOSE] using IMAP CRAM-SHA1 AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP CRAM-SHA1 AUTH механизма\n"
+
+#: ../hydra-imap.c:536
+msgid "[VERBOSE] using IMAP CRAM-SHA256 AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP CRAM-SHA256 AUTH механизма\n"
+
+#: ../hydra-imap.c:539
+msgid "[VERBOSE] using IMAP DIGEST-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP DIGEST-MD5 AUTH механизма\n"
+
+#: ../hydra-imap.c:542
+msgid "[VERBOSE] using IMAP SCRAM-SHA1 AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP CRAM-SHA1 AUTH механизма\n"
+
+#: ../hydra-imap.c:546
+msgid "[VERBOSE] using IMAP NTLM AUTH mechanism\n"
+msgstr "[Подробности] использование IMAP NTLM AUTH механизма\n"
+
+#: ../hydra-irc.c:109
+#, c-format
+msgid ""
+"[INFO] Server password '%s' is working, you can pass it as argument\n"
+"to irc module to then try login/password oper mode\n"
+msgstr ""
+"[INFO] Server password '%s' is working, you can pass it as argument\n"
+"to irc module to then try login/password oper mode\n"
+
+#: ../hydra-irc.c:112
+#, c-format
+msgid ""
+"[VERBOSE] Server is requesting a general password, '%s' you entered is not "
+"working\n"
+msgstr ""
+"[VERBOSE] Server is requesting a general password, '%s' you entered is not "
+"working\n"
+
+#: ../hydra-irc.c:158
+msgid "[INFO] Server is requesting a password, will try to find it\n"
+msgstr "[INFO] Server is requesting a password, will try to find it\n"
+
+#: ../hydra-irc.c:173
+msgid "[ERROR] Erroneous nickname\n"
+msgstr "[Ошибка] Erroneous nickname\n"
+
+#: ../hydra-irc.c:180
+msgid "[ERROR] Nickname already in use\n"
+msgstr "[Ошибка] Никнэйм уже используется\n"
+
+#: ../hydra-irc.c:187
+#, c-format
+msgid ""
+"[ERROR] should not be able to identify server msg, please report it\n"
+"%s\n"
+msgstr ""
+"[Ошибка] не следует идентифицировать сообщение сервера, пожалуйста, сообщите "
+"об этом\n"
+"%s\n"
+
+#: ../hydra-ldap.c:97
+msgid "[VERBOSE] Protocol invalid\n"
+msgstr "[Подробности] Неверный протокол\n"
+
+#: ../hydra-ldap.c:104
+msgid "[VERBOSE] Confidentiality required, TLS has to be enabled\n"
+msgstr "[VERBOSE] Confidentiality required, TLS has to be enabled\n"
+
+#: ../hydra-ldap.c:111
+msgid "[ERROR] Invalid DN Syntax\n"
+msgstr "[ERROR] Invalid DN Syntax\n"
+
+#: ../hydra-ldap.c:302
+msgid "[ERROR] Unknown authentication method\n"
+msgstr "Ошибка: неизвестный тип аутентификации\n"
+
+#: ../hydra-ldap.c:309
+#, c-format
+msgid ""
+"[VERBOSE] Server unwilling to perform action, maybe deny by server config or "
+"too busy when tried login: %s   password: %s\n"
+msgstr ""
+"[VERBOSE] Server unwilling to perform action, maybe deny by server config or "
+"too busy when tried login: %s   password: %s\n"
+
+#: ../hydra-ldap.c:315
+#, c-format
+msgid "[ERROR] Invalid protocol version, you tried ldap%c, better try ldap%c\n"
+msgstr ""
+"Неверный версия протокола, вы пробовали ldap%c, а лучше попробовать ldap%c\n"
+
+#: ../hydra-ldap.c:340
+msgid "[ERROR] Uh, unknown LDAP response! Please report this: \n"
+msgstr "[Ошибка] Неизвестный ответ от LDAP! Пожалуйста, сообщите это:\n"
+
+#: ../hydra-ldap.c:405
+#, c-format
+msgid "[ERROR] Can't use TLS %s\n"
+msgstr "[Ошибка] Невозможно использовать TLS %s\n"
+
+#: ../hydra-mod.c:150
+#, c-format
+msgid "[ERROR] You need to be root to test this service\n"
+msgstr "[Ошибка] Вы должны иметь права рута чтобы протестировать эту службу\n"
+
+#: ../hydra-mod.c:217
+#, c-format
+msgid "Process %d: Can not connect [unreachable]\n"
+msgstr "Процесс %d: Невозможно соединиться [недостижимо]\n"
+
+#: ../hydra-mod.c:242
+#, c-format
+msgid "[ERROR] could not malloc()\n"
+msgstr "[ERROR] could not malloc()\n"
+
+#: ../hydra-mod.c:299 ../hydra-mod.c:323
+#, c-format
+msgid "[ERROR] SOCKS5 proxy write failed (%zu/3)\n"
+msgstr ""
+"[Ошибка] запись в SOCKS5 завершилось неудачей (%zu/3)\n"
+"\n"
+
+#: ../hydra-mod.c:304 ../hydra-mod.c:328
+#, c-format
+msgid "[ERROR] SOCKS5 proxy read failed (%zu/2)\n"
+msgstr ""
+
+#: ../hydra-mod.c:308
+msgid "[ERROR] SOCKS5 proxy authentication method negotiation failed\n"
+msgstr ""
+"[Ошибка] Не удалось установить соединение с SOCKS5 прокси\n"
+" \n"
+
+#: ../hydra-mod.c:332
+msgid "[ERROR] SOCKS5 proxy authentication failure\n"
+msgstr "[Ошибка] Ошибка аутентификации SOCKS5 прокси\n"
+
+#: ../hydra-mod.c:336
+msgid "[DEBUG] SOCKS5 proxy authentication success\n"
+msgstr ""
+
+#: ../hydra-mod.c:365
+#, c-format
+msgid "[ERROR] SOCKS5 proxy write failed (%zu/%zu)\n"
+msgstr ""
+
+#: ../hydra-mod.c:370
+#, c-format
+msgid "[ERROR] SOCKS5 proxy read failed (%zu/10)\n"
+msgstr ""
+
+#: ../hydra-mod.c:376 ../hydra-mod.c:413
+msgid "[ERROR] SOCKS proxy request failed\n"
+msgstr ""
+
+#: ../hydra-mod.c:378 ../hydra-mod.c:415
+#, c-format
+msgid "[ERROR] SOCKS error %d\n"
+msgstr "[Ошибка] SOCKS ошибка %d\n"
+
+#: ../hydra-mod.c:387
+msgid "[ERROR] SOCKS4 proxy does not support IPv6\n"
+msgstr "[Ошибка] SOCKS4 прокси не поддерживает IPv6\n"
+
+#: ../hydra-mod.c:402
+#, c-format
+msgid "[ERROR] SOCKS4 proxy write failed (%zu/%zu)\n"
+msgstr ""
+
+#: ../hydra-mod.c:407
+#, c-format
+msgid "[ERROR] SOCKS4 proxy read failed (%zu/8)\n"
+msgstr ""
+
+#: ../hydra-mod.c:421
+#, c-format
+msgid ""
+"[ERROR] Unknown proxy type: %s, valid type are \"connect\", \"socks4\" or "
+"\"socks5\"\n"
+msgstr ""
+
+#: ../hydra-mod.c:472
+#, c-format
+msgid "[ERROR] SSL allocating context: %s\n"
+msgstr "SSL: Ошибка выделения контекста: %s\n"
+
+#: ../hydra-mod.c:490
+#, c-format
+msgid "[ERROR] preparing an SSL context: %s\n"
+msgstr "Ошибка подготовки SSL контекста: %s\n"
+
+#: ../hydra-mod.c:502
+#, c-format
+msgid "[VERBOSE] Could not create an SSL session: %s\n"
+msgstr "Невозможно создать SSL сессию: %s\n"
+
+#: ../hydra-mod.c:508
+#, c-format
+msgid "[VERBOSE] SSL negotiated cipher: %s\n"
+msgstr "SSL согласованный ключ: %s\n"
+
+#: ../hydra-mod.c:549
+#, c-format
+msgid "[DEBUG] pid %d called child_exit with code %d\n"
+msgstr "[DEBUG] pid %d called child_exit with code %d\n"
+
+#: ../hydra-mod.c:558
+#, c-format
+msgid ""
+"[TOTAL FUCKUP] a module should not use hydra_child_exit(-1) ! Fix it in the "
+"source please ...\n"
+msgstr ""
+
+#: ../hydra-mod.c:837 ../hydra-mod.c:852 ../hydra-mod.c:858 ../hydra-mod.c:891
+#: ../hydra-mod.c:928
+#, c-format
+msgid "[DEBUG] RECV [pid:%d]"
+msgstr ""
+
+#: ../hydra-mod.c:871
+#, c-format
+msgid "[ERROR] could not malloc\n"
+msgstr "[ERROR] could not malloc\n"
+
+#: ../hydra-mod.c:876
+#, c-format
+msgid ""
+"[DEBUG] hydra_receive_line: waittime: %d, conwait: %d, socket: %d, pid: %d\n"
+msgstr ""
+
+#: ../hydra-mod.c:885
+#, c-format
+msgid ""
+"[DEBUG] hydra_data_ready_timed: %d, waittime: %d, conwait: %d, socket: %d\n"
+msgstr ""
+
+#: ../hydra-mod.c:943
+#, c-format
+msgid "[DEBUG] SEND [pid:%d]"
+msgstr ""
+
+#: ../hydra-mod.c:1029
+#, c-format
+msgid "[ERROR] too high for base64: %d\n"
+msgstr "[Ошибка] Слишком высоко для base64: %d\n"
+
+#: ../hydra-mod.c:1153
+#, c-format
+msgid "[ERROR] unknown address string size!\n"
+msgstr "[Ошибка] неизвестный адрес размера строки!\n"
+
+#: ../hydra-mod.c:1172
+#, c-format
+msgid "[ERROR] PCRE compilation failed at offset %d: %s\n"
+msgstr "[Ошибка] неудачная компиляция с помощью PCRE на %d: %s\n"
+
+#: ../hydra-mysql.c:111
+#, c-format
+msgid ""
+"[INFO] This is protocol version %d, only v10 is supported, not sure if it "
+"will work\n"
+msgstr ""
+"[Информация] Версия протокола %d, поддерживается только v10, нет гарантии "
+"что атака сработает\n"
+
+#: ../hydra-mysql.c:119
+msgid ""
+"[ERROR] Not an MySQL protocol or unsupported version,\n"
+"check configure to see if libmysql is found\n"
+msgstr "[Ошибка] Это не MySQL3 протокол или протокол неподдерживаемой версии\n"
+
+#: ../hydra-mysql.c:140
+#, fuzzy, c-format
+msgid "[ERROR] could not allocate memory\n"
+msgstr "[Ошибка] Невозможно выделить память\n"
+
+#: ../hydra-mysql.c:193
+msgid "[VERBOSE] using default db 'mysql'\n"
+msgstr "[VERBOSE] using default db 'mysql'\n"
+
+#: ../hydra-mysql.c:210
+msgid "[ERROR] Insufficient memory to allocate new mysql object\n"
+msgstr "[ERROR] Insufficient memory to allocate new mysql object\n"
+
+#: ../hydra-mysql.c:219
+#, c-format
+msgid "[ERROR] Failed to connect to database: %s\n"
+msgstr "[ERROR] Failed to connect to database: %s\n"
+
+#: ../hydra-mysql.c:226
+#, c-format
+msgid "[ERROR] Unknown database: %s\n"
+msgstr "[Ошибка] Неизвестная база данных: %s\n"
+
+#: ../hydra-ncp.c:172
+#, c-format
+msgid "[ERROR] Optional parameter too long!\n"
+msgstr "[Ошибка] Параметр ключа слишком длинный!\n"
+
+#: ../hydra-nntp.c:76 ../hydra-nntp.c:91
+#, c-format
+msgid "[ERROR] NNTP LOGIN AUTH : %s\n"
+msgstr "[ERROR] NNTP LOGIN AUTH : %s\n"
+
+#: ../hydra-nntp.c:108
+#, c-format
+msgid "[ERROR] NNTP PLAIN AUTH : %s\n"
+msgstr "[Ошибка] NNTP LOGIN AUTH : %s\n"
+
+#: ../hydra-nntp.c:136
+#, c-format
+msgid "[ERROR] NNTP CRAM-MD5 AUTH : %s\n"
+msgstr "[Ошибка] POP3 CRAM-MD5 AUTH : %s\n"
+
+#: ../hydra-nntp.c:164
+#, c-format
+msgid "[ERROR] NNTP DIGEST-MD5 AUTH : %s\n"
+msgstr "[Ошибка] POP3 DIGEST-MD5 AUTH : %s\n"
+
+#: ../hydra-nntp.c:202
+#, c-format
+msgid "[ERROR] NNTP NTLM AUTH : %s\n"
+msgstr "[Ошибка] POP3 NTLM AUTH : %s\n"
+
+#: ../hydra-nntp.c:227 ../hydra-nntp.c:296
+#, c-format
+msgid "[ERROR] Not an NNTP protocol or service shutdown: %s\n"
+msgstr "Ошибка: Это не NNTP протокол или служба выключена: %s\n"
+
+#: ../hydra-nntp.c:320 ../hydra-xmpp.c:444
+msgid "[VERBOSE] TLS negotiation failed\n"
+msgstr "[Подробности] TLS взаимодейсвтие завершилось неудачей\n"
+
+#: ../hydra-nntp.c:427
+msgid "[VERBOSE] using NNTP AUTHINFO USER mechanism\n"
+msgstr "[Подробности] использование NNTP AUTHINFO USER механизма\n"
+
+#: ../hydra-nntp.c:430
+msgid "[VERBOSE] using NNTP LOGIN AUTH mechanism\n"
+msgstr "[Подробности] использование NNTP LOGIN AUTH механизма\n"
+
+#: ../hydra-nntp.c:433
+msgid "[VERBOSE] using NNTP PLAIN AUTH mechanism\n"
+msgstr "[Подробности] использование NNTP PLAIN AUTH механизма\n"
+
+#: ../hydra-nntp.c:437
+msgid "[VERBOSE] using NNTP CRAM-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование NNTP CRAM-MD5 AUTH механизма\n"
+
+#: ../hydra-nntp.c:440
+msgid "[VERBOSE] using NNTP DIGEST-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование NNTP DIGEST-MD5 AUTH использование\n"
+
+#: ../hydra-nntp.c:444
+msgid "[VERBOSE] using NNTP NTLM AUTH mechanism\n"
+msgstr "[Подробности] использование NNTP NTLM AUTH механизма\n"
+
+#: ../hydra-oracle.c:40
+#, c-format
+msgid "[ERROR] Oracle_error: %s - %s\n"
+msgstr "[Ошибка] база данных: oracle_error: %s - %s\n"
+
+#: ../hydra-oracle.c:94
+#, c-format
+msgid "[VERBOSE] database: oracle_error: %s\n"
+msgstr "[Подробности] база данных: oracle_error: %s\n"
+
+#: ../hydra-oracle.c:97
+msgid "[ERROR] ORACLE SID is not valid, you should try to enumerate them.\n"
+msgstr "[ERROR] ORACLE SID is not valid, you should try to enumerate them.\n"
+
+#: ../hydra-oracle.c:100
+#, c-format
+msgid "[ERROR] ORACLE account %s is locked.\n"
+msgstr "[ERROR] ORACLE account %s is locked.\n"
+
+#: ../hydra-oracle.c:139
+msgid "[ERROR] Oracle SID is required, using ORCL as default\n"
+msgstr "[ERROR] Oracle SID is required, using ORCL as default\n"
+
+#: ../hydra-pcanywhere.c:92
+#, c-format
+msgid "debug: %s\n"
+msgstr "отладка: %s\n"
+
+#: ../hydra-pcanywhere.c:128
+msgid "dans pcanywhere start"
+msgstr "запуск pcanywhere"
+
+#: ../hydra-pcanywhere.c:167
+#, c-format
+msgid ""
+"[ERROR] PC Anywhere host denying connection because you have requested a "
+"lower encrypt level\n"
+msgstr ""
+"[Ошибка] Хост с PC Anywhere не принял соединение, потому что запрошен "
+"слишком слабый уровень шифрования\n"
+
+#: ../hydra-pcanywhere.c:174
+msgid "problem receiving login banner"
+msgstr "проблема при получении заголовка входа"
+
+#: ../hydra-pcanywhere.c:191
+msgid "problem receiving password banner"
+msgstr "проблема при получении заголовка пароля"
+
+#: ../hydra-pcanywhere.c:209
+msgid "login/passwd wrong"
+msgstr "неверный логин или пароль"
+
+#: ../hydra-pcanywhere.c:216
+msgid "cool find login/passwd"
+msgstr "найден логин/пароль"
+
+#: ../hydra-pcnfs.c:107
+#, c-format
+msgid "[ERROR] Could not send data to remote server, reconnecting ...\n"
+msgstr "[Ошибка] Невозможно послать данные серверу, переподключение ...\n"
+
+#: ../hydra-pcnfs.c:112
+#, c-format
+msgid "[ERROR] Timeout from remote server, reconnecting ...\n"
+msgstr ""
+"[Ошибка] Превышено время ожидания ответа от сервера, переподключение ...\n"
+
+#: ../hydra-pcnfs.c:118
+#, c-format
+msgid "[ERROR] RPC answer status : bad proc/version/auth\n"
+msgstr ""
+"[Ошибка] статус RPC ответа: не найдена процедура/некорректная версия/"
+"неверная аутентификация\n"
+
+#: ../hydra-pcnfs.c:144
+#, c-format
+msgid "[ERROR] pcnfs module called without -s port!\n"
+msgstr "[Ошибка] модуль pcnfs вызван без опции -s ПОРТ!\n"
+
+#: ../hydra-pcnfs.c:148
+#, c-format
+msgid "[ERROR] pcnfs module can not be used with SSL!\n"
+msgstr "[Ошибка] модуль pcnfs не может быть использован с SSL!\n"
+
+#: ../hydra-pop3.c:165 ../hydra-pop3.c:181
+#, c-format
+msgid "[ERROR] POP3 LOGIN AUTH : %s\n"
+msgstr "[ERROR] POP3 LOGIN AUTH : %s\n"
+
+#: ../hydra-pop3.c:200
+#, c-format
+msgid "[ERROR] POP3 PLAIN AUTH : %s\n"
+msgstr "[ERROR] POP3 PLAIN AUTH : %s\n"
+
+#: ../hydra-pop3.c:245
+#, c-format
+msgid "[ERROR] POP3 CRAM-MD5 AUTH : %s\n"
+msgstr "[ERROR] POP3 CRAM-MD5 AUTH : %s\n"
+
+#: ../hydra-pop3.c:248
+#, c-format
+msgid "[ERROR] POP3 CRAM-SHA1 AUTH : %s\n"
+msgstr "[ERROR] POP3 CRAM-SHA1 AUTH : %s\n"
+
+#: ../hydra-pop3.c:251
+#, c-format
+msgid "[ERROR] POP3 CRAM-SHA256 AUTH : %s\n"
+msgstr "[ERROR] POP3 CRAM-SHA256 AUTH : %s\n"
+
+#: ../hydra-pop3.c:296
+#, c-format
+msgid "[ERROR] POP3 DIGEST-MD5 AUTH : %s\n"
+msgstr "[ERROR] POP3 DIGEST-MD5 AUTH : %s\n"
+
+#: ../hydra-pop3.c:305
+#, c-format
+msgid "[DEBUG] S: %s\n"
+msgstr "[Отладка] S: %s\n"
+
+#: ../hydra-pop3.c:313
+#, c-format
+msgid "[DEBUG] C: %s\n"
+msgstr "[Отладка] C: %s\n"
+
+#: ../hydra-pop3.c:333
+#, c-format
+msgid "[ERROR] POP3 NTLM AUTH : %s\n"
+msgstr "[ERROR] POP3 NTLM AUTH : %s\n"
+
+#: ../hydra-pop3.c:368
+#, c-format
+msgid "[ERROR] POP3 protocol or service shutdown: %s\n"
+msgstr "Ошибка: ошибка протокола POP3 или служба выключена: %s\n"
+
+#: ../hydra-pop3.c:418
+#, c-format
+msgid "[ERROR] Could not find ip %s in pool\n"
+msgstr "[Ошибка] Не могу найти IP %s в пуле\n"
+
+#: ../hydra-pop3.c:422
+#, c-format
+msgid "[ERROR] Could not find ip %s in pool to free memory\n"
+msgstr "[Ошибка] Не могу найти IP %s в пуле для освобождения памяти\n"
+
+#: ../hydra-pop3.c:449 ../hydra-pop3.c:540
+#, c-format
+msgid "[ERROR] Not an POP3 protocol or service shutdown: %s\n"
+msgstr "[Ошибка] Это не POP3 протокол или служба выключена: %s\n"
+
+#: ../hydra-pop3.c:534
+#, fuzzy, c-format
+msgid "[ERROR] pid %d terminating, can not connect\n"
+msgstr ""
+"[Ошибка] Потомок с идентификатором %d завершает свою работу из-за "
+"невозможности соединиться\n"
+
+#: ../hydra-pop3.c:557 ../hydra-pop3.c:602
+msgid "[ERROR] Can not send the CAPABILITY request\n"
+msgstr ""
+
+#: ../hydra-pop3.c:564 ../hydra-pop3.c:607
+msgid "[ERROR] No answer from CAPABILITY request\n"
+msgstr ""
+
+#: ../hydra-pop3.c:725
+msgid "[VERBOSE] using POP3 CLEAR LOGIN mechanism\n"
+msgstr "[VERBOSE] using POP3 CLEAR LOGIN mechanism\n"
+
+#: ../hydra-pop3.c:728
+msgid "[VERBOSE] using POP3 LOGIN AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 LOGIN AUTH mechanism\n"
+
+#: ../hydra-pop3.c:731
+msgid "[VERBOSE] using POP3 PLAIN AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 PLAIN AUTH mechanism\n"
+
+#: ../hydra-pop3.c:736
+msgid "[VERBOSE] APOP not supported by server, using clear login\n"
+msgstr "[VERBOSE] APOP not supported by server, using clear login\n"
+
+#: ../hydra-pop3.c:739
+msgid "[VERBOSE] using POP3 APOP AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 APOP AUTH mechanism\n"
+
+#: ../hydra-pop3.c:747
+msgid "[VERBOSE] using POP3 CRAM-MD5 AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 CRAM-MD5 AUTH mechanism\n"
+
+#: ../hydra-pop3.c:750
+msgid "[VERBOSE] using POP3 CRAM-SHA1 AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 CRAM-SHA1 AUTH mechanism\n"
+
+#: ../hydra-pop3.c:753
+msgid "[VERBOSE] using POP3 CRAM-SHA256 AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 CRAM-SHA256 AUTH mechanism\n"
+
+#: ../hydra-pop3.c:756
+msgid "[VERBOSE] using POP3 DIGEST-MD5 AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 DIGEST-MD5 AUTH mechanism\n"
+
+#: ../hydra-pop3.c:760
+msgid "[VERBOSE] using POP3 NTLM AUTH mechanism\n"
+msgstr "[VERBOSE] using POP3 NTLM AUTH mechanism\n"
+
+#: ../hydra-postgres.c:50
+#, c-format
+msgid "connection string: %s\n"
+msgstr ""
+
+#: ../hydra-sapr3.c:106 ../hydra-ssh.c:51
+#, c-format
+msgid "[ERROR] could not connect to target port %d\n"
+msgstr "[Ошибка] невозможно соединиться с %d портом цели\n"
+
+#: ../hydra-sip.c:116
+#, c-format
+msgid "[VERBOSE] Will reconnect using external IP address %s\n"
+msgstr "[VERBOSE] Will reconnect using external IP address %s\n"
+
+#: ../hydra-sip.c:119
+msgid "[ERROR] Could not find external IP address in server answer\n"
+msgstr "[ERROR] Could not find external IP address in server answer\n"
+
+#: ../hydra-sip.c:125
+msgid "[ERROR] no www-authenticate header found!\n"
+msgstr "[Ошибка] Не обнаружен заголовок www-authenticate\n"
+
+#: ../hydra-sip.c:129 ../hydra-sip.c:159
+#, c-format
+msgid "[INFO] S: %s\n"
+msgstr "[INFO] S: %s\n"
+
+#: ../hydra-sip.c:144
+#, c-format
+msgid "[INFO] C: %s\n"
+msgstr "[Информация] S: %s\n"
+
+#: ../hydra-sip.c:189
+#, c-format
+msgid "[ERROR] sip module is not ipv6 enabled yet, patches are appreciated.\n"
+msgstr "[Ошибка] поддержка IPv6 для модуля sip не реализована.\n"
+
+#: ../hydra-smb.c:227
+msgid "[ERROR] Reading PwDump file.\n"
+msgstr "[Ошибка] Ошибка при чтении PwDump файла.\n"
+
+#: ../hydra-smb.c:231
+msgid "[VERBOSE] Found \"NO PASSWORD\" for LM Hash.\n"
+msgstr ""
+
+#: ../hydra-smb.c:238
+#, c-format
+msgid "[VERBOSE] Convert ASCII PwDump LM Hash (%s).\n"
+msgstr ""
+
+#: ../hydra-smb.c:250
+#, c-format
+msgid "[ERROR] Invalid char (%c) for hash.\n"
+msgstr "[Ошибка] недопустимый символ (%c) для хэша.\n"
+
+#: ../hydra-smb.c:326
+msgid "[ERROR] reading PWDUMP file.\n"
+msgstr "[Ошибка] Ошибка при чтении файла PWDUMP.\n"
+
+#: ../hydra-smb.c:797
+msgid "[VERBOSE] Setting Negotiate Protocol Response for LM.\n"
+msgstr ""
+
+#: ../hydra-smb.c:825
+msgid "[VERBOSE] Server requested PLAINTEXT password.\n"
+msgstr ""
+
+#: ../hydra-smb.c:830
+msgid ""
+"[VERBOSE] Server requested PLAINTEXT password. HASH password mode not "
+"supported for this configuration.\n"
+msgstr ""
+
+#: ../hydra-smb.c:835
+msgid ""
+"[VERBOSE] Server requested PLAINTEXT password. MACHINE password mode not "
+"supported for this configuration.\n"
+msgstr ""
+
+#: ../hydra-smb.c:841
+msgid ""
+"[VERBOSE] Server requested ENCRYPTED password without security signatures.\n"
+msgstr ""
+
+#: ../hydra-smb.c:847
+msgid "[VERBOSE] Server requested ENCRYPTED password.\n"
+msgstr ""
+
+#: ../hydra-smb.c:852
+#, c-format
+msgid ""
+"[VERBOSE] Unknown security mode request: %2.2X. Proceeding using ENCRYPTED "
+"password mode.\n"
+msgstr ""
+
+#: ../hydra-smb.c:884
+#, c-format
+msgid "[VERBOSE] Server machine name: %s\n"
+msgstr ""
+
+#: ../hydra-smb.c:885
+#, c-format
+msgid "[VERBOSE] Server primary domain: %s\n"
+msgstr ""
+
+#: ../hydra-smb.c:954
+msgid "[VERBOSE] Attempting LM password authentication.\n"
+msgstr ""
+
+#: ../hydra-smb.c:992
+msgid "[VERBOSE] Attempting NTLM password authentication.\n"
+msgstr ""
+
+#: ../hydra-smb.c:1030
+msgid "[VERBOSE] Attempting LMv2 password authentication.\n"
+msgstr ""
+
+#: ../hydra-smb.c:1069
+msgid "[VERBOSE] Attempting LMv2/NTLMv2 password authentication.\n"
+msgstr ""
+
+#: ../hydra-smb.c:1108
+#, c-format
+msgid "[VERBOSE] HashNTLMv2 response length: %d\n"
+msgstr ""
+
+#: ../hydra-smb.c:1117
+msgid "[VERBOSE] Attempting PLAINTEXT password authentication.\n"
+msgstr ""
+
+#: ../hydra-smb.c:1159
+msgid "[ERROR] Security_mode was not properly set. This should not happen.\n"
+msgstr ""
+
+#: ../hydra-smb.c:1184
+#, c-format
+msgid "[VERBOSE] Set NBSS header length: %2.2X\n"
+msgstr ""
+
+#: ../hydra-smb.c:1189
+#, c-format
+msgid "[VERBOSE] Set byte count: %2.2X\n"
+msgstr ""
+
+#: ../hydra-smb.c:1226
+#, c-format
+msgid "[VERBOSE] SMBSessionRet: %8.8X SMBerr: %4.4X SMBaction: %2.2X\n"
+msgstr ""
+
+#: ../hydra-smb.c:1235
+#, fuzzy, c-format
+msgid ""
+"[%d][smb] Host: %s Account: %s Error: Invalid account (Anonymous success)\n"
+msgstr ""
+"[%d][smb] Хост: %s Аккаунт: %s Ошибка: Неправильный Аккаунт (Анонимный "
+"доступ)\n"
+
+#: ../hydra-smb.c:1242
+msgid ""
+"[ERROR] Invalid parameter status received, either the account or the method "
+"used are not valid\n"
+msgstr ""
+
+#: ../hydra-smb.c:1246
+msgid ""
+"[VERBOSE] Valid password, GPO Disabling Remote Connections Using NULL "
+"Passwords\n"
+msgstr ""
+
+#: ../hydra-smb.c:1251
+msgid ""
+"[VERBOSE] Valid password, GPO Deny access to this computer from the network\n"
+msgstr ""
+
+#: ../hydra-smb.c:1256
+msgid "[VERBOSE] Valid password, account expired\n"
+msgstr ""
+
+#: ../hydra-smb.c:1261
+msgid ""
+"[VERBOSE] Valid password, password expired and must be changed on next "
+"logon\n"
+msgstr ""
+
+#: ../hydra-smb.c:1266
+msgid "[VERBOSE] Valid password, but logon hours invalid\n"
+msgstr ""
+
+#: ../hydra-smb.c:1271
+#, c-format
+msgid ""
+"[%d][smb] Host: %s Account: %s Error: Incorrect password or account "
+"disabled\n"
+msgstr ""
+"[%d][smb] Хост: %s Аккаунт: %s Ошибка: Неверный пароль или аккаунт "
+"выключен)\n"
+
+#: ../hydra-smb.c:1273
+msgid "[INFO] LM dialect may be disabled, try LMV2 instead\n"
+msgstr ""
+
+#: ../hydra-smb.c:1276
+#, c-format
+msgid "[%d][smb] Host: %s Account: %s Error: ACCOUNT_CHANGE_PASSWORD\n"
+msgstr "[%d][smb] Хост: %s Аккаунт: %s Ошибка: ACCOUNT_CHANGE_PASSWORD\n"
+
+#: ../hydra-smb.c:1282
+#, c-format
+msgid "[%d][smb] Host: %s Account: %s Error: PASSWORD EXPIRED\n"
+msgstr "[%d][smb] Хост: %s Аккаунт: %s Ошибка: PASSWORD EXPIRED\n"
+
+#: ../hydra-smb.c:1286
+#, c-format
+msgid "[%d][smb] Host: %s Account: %s Error: ACCOUNT_DISABLED\n"
+msgstr "[%d][smb] Хост: %s Аккаунт: %s Ошибка: ACCOUNT_DISABLED\n"
+
+#: ../hydra-smb.c:1290
+#, c-format
+msgid "[%d][smb] Host: %s Account: %s Error: ACCOUNT_LOCKED\n"
+msgstr "[%d][smb] Хост: %s Аккаунт: %s Ошибка: ACCOUNT_LOCKED\n"
+
+#: ../hydra-smb.c:1294
+#, c-format
+msgid ""
+"[%d][smb] Host: %s Account: %s Error: "
+"NT_STATUS_TRUSTED_RELATIONSHIP_FAILURE\n"
+msgstr ""
+"[%d][smb] Хост: %s Аккаунт: %s Ошибка: "
+"NT_STATUS_TRUSTED_RELATIONSHIP_FAILURE\n"
+
+#: ../hydra-smb.c:1298
+#, c-format
+msgid "[%d][smb] Host: %s Account: %s Unknown Error: %6.6X\n"
+msgstr "[%d][smb] Хост: %s Аккаунт: %s Неизвестная Ошибка: %6.6X\n"
+
+#: ../hydra-smb.c:1342
+msgid "[VERBOSE] requested line mode\n"
+msgstr "[Подробности] запрошен построчный режим\n"
+
+#: ../hydra-smb.c:1368
+#, c-format
+msgid "[VERBOSE] accntFlag is %d\n"
+msgstr ""
+"[Подробности] accntFlag is %d\n"
+"\n"
+
+#: ../hydra-smb.c:1369
+#, c-format
+msgid "[VERBOSE] hashFlag is %d\n"
+msgstr ""
+"[Подробности] hashFlag is %d\n"
+"\n"
+
+#: ../hydra-smb.c:1387
+msgid "[VERBOSE] Attempting NETBIOS mode.\n"
+msgstr "[VERBOSE] Attempting NETBIOS mode.\n"
+
+#: ../hydra-smb.c:1391
+msgid "[VERBOSE] Attempting WIN2K Native mode.\n"
+msgstr "[VERBOSE] Attempting WIN2K Native mode.\n"
+
+#: ../hydra-smb.c:1399
+msgid "Failed to establish WIN2000_NATIVE mode. Attempting WIN_NETBIOS mode.\n"
+msgstr ""
+"Невозможно установить режим WIN2000_NATIVE. Попытка установить режим "
+"WIN_NETBIOS.\n"
+
+#: ../hydra-smb.c:1410
+#, c-format
+msgid "[ERROR] Session Setup Failed (is the server service running?)\n"
+msgstr ""
+"[Ошибка] Невозможно подготовить сессию (работает ли служба на сервере?)\n"
+
+#: ../hydra-smb.c:1424
+#, c-format
+msgid "[ERROR] Caught unknown return code (%d), exiting!\n"
+msgstr "[Ошибка] Неизвестный код возврата (%d), выход!\n"
+
+#: ../hydra-smtp.c:64
+#, c-format
+msgid "[ERROR] SMTP PLAIN AUTH : %s\n"
+msgstr "[Ошибка] SMTP PLAIN AUTH : %s\n"
+
+#: ../hydra-smtp.c:93
+#, c-format
+msgid "[ERROR] SMTP CRAM-MD5 AUTH : %s\n"
+msgstr "[Ошибка] SMTP CRAM-MD5 AUTH : %s\n"
+
+#: ../hydra-smtp.c:120
+#, c-format
+msgid "[ERROR] SMTP DIGEST-MD5 AUTH : %s\n"
+msgstr "[Ошибка] SMTP DIGEST-MD5 AUTH : %s\n"
+
+#: ../hydra-smtp.c:158
+#, c-format
+msgid "[ERROR] SMTP NTLM AUTH : %s\n"
+msgstr "[Ошибка] SMTP NTLM AUTH : %s\n"
+
+#: ../hydra-smtp.c:183
+#, c-format
+msgid ""
+"[ERROR] SMTP LOGIN AUTH, either this auth is disabled\n"
+"or server is not using auth: %s\n"
+msgstr ""
+"[ERROR] SMTP LOGIN AUTH, either this auth is disabled\n"
+"or server is not using auth: %s\n"
+
+#: ../hydra-smtp.c:198
+#, c-format
+msgid "[ERROR] SMTP LOGIN AUTH : %s\n"
+msgstr "[Ошибка] SMTP LOGIN AUTH : %s\n"
+
+#: ../hydra-smtp.c:285
+#, c-format
+msgid "[WARNING] SMTP does not allow to connect: %s\n"
+msgstr "[Предупреждение] SMTP не позволяет соединиться: %s\n"
+
+#: ../hydra-smtp.c:400
+msgid "[VERBOSE] using SMTP LOGIN AUTH mechanism\n"
+msgstr "[Подробности] использование SMTP LOGIN AUTH механизма\n"
+
+#: ../hydra-smtp.c:403
+msgid "[VERBOSE] using SMTP PLAIN AUTH mechanism\n"
+msgstr "[Подробности] использование SMTP PLAIN AUTH механизма\n"
+
+#: ../hydra-smtp.c:407
+msgid "[VERBOSE] using SMTP CRAM-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование SMTP CRAM-MD5 AUTH механизма\n"
+
+#: ../hydra-smtp.c:410
+msgid "[VERBOSE] using SMTP DIGEST-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование SMTP DIGEST-MD5 AUTH механизма\n"
+
+#: ../hydra-smtp.c:414
+msgid "[VERBOSE] using SMTP NTLM AUTH mechanism\n"
+msgstr "[Подробности] использование SMTP NTLM AUTH механизма\n"
+
+#: ../hydra-smtp-enum.c:131
+#, c-format
+msgid "[ERROR] command is disabled on the server (choose different method): %s"
+msgstr ""
+
+#: ../hydra-smtp-enum.c:185
+#, c-format
+msgid "Warning: SMTP does not allow to connect: %s\n"
+msgstr "Предупреждение: SMTP не позволяет соединиться: %s\n"
+
+#: ../hydra-smtp-enum.c:204
+#, c-format
+msgid "Warning: SMTP does not respond correctly to HELO: %s\n"
+msgstr "[Предупреждение] SMTP не отвечает корректно на HELO: %s\n"
+
+#: ../hydra-smtp-enum.c:222
+msgid "using SMTP VRFY command\n"
+msgstr ""
+
+#: ../hydra-smtp-enum.c:225
+msgid "using SMTP EXPN command\n"
+msgstr ""
+
+#: ../hydra-smtp-enum.c:228
+msgid "using SMTP RCPT TO command\n"
+msgstr ""
+
+#: ../hydra-socks5.c:41
+msgid "[ERROR] Sorry Socks4 / Socks4a ident is not supported\n"
+msgstr ""
+
+#: ../hydra-socks5.c:43 ../hydra-socks5.c:54
+#, c-format
+msgid "[ERROR] Socks5 protocol or service shutdown: %s\n"
+msgstr "Ошибка протокола Socks5 или служба выключена: %s\n"
+
+#: ../hydra-socks5.c:49
+msgid "[INFO] Socks5 server does NOT require any authentication!\n"
+msgstr "Сервер Socks5 НЕ требует никакой аутентификации!\n"
+
+#: ../hydra-socks5.c:155
+msgid "[ERROR] Server may blocking connections\n"
+msgstr "[Ошибка] Возможно сервер блокирует соединения\n"
+
+#: ../hydra-ssh.c:131
+#, c-format
+msgid "[ERROR] ssh protocol error\n"
+msgstr "[Ошибка] ошибка протокола ssh\n"
+
+#: ../hydra-ssh.c:137
+#, c-format
+msgid "[ERROR] ssh target does not support password auth\n"
+msgstr "[Ошибка] ssh-сервер цели не поддерживает парольную аутентификацию\n"
+
+#: ../hydra-ssh.c:189
+#, c-format
+msgid ""
+"[INFO] Successful, password authentication is supported by ssh://%s:%d\n"
+msgstr ""
+
+#: ../hydra-ssh.c:193
+#, c-format
+msgid "[ERROR] target ssh://%s:%d/ does not support password authentication.\n"
+msgstr "[Ошибка] цель ssh://%s:%d/ не поддерживает аутентификацию по паролю.\n"
+
+#: ../hydra-svn.c:114
+#, c-format
+msgid "[ERROR] Access refused (error code %d) , message: %s\n"
+msgstr "[Ошибка] В доступе отказано (код ошибки %d) , сообщение %s\n"
+
+#: ../hydra-svn.c:132
+msgid "[VERBOSE] Access granted\n"
+msgstr "[Подробности] Доступ разрешен\n"
+
+#: ../hydra-svn.c:185
+msgid ""
+"[ERROR] Caught unknown return code, try verbose option for more details\n"
+msgstr ""
+"[Ошибка] Неизвестный код возврата, попробуйте опцию подробного вывода для "
+"получения деталей\n"
+
+#: ../hydra-telnet.c:134 ../hydra-telnet.c:142
+msgid "[ERROR] Not a TELNET protocol or service shutdown\n"
+msgstr "[Ошибка] Это не TELNET протокол или служба выключена: %s\n"
+
+#: ../hydra-telnet.c:149
+#, c-format
+msgid "DEBUG: waittime set to %d\n"
+msgstr "Отладка: задано время ожидания: %d\n"
+
+#: ../hydra-telnet.c:157
+msgid "DEBUG: requested line mode\n"
+msgstr "Отладка: запрошен построчный режим\n"
+
+#: ../hydra-telnet.c:164
+msgid "DEBUG: TELNETD peer does not like linemode!\n"
+msgstr "Отладка: узел с TELNETD не переносит построчный режим!\n"
+
+#: ../hydra-vmauthd.c:35
+#, c-format
+msgid "[ERROR] vmware authd protocol or service shutdown: %s\n"
+msgstr "Ошибка: ошибка протокола vmware authd или служба выключена: %s\n"
+
+#: ../hydra-vmauthd.c:107
+#, c-format
+msgid "[ERROR] Not an vmware authd protocol or service shutdown: %s\n"
+msgstr "[Ошибка] Это не vmware authd протокол или служба выключена: %s\n"
+
+#: ../hydra-vmauthd.c:112
+#, c-format
+msgid ""
+"[ERROR] this vmware authd protocol is not supported, please report: %s\n"
+msgstr ""
+"[Ошибка] данный vmware authd протокол не поддерживается, пожалуйста "
+"сообщите: %s\n"
+
+#: ../hydra-vmauthd.c:121
+msgid "[ERROR] Can't use SSL\n"
+msgstr "[Ошибка] Невозможно использовать TLS\n"
+
+#: ../hydra-vnc.c:62
+msgid "[ERROR] VNC server connection failed\n"
+msgstr "[Ошибка] невозможно установить VNC соединение\n"
+
+#: ../hydra-vnc.c:78
+#, c-format
+msgid "[ERROR] VNC server told us to quit %c\n"
+msgstr "[Ошибка] VNC сервер дал команду \\\"выйти\\\" %c\n"
+
+#: ../hydra-vnc.c:81 ../hydra-vnc.c:83
+msgid "VNC server does not require authentication.\n"
+msgstr "VNC сервер не требует аутентификацию.\n"
+
+#: ../hydra-vnc.c:111
+msgid "[ERROR] unknown VNC security type\n"
+msgstr "[Ошибка] неизвестный тип безопасности VNC\n"
+
+#: ../hydra-vnc.c:132
+#, c-format
+msgid "[VERBOSE] Authentication failed for password %s\n"
+msgstr ""
+
+#: ../hydra-vnc.c:139
+#, c-format
+msgid "[ERROR] unknown VNC server security result %d\n"
+msgstr "[Ошибка] неизвестный ответ от VNC сервера %d\n"
+
+#: ../hydra-vnc.c:177
+#, c-format
+msgid "[ERROR] Not a VNC protocol or service shutdown: %s\n"
+msgstr "[Ошибка] Это не VNC протокол или служба выключена: %s\n"
+
+#: ../hydra-vnc.c:189
+msgid ""
+"VNC server reported too many authentication failures, have to wait some "
+"seconds ...\n"
+msgstr ""
+
+#: ../hydra-vnc.c:196
+#, c-format
+msgid "[VERBOSE] Server banner is %s\n"
+msgstr "[Подробности] Баннер сервера: %s\n"
+
+#: ../hydra-xmpp.c:116 ../hydra-xmpp.c:209
+msgid "[ERROR] xmpp could not extract challenge from server\n"
+msgstr "[ERROR] xmpp could not extract challenge from server\n"
+
+#: ../hydra-xmpp.c:274
+#, c-format
+msgid "[ERROR] Protocol failure, try using another auth method. %s\n"
+msgstr ""
+"[Ошибка] Ошибка протокола, попробуйте другой метод аутентификации. %s\n"
+
+#: ../hydra-xmpp.c:293
+msgid ""
+"[ERROR] can't extract the domain name, you have to specify a fqdn xmpp "
+"server, the domain name will be used in the jabber init request\n"
+msgstr ""
+"[ERROR] can't extract the domain name, you have to specify a fqdn xmpp "
+"server, the domain name will be used in the jabber init request\n"
+
+#: ../hydra-xmpp.c:344
+#, c-format
+msgid "[ERROR] Not an xmpp protocol or service shutdown: %s\n"
+msgstr "[Ошибка] Это не xmpp протокол или служба выключена: %s\n"
+
+#: ../hydra-xmpp.c:351
+#, c-format
+msgid ""
+"[ERROR] %s host unknown, you have to specify a fqdn xmpp server, the domain "
+"name will be used in the jabber init request : %s\n"
+msgstr ""
+"[Ошибка] неизвестный хост %s, вы должны указать fqdn xmpp сервер, доменное "
+"имя будет использоваться в jabber init запросе: %s\n"
+
+#: ../hydra-xmpp.c:353
+#, c-format
+msgid "[ERROR] xmpp protocol : %s\n"
+msgstr "[Ошибка] xmpp протокол: %s\n"
+
+#: ../hydra-xmpp.c:382
+#, c-format
+msgid "[ERROR] no authentication methods can be identified %s\n"
+msgstr "[Ошибка] Невозможно обнаружить методы аутентификации %s\n"
+
+#: ../hydra-xmpp.c:415
+msgid "[VERBOSE] using XMPP LOGIN AUTH mechanism\n"
+msgstr "[Подробности] использование XMPP LOGIN AUTH механизма\n"
+
+#: ../hydra-xmpp.c:418
+msgid "[VERBOSE] using XMPP PLAIN AUTH mechanism\n"
+msgstr "[Подробности] использование XMPP PLAIN AUTH механизма\n"
+
+#: ../hydra-xmpp.c:422
+msgid "[VERBOSE] using XMPP CRAM-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование XMPP CRAM-MD5 AUTH механизма\n"
+
+#: ../hydra-xmpp.c:425
+msgid "[VERBOSE] using XMPP SCRAM-SHA1 AUTH mechanism\n"
+msgstr "[Подробности] использование XMPP CRAM-SHA1 AUTH механизма\n"
+
+#: ../hydra-xmpp.c:428
+msgid "[VERBOSE] using XMPP DIGEST-MD5 AUTH mechanism\n"
+msgstr "[Подробности] использование XMPP DIGEST-MD5 AUTH механизма\n"
+
+#: ../sasl.c:57
+msgid "Error: Can't convert UTF-8, you should install libidn\n"
+msgstr "Ошибка: Can't convert UTF-8, you should install libidn\n"
+
+#: ../sasl.c:63
+msgid "Error: Can't allocate memory\n"
+msgstr "Ошибка: Невозможно выделить память\n"
+
+#: ../sasl.c:397
+msgid "Error: DIGEST-MD5 nonce from server could not be extracted\n"
+msgstr "Ошибка: DIGEST-MD5 nonce from server could not be extracted\n"
+
+#: ../sasl.c:420
+msgid "Error: DIGEST-MD5 realm from server could not be extracted\n"
+msgstr "Ошибка: DIGEST-MD5 realm from server could not be extracted\n"
+
+#: ../sasl.c:442
+msgid ""
+"Error: DIGEST-MD5 quality of protection only authentication is not supported "
+"by server\n"
+msgstr ""
+
+#: ../sasl.c:461
+msgid "Error: DIGEST-MD5 algorithm from server could not be extracted\n"
+msgstr "Ошибка: DIGEST-MD5 algorithm from server could not be extracted\n"
+
+#: ../sasl.c:475
+#, c-format
+msgid "Error: DIGEST-MD5 algorithm not based on md5, based on %s\n"
+msgstr "Ошибка: DIGEST-MD5 algorithm not based on md5, based on %s\n"
+
+#: ../sasl.c:649
+msgid "Error: Can't understand server message\n"
+msgstr "Ошибка: Can't understand server message\n"
+
+#: ../sasl.c:663
+msgid "Error: Can't understand server response\n"
+msgstr "Ошибка: Can't understand server response\n"
+
+#: ../sasl.c:672
+msgid "Error: Could not identify server nonce value\n"
+msgstr "Ошибка: Невозможно определить специальное значение сервера\n"
+
+#: ../sasl.c:682
+msgid "Error: Could not identify server salt value\n"
+msgstr "Ошибка: Could not identify server salt value\n"
+
+#: ../sasl.c:692
+msgid "Error: Failed to generate PBKDF2\n"
+msgstr "Ошибка: Failed to generate PBKDF2\n"
+
+#~ msgid "Error: Child with pid %d terminating, can not connect\n"
+#~ msgstr ""
+#~ "Ошибка: Потомок с идентификатором %d завершает свою работу из-за "
+#~ "невозможности соединиться\n"
+
+#~ msgid "Caught unknown return code, exiting!\n"
+#~ msgstr "Неизвестный код возврата, выход!\n"
+
+#~ msgid "Error: %s\n"
+#~ msgstr "Ошибка: %s\n"
+
+#~ msgid "Error: Fork for children failed"
+#~ msgstr "Ошибка: Невозможно создать процесс"
+
+#~ msgid "Error: socketpair creation failed"
+#~ msgstr "Ошибка: невозможно создать socketpair"
+
+#~ msgid ""
+#~ "[DEBUG] pass_state: %d  login_no: %lu  pass_no: %lu (countlogin: %lu  "
+#~ "countpass:%lu)\n"
+#~ msgstr ""
+#~ "[Отладка] pass_state: %d  login_no: %lu  pass_no: %lu (countlogin: %lu  "
+#~ "countpass:%lu)\n"
+
+#~ msgid "[STATUS] attack finished for %s (waiting for children to finish)\n"
+#~ msgstr "[Статус] атака завершена для %s (ожидание завершения потомков)\n"
+
+#~ msgid "no option may be supplied together with -R"
+#~ msgstr "вместе -R не может быть использована никакая другая опция"
+
+#~ msgid ""
+#~ "The -M FILE option can not be used together with a host on the commandline"
+#~ msgstr ""
+#~ "Опция -M ИМЯФАЙЛА не может быть использована вместе с хостом в командной "
+#~ "строке"
+
+#~ msgid "You need to define a service to attack"
+#~ msgstr "Вы должны задать службу для атаки"
+
+#~ msgid "[DEBUG] opt:%d argc:%d mod:%s tgt:%s port:%d misc:%s\n"
+#~ msgstr "[DEBUG] opt:%d argc:%d mod:%s tgt:%s port:%d misc:%s\n"
+
+#~ msgid "Unknown service"
+#~ msgstr "Неизвестная служба"
+
+#~ msgid "File for login:password information is empty!"
+#~ msgstr "Файл с информацией о логинах и паролях пуст!"
+
+#~ msgid ""
+#~ "Warning: More tasks defined than allowed per maximal connections per "
+#~ "server. Tasks reduced to %d.\n"
+#~ msgstr ""
+#~ "Предупреждение: Задано большее количество задач, чем максимальное "
+#~ "количество разрешенных соединений для сервера. Количество задач сокращено "
+#~ "до %d.\n"
+
+#~ msgid "[VERBOSE] Resolving addresses ... "
+#~ msgstr "[Подробности] Определение адресов ... "
+
+#~ msgid "[failed for %s] "
+#~ msgstr "[неудача для %s] "
+
+#~ msgid ""
+#~ "[DEBUG] selected target no %d for child %d (%d fail_count/%d use_count)\n"
+#~ msgstr ""
+#~ "[Отладка] выбранная цель не %d для потомка %d (%d fail_count/%d "
+#~ "use_count)\n"
+
+#~ msgid "[VERBOSE] Skipping current login as we cracked it\n"
+#~ msgstr "[Подробности] Пропуск текущего логина, т.к. он уже сломан\n"
+
+#~ msgid ""
+#~ "[VERBOSE] Skipping current login as the service reported it does not "
+#~ "exist\n"
+#~ msgstr ""
+#~ "[Подробности] Пропуск текущего логина т.к. служба сообщила, что его не "
+#~ "существует\n"
+
+#~ msgid "[STATUS] attack finished for %s\n"
+#~ msgstr "[Статус] атака завершена для %s\n"
+
+#~ msgid ""
+#~ "[ATTEMPT] target %s - login \"%s\" - pass \"%s\" - child %d - %lu of %lu\n"
+#~ msgstr ""
+#~ "[Попытка] цель %s - логин \"%s\" - пароль \"%s\" - потомок %d - %lu из "
+#~ "%lu\n"
+
+#~ msgid ""
+#~ "[DEBUG] - will be retried at the end: ip %s - login %s - pass %s - child "
+#~ "%d\n"
+#~ msgstr ""
+#~ "[Отладка] - не будет протестирована следующая комбинация: ip %s - логин "
+#~ "%s - пароль %s - потомок %d\n"
+
+#~ msgid "[VERBOSE] Retrying connection for child %d\n"
+#~ msgstr "[Подробности] Повторная попытка соединения для потомка %d\n"
+
+#~ msgid ""
+#~ "Warning: child %d reported error no %d, terminating it and "
+#~ "restarting ...\n"
+#~ msgstr ""
+#~ "Предупреждение: от потомка %d пришел код ошибки %d, завершение потомка и "
+#~ "его перезапуск ...\n"
+
+#~ msgid "Error: All childrens are dead!\n"
+#~ msgstr "Ошибка: Все дочерние процессы завершены!\n"
+
+#~ msgid "[DEBUG] %d of %d done, error %d\n"
+#~ msgstr "[DEBUG] %d of %d done, error %d\n"
+
+#~ msgid "Process %d: Can not connect [timeout], process exiting\n"
+#~ msgstr ""
+#~ "Процесс %d: Невозможно соединиться [превышено время ожидания], процесс "
+#~ "завершается\n"
+
+#~ msgid ""
+#~ "Process %d: Can not connect [unreachable], retrying (%d of %d retries)\n"
+#~ msgstr ""
+#~ "Процесс %d: Невозможно соединиться [недостижимо], повторная попытка (%d "
+#~ "из %d попыток)\n"
+
+#~ msgid "[ERROR] CONNECT call to proxy failed with code %c%c%c\n"
+#~ msgstr "Ошибка: CONNECT - вызов прокси завершился неудачей с кодом %c%c%c\n"
+
+#~ msgid "[ERROR] no msg passed.\n"
+#~ msgstr "[ERROR] no msg passed.\n"
+
+#~ msgid "[%d][%s] login: %s\n"
+#~ msgstr "[%d][%s][успешное сканирование] логин: %s\n"
+
+#~ msgid "[%d][%s] login: %s   password: %s\n"
+#~ msgstr "[%d][%s][успешное сканирование] логин: %s   пароль: %s\n"
+
+#~ msgid "[%d][%s] host: %s   password: %s\n"
+#~ msgstr "[%d][%s][успешное сканирование] логин: %s   пароль: %s\n"
+
+#~ msgid "domain"
+#~ msgstr "домен"
+
+#~ msgid "[%d][%s] host: %s   login: %s\n"
+#~ msgstr "[%d][%s][успешное сканирование] хост: %s   пароль: %s\n"
+
+#~ msgid "[%d][%s] host: %s   login: %s   %s: %s\n"
+#~ msgstr "[%d][%s][успешное сканирование] хост: %s   логин: %s   %s: %s\n"
+
+#~ msgid "[%d][%s] host: %s   login: %s   password: %s  [%s]\n"
+#~ msgstr ""
+#~ "[%d][%s][успешное сканирование] хост: %s   логин: %s   пароль: %s  [%s]\n"
+
+#~ msgid "[%d][%s] host: %s   login: %s   password: %s\n"
+#~ msgstr "[%d][%s][успешное сканирование] хост: %s   логин: %s   пароль: %s\n"
+
+#~ msgid "[Error] %s\n"
+#~ msgstr "[Ошибка] %s\n"
+
+#~ msgid "[Error] Only mysql 3.23.x and 4.0.x is supported\n"
+#~ msgstr "[Ошибка] Поддерживаются только mysql версий 3.23.x и 4.0.x\n"
+
+#~ msgid "error allocating memory\n"
+#~ msgstr "ошибка выделения памяти\n"
+
+#~ msgid "database: Oracle_error: %s\n"
+#~ msgstr "database: Oracle_error: %s\n"
+
+#~ msgid "database: %s\n"
+#~ msgstr "база данных: %s\n"
+
+#~ msgid "[ERROR] ora_hash_password: in initial_permutation\n"
+#~ msgstr "[ERROR] ora_hash_password: in initial_permutation\n"
+
+#~ msgid "[ERROR] ora_hash_password: in convert_byteorder\n"
+#~ msgstr "[ERROR] ora_hash_password: in convert_byteorder\n"
+
+#~ msgid "[ERROR] ora_hash_password: in DES crypt\n"
+#~ msgstr "[ERROR] ora_hash_password: in DES crypt\n"
+
+#~ msgid "[ERROR] ora_hash_password: in extracting Oracle hash\n"
+#~ msgstr "[ERROR] ora_hash_password: in extracting Oracle hash\n"
+
+#~ msgid "[ERROR] generating Oracle hash\n"
+#~ msgstr "[ERROR] generating Oracle hash\n"
+
+#~ msgid "[VERBOSE] using connectiong string: %s\n"
+#~ msgstr "[Подробности] использование строки соединения %s\n"
+
+#~ msgid "[VERBOSE] using SID CLEAR mechanism\n"
+#~ msgstr "[Подробности] использование SID CLEAR механизма\n"
+
+#~ msgid "[VERBOSE] using SID PLAIN mechanism\n"
+#~ msgstr "[Подробности] использование SID PLAIN механизма\n"
+
+#~ msgid "[VERBOSE] DEBUG C: %s\n"
+#~ msgstr "[VERBOSE] DEBUG C: %s\n"
+
+#~ msgid "[ERROR] Get error code 404 : user '%s' not found\n"
+#~ msgstr "[ERROR] Get error code 404 : user '%s' not found\n"
+
+#~ msgid "Session Setup Failed: "
+#~ msgstr "Ошибка при установлении сессии: "
+
+#~ msgid "Caught unknown return code (%d), exiting!\n"
+#~ msgstr "Неизвестный код возврата (%d), выход!\n"
+
+#~ msgid "AUTH DIGEST-MD5\r\n"
+#~ msgstr "AUTH DIGEST-MD5\r\n"
+
+#~ msgid "DEBUG C: %s"
+#~ msgstr "Отладка C: %s"
+
+#~ msgid "DEBUG S: %s"
+#~ msgstr "Отладка S: %s"
+
+#~ msgid "Server %s"
+#~ msgstr "Сервер %s"
+
+#~ msgid "might be a false positive!"
+#~ msgstr "может быть ложноположительным!"
+
+#~ msgid "Error: socks5 not ipv6 enabled\n"
+#~ msgstr "Ошибка: для socks5 невозможно использовать iptv6\n"
+
+#~ msgid "Error: Not a TELNET protocol or service shutdown: %s\n"
+#~ msgstr "Ошибка: Это не TELNET протокол или служба выключена: %s\n"
+
+#~ msgid "Error: Not an VNC protocol or service shutdown: %s\n"
+#~ msgstr "Ошибка: Это не VNC протокол или служба выключена: %s\n"
+
+#~ msgid "Server banner is %s\n"
+#~ msgstr "Server banner is %s\n"
+
+#~ msgid "Warning: option -g is deprected, ignored.\n"
+#~ msgstr ""
+#~ "Предупреждение: опция -g не рекомендована к использованию, опция "
+#~ "исключена.\n"
+
+#~ msgid "Error: unknown option -%c\n"
+#~ msgstr "Ошибка: неизвестная опция -%c\n"
+
+#~ msgid "Please select ldap2 or ldap3 as protocol\n"
+#~ msgstr "Пожалуйста выберете  ldap2 или ldap3 в качестве протокола\n"
+
+#~ msgid "%s %s (c) 2006 by %s - use allowed only for legal purposes.\n"
+#~ msgstr ""
+#~ "%s %s (c) 2006 написана %s - разрешено использование только в легальных "
+#~ "целях.\n"
+
+#~ msgid "%s (%s) starting at %s\n"
+#~ msgstr "%s (%s) старт в %s\n"
+
+#~ msgid ""
+#~ "Dump: %.2x %.2x %.2x %.2x  %.2x %.2x %.2x %.2x   %.2x %.2x %.2x %.2x  "
+#~ "%.2x %.2x %.2x %.2x\n"
+#~ msgstr ""
+#~ "Дамп: %.2x %.2x %.2x %.2x  %.2x %.2x %.2x %.2x   %.2x %.2x %.2x %.2x  "
+#~ "%.2x %.2x %.2x %.2x\n"
+
+#~ msgid "[%d][%s] host: %s   login: %s [%s]\n"
+#~ msgstr "[%d][%s][успешное сканирование] хост: %s   логин: %s [%s]\n"
+
+#~ msgid "Error: Not an POP3 protocol or service shutdown:\n"
+#~ msgstr "Ошибка: Это не POP3 протокол или служба выключена:\n"
+
+#~ msgid "fatal fuck up while parsing sip reply!\n"
+#~ msgstr "непредвиденная ситуация в процессе разбора sip-ответа!\n"
+
+#~ msgid "Error: smb_init() failed\n"
+#~ msgstr "Ошибка: вызов smb_init() завершился неудачей\n"
+
+#~ msgid "SMBNT Module requires -m METHOD\n"
+#~ msgstr "Модуль SMBNT требует опции -m МЕТОД\n"
+
+#~ msgid "Error: SMTP AUTH LOGIN error: %s\n"
+#~ msgstr "Ошибка: ошибка SMTP AUTH LOGIN: %s\n"
+
+#~ msgid "[VERBOSE] VNC server is angry, waiting for a minute\n"
+#~ msgstr "[Подробности] VNC сервер перегружен запорсами, минутное ожидание\n"
+
+#~ msgid ""
+#~ "Warning: protocol %s is not verified to work. Please report if not.\n"
+#~ msgstr "Предупреждение: работа протокола %s. Сообщите если это не так.\n"
