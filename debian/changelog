@@ -1,3 +1,9 @@
+hydra (8.1-1~kali1+echelon1) kali; urgency=low
+
+  * Add russian translation.
+
+ -- Vasily Laur <v.laur@npo-echelon.ru>  Mon, 26 Dec 2016 17:35:24 +0300
+
 hydra (8.1-1~kali1) kali; urgency=medium
 
   * Import new version from debian
@@ -35,7 +41,7 @@ hydra (8.0-1) unstable; urgency=medium
       + Change upstream path for one suitable for GNU Debian
   * debian/copyright
     + Extend copyright holders years
-    + Add dpl4hydra.sh copyright 
+    + Add dpl4hydra.sh copyright
   * Remove debian/source/options
     + Use xz compression.
   * debian/rules
@@ -152,7 +158,7 @@ hydra (7.2-1) unstable; urgency=low
   * New upstream release.
   * Refresh 05_add_option_to_cflag.diff patch offset.
   * Extend copyright holders years.
-    + Add missing copyright.		
+    + Add missing copyright.
 
   [Julián Moreno Patiño]
   * Add 07_remove_troubled_files.diff patch to avoid
@@ -174,7 +180,7 @@ hydra (7.1-2) unstable; urgency=low
   * Remove unnecessary newline in debian/rules.
   * Use firebird-dev instead firebird2.5-dev in B-D. (Closes: #653377)
   * Add lintian override to fix
-    package-needs-versioned-debhelper-build-depends 
+    package-needs-versioned-debhelper-build-depends
     warning for experimental debhelper version.
 
   [Ludovico Cavedon]
@@ -277,9 +283,9 @@ hydra (6.1-1) unstable; urgency=low
   * Adopted DEP5 Format
   * Updated menu file
   * Added desktop file
-  * Patch to use libpq-dev instead 
+  * Patch to use libpq-dev instead
     libpq-fe.h from upstream.
-  
+
   [Daniel Echeverry]
   * Created the manpages
 
