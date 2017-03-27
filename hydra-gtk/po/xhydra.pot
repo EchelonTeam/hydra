@@ -1,0 +1,488 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2016-12-20 14:21+0300\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "Language: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=CHARSET\n"
+        "Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/interface.c:189
+msgid   "xHydra"
+msgstr  ""
+
+#: ../src/interface.c:293
+msgid   "The protocol to use for the login/password cracking attempt"
+msgstr  ""
+
+#: ../src/interface.c:295
+msgid   "Protocol"
+msgstr  ""
+
+#: ../src/interface.c:306
+msgid   "select the port on which the daemon you want to brute force runs, 0 "
+        "means default"
+msgstr  ""
+
+#: ../src/interface.c:308
+msgid   "Port"
+msgstr  ""
+
+#: ../src/interface.c:315
+msgid   "Prefer IPV6"
+msgstr  ""
+
+#: ../src/interface.c:319
+msgid   "Enable to use IPV6"
+msgstr  ""
+
+#: ../src/interface.c:321
+msgid   "Target List"
+msgstr  ""
+
+#: ../src/interface.c:332
+msgid   "A file which contains the targets to attack. One entry per line. IP\n"
+        "addresses and/or DNS names."
+msgstr  ""
+
+#: ../src/interface.c:338
+msgid   "The target to attack - DNS name or IP address"
+msgstr  ""
+
+#: ../src/interface.c:341
+msgid   "Single Target"
+msgstr  ""
+
+#: ../src/interface.c:349 ../src/interface.c:393
+msgid   "Target"
+msgstr  ""
+
+#: ../src/interface.c:364
+msgid   "Be Verbose"
+msgstr  ""
+
+#: ../src/interface.c:368
+msgid   "be verbose"
+msgstr  ""
+
+#: ../src/interface.c:370
+msgid   "Debug"
+msgstr  ""
+
+#: ../src/interface.c:374
+msgid   "Enable debug mode"
+msgstr  ""
+
+#: ../src/interface.c:376
+msgid   "Show Attempts"
+msgstr  ""
+
+#: ../src/interface.c:380
+msgid   "Show attempts"
+msgstr  ""
+
+#: ../src/interface.c:382
+msgid   "Use SSL"
+msgstr  ""
+
+#: ../src/interface.c:386
+msgid   "Enable to use SSL (the target must have SSL enabled!)"
+msgstr  ""
+
+#: ../src/interface.c:388
+msgid   "Output Options"
+msgstr  ""
+
+#: ../src/interface.c:417
+msgid   "File with user logins, one entry per line"
+msgstr  ""
+
+#: ../src/interface.c:423
+msgid   "The login to use"
+msgstr  ""
+
+#: ../src/interface.c:424 ../src/interface.c:612
+msgid   "yourname"
+msgstr  ""
+
+#: ../src/interface.c:426 ../src/interface.c:447 ../src/interface.c:601
+msgid   "Username"
+msgstr  ""
+
+#: ../src/interface.c:434
+msgid   "Username List"
+msgstr  ""
+
+#: ../src/interface.c:441
+msgid   "Loop around users"
+msgstr  ""
+
+#: ../src/interface.c:445
+msgid   "Enable this option to loop around users not passwords"
+msgstr  ""
+
+#: ../src/interface.c:466
+msgid   "File with passwords to try, one entry per line"
+msgstr  ""
+
+#: ../src/interface.c:472
+msgid   "The password to try"
+msgstr  ""
+
+#: ../src/interface.c:473 ../src/interface.c:625
+msgid   "yourpass"
+msgstr  ""
+
+#: ../src/interface.c:475 ../src/interface.c:507 ../src/interface.c:614
+msgid   "Password"
+msgstr  ""
+
+#: ../src/interface.c:483
+msgid   "Password List"
+msgstr  ""
+
+#: ../src/interface.c:489
+msgid   "Generate"
+msgstr  ""
+
+#: ../src/interface.c:504
+msgid   "Generate passwords"
+msgstr  ""
+
+#: ../src/interface.c:522
+msgid   "Use Colon separated file"
+msgstr  ""
+
+#: ../src/interface.c:526
+msgid   "Enable this option to use a colon file for login/password attempts"
+msgstr  ""
+
+#: ../src/interface.c:532
+msgid   "The colon file to use, each line has to be structured like \"mylogin:"
+        "mypass\""
+msgstr  ""
+
+#: ../src/interface.c:534
+msgid   "Colon separated file"
+msgstr  ""
+
+#: ../src/interface.c:544
+msgid   "Try login as password"
+msgstr  ""
+
+#: ../src/interface.c:548
+msgid   "Enable this option to try the login as password, in addition to the "
+        "password/file"
+msgstr  ""
+
+#: ../src/interface.c:550
+msgid   "Try empty password"
+msgstr  ""
+
+#: ../src/interface.c:554
+msgid   "Enable this option to try an empty password, in addition to the "
+        "password/file"
+msgstr  ""
+
+#: ../src/interface.c:556
+msgid   "Try reversed login"
+msgstr  ""
+
+#: ../src/interface.c:560
+msgid   "Enable this option to try an reverse password, in addition to the "
+        "password/file"
+msgstr  ""
+
+#: ../src/interface.c:562
+msgid   "Passwords"
+msgstr  ""
+
+#: ../src/interface.c:582
+msgid   "Proxy "
+msgstr  ""
+
+#: ../src/interface.c:592
+msgid   "The address of the proxy. Syntax: \"http://123.45.67.89:8080\""
+msgstr  ""
+
+#: ../src/interface.c:595
+msgid   "Proxy needs authentication"
+msgstr  ""
+
+#: ../src/interface.c:599
+msgid   "Enable this if the proxy requires authentication"
+msgstr  ""
+
+#: ../src/interface.c:611
+msgid   "The user name for proxy authentication"
+msgstr  ""
+
+#: ../src/interface.c:624
+msgid   "The password for proxy authentication"
+msgstr  ""
+
+#: ../src/interface.c:638
+msgid   "No Proxy"
+msgstr  ""
+
+#: ../src/interface.c:646
+msgid   "HTTP Method"
+msgstr  ""
+
+#: ../src/interface.c:654
+msgid   "CONNECT Method"
+msgstr  ""
+
+#: ../src/interface.c:658
+msgid   "Enable this to use a proxy for scanning"
+msgstr  ""
+
+#: ../src/interface.c:662
+msgid   "Use a HTTP/HTTPS Proxy"
+msgstr  ""
+
+#: ../src/interface.c:677
+msgid   "Exit after first found pair (per host)"
+msgstr  ""
+
+#: ../src/interface.c:681
+msgid   "Enable this to stop all attacking processes once a valid login/"
+        "password pair is found (per host)"
+msgstr  ""
+
+#: ../src/interface.c:688
+msgid   "The maximum timeout an attack process is waiting for a response from "
+        "the target"
+msgstr  ""
+
+#: ../src/interface.c:695
+msgid   "The number of attack tasks to run in parallel. The more the faster, "
+        "the most: computer lockup :-) 16-64 is a good choice"
+msgstr  ""
+
+#: ../src/interface.c:697
+msgid   "Timeout"
+msgstr  ""
+
+#: ../src/interface.c:703
+msgid   "Number of Tasks"
+msgstr  ""
+
+#: ../src/interface.c:709
+msgid   "Exit after first found pair (global)"
+msgstr  ""
+
+#: ../src/interface.c:715
+msgid   "Enable this to stop all attacking processes once a valid login/"
+        "password pair is found (global)"
+msgstr  ""
+
+#: ../src/interface.c:717 ../src/interface.c:723
+msgid   "Do not print messages about connection errors"
+msgstr  ""
+
+#: ../src/interface.c:725
+msgid   "Performance Options"
+msgstr  ""
+
+#: ../src/interface.c:730
+msgid   "Tuning"
+msgstr  ""
+
+#: ../src/interface.c:749
+msgid   "URL to connect to via the proxy"
+msgstr  ""
+
+#: ../src/interface.c:750
+msgid   "www.suse.com"
+msgstr  ""
+
+#: ../src/interface.c:752
+msgid   "http-proxy url / http-proxy-urlenum credential module"
+msgstr  ""
+
+#: ../src/interface.c:766
+msgid   "The protected URL you want to access"
+msgstr  ""
+
+#: ../src/interface.c:767
+msgid   "/foo/bar/protected.html"
+msgstr  ""
+
+#: ../src/interface.c:769
+msgid   "http / https url"
+msgstr  ""
+
+#: ../src/interface.c:783
+msgid   "The password to the cisco device"
+msgstr  ""
+
+#: ../src/interface.c:784
+msgid   "password"
+msgstr  ""
+
+#: ../src/interface.c:786
+msgid   "Cisco Enable, Login for Cisco device"
+msgstr  ""
+
+#: ../src/interface.c:800
+msgid   "The DN scope of ldap to authenticate against"
+msgstr  ""
+
+#: ../src/interface.c:801
+msgid   "dn-scope"
+msgstr  ""
+
+#: ../src/interface.c:818
+msgid   "local accounts"
+msgstr  ""
+
+#: ../src/interface.c:822
+msgid   "Just attack local accounts"
+msgstr  ""
+
+#: ../src/interface.c:824
+msgid   "domain accounts"
+msgstr  ""
+
+#: ../src/interface.c:828
+msgid   "Attack domain and local accounts"
+msgstr  ""
+
+#: ../src/interface.c:830
+msgid   "Interpret passes as NTLM hashes"
+msgstr  ""
+
+#: ../src/interface.c:834
+msgid   "Interpret passes as NTML hashes"
+msgstr  ""
+
+#: ../src/interface.c:851
+msgid   "The client id you want to attack, something between 0 and 99"
+msgstr  ""
+
+#: ../src/interface.c:867
+msgid   "Directory of the CVS/SVN repository"
+msgstr  ""
+
+#: ../src/interface.c:868
+msgid   "trunk"
+msgstr  ""
+
+#: ../src/interface.c:870
+msgid   "CVS/SVN Repository"
+msgstr  ""
+
+#: ../src/interface.c:889
+msgid   "Insert the return string for a succesfull login"
+msgstr  ""
+
+#: ../src/interface.c:891
+msgid   "Telnet - Successful Login String"
+msgstr  ""
+
+#: ../src/interface.c:907
+msgid   "Write Password"
+msgstr  ""
+
+#: ../src/interface.c:914
+msgid   "Read Password"
+msgstr  ""
+
+#: ../src/interface.c:921
+msgid   "Version 2"
+msgstr  ""
+
+#: ../src/interface.c:928
+msgid   "Version 1"
+msgstr  ""
+
+#: ../src/interface.c:940
+msgid   "Specific"
+msgstr  ""
+
+#: ../src/interface.c:972
+msgid   "Output"
+msgstr  ""
+
+#: ../src/interface.c:982 ../src/interface.c:1013
+msgid   "Start"
+msgstr  ""
+
+#: ../src/interface.c:986
+msgid   "start hydra"
+msgstr  ""
+
+#: ../src/interface.c:988
+msgid   "Stop"
+msgstr  ""
+
+#: ../src/interface.c:992
+msgid   "stop hydra"
+msgstr  ""
+
+#: ../src/interface.c:994
+msgid   "Save Output"
+msgstr  ""
+
+#: ../src/interface.c:998
+msgid   "save output"
+msgstr  ""
+
+#: ../src/interface.c:1000
+msgid   "Clear Output"
+msgstr  ""
+
+#: ../src/interface.c:1004
+msgid   "clear screen"
+msgstr  ""
+
+#: ../src/interface.c:1006
+msgid   "Autoscroll"
+msgstr  ""
+
+#: ../src/interface.c:1010
+msgid   "toggle autoscroll"
+msgstr  ""
+
+#: ../src/callbacks.c:430
+msgid   "password: "
+msgstr  ""
+
+#: ../src/callbacks.c:451
+msgid   " finished at "
+msgstr  ""
+
+#: ../src/callbacks.c:452
+msgid   "<finished>\n"
+        "\n"
+msgstr  ""
+
+#: ../src/callbacks.c:647
+msgid   "Select target list"
+msgstr  ""
+
+#: ../src/callbacks.c:654
+msgid   "Select username list"
+msgstr  ""
+
+#: ../src/callbacks.c:661
+msgid   "Select password list"
+msgstr  ""
+
+#: ../src/callbacks.c:667
+msgid   "Select colon separated user,password list"
+msgstr  ""
+
+#: ../src/callbacks.c:684
+msgid   "Save output"
+msgstr  ""

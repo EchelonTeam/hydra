@@ -1,0 +1,159 @@
+#!/usr/bin/python
+# coding: utf-8
+
+import sys
+import os
+import re
+from datetime import datetime
+from xml.dom.minidom import getDOMImplementation
+
+class XmlReport:
+  def __init__(self, filename):
+    self.doc = None
+    self.filename = None
+    self.fileid = 1
+    self.begintime = None
+    self.endtime = None
+    self.isXmlExt = filename.lower().endswith(".xml")
+    self.basefilename = filename
+
+    if self.isXmlExt:
+      self.basefilename = self.basefilename[:-4]
+
+  def processlogpart(self, log):
+    self.filename = self.basefilename + str(self.fileid)
+
+    if self.isXmlExt:
+      self.filename += ".xml"
+
+    self.begin()
+    hasInfo = False
+
+    scan_res = re.compile(u'.*[\[](\d+)\s*\]\s*\[([a-zA-Z\d\-]*).*\]\s*(хост|host):[\s]*([^\Z \t]*)[\s]*(логин|login):[\s]*([^\Z: \t]*)[\s]*((пароль|password|domain|домен):[\s]*([^\Z: \t]*)[\s]*\Z|\Z)')
+    begintime_res = re.compile(u'.*(starting at|начато в)\s*(.*)')
+    endtime_res = re.compile(u'.*(finished at|завершено в)\s*(.*)')
+    for l in log:
+      match = scan_res.match(l)
+      if match:
+        if not hasInfo:
+          hasInfo = True
+          self.printScaninfo(match.group(2), match.group(1))
+
+        self.printNode(match.group(4), match.group(6), match.group(9))
+
+      else:
+        match = begintime_res.match(l)
+        if match:
+          self.begintime = datetime.strptime(match.group(2), '%Y-%m-%d %H:%M:%S')
+
+        else:
+          match = endtime_res.match(l)
+          if match:
+            self.endtime = datetime.strptime(match.group(2), '%Y-%m-%d %H:%M:%S')
+
+    self.end()
+    self.fileid += 1
+
+  def process(self, filename):
+    f = open(filename, 'r')
+    lines = f.readlines()
+    f.close()
+    lines = filter(None, ''.join(lines).decode('utf-8').split('\n'))
+
+    beginindex = 0
+    index = 0
+    for l in lines:
+      if l.find(u'<завершено>') != -1 or l.find('<finished>') != -1:
+        self.processlogpart(lines[beginindex:index])
+        beginindex = index
+      index += 1
+
+  def begin(self):
+    impl = getDOMImplementation()
+
+    self.doc = impl.createDocument(None, "hydrarun", None)
+    report = self.doc.documentElement
+
+    report.setAttribute('profile', '')
+    report.setAttribute('scan_name', '')
+
+    self.scaninfo = self.doc.createElement('scaninfo')
+    self.results = self.doc.createElement('results')
+    self.runstats = self.doc.createElement('runstats')
+
+    report.appendChild(self.scaninfo)
+    report.appendChild(self.results)
+    report.appendChild(self.runstats)
+
+  def printScaninfo(self, protocol, port):
+    proto = self.doc.createElement('protocol')
+    proto.appendChild(self.doc.createTextNode(protocol))
+
+    p = self.doc.createElement('port')
+    p.appendChild(self.doc.createTextNode(port))
+
+    self.scaninfo.appendChild(proto)
+    self.scaninfo.appendChild(p)
+
+  def printNode(self, host, login, password):
+    result = self.doc.createElement('result')
+
+    h = self.doc.createElement('host')
+    h.appendChild(self.doc.createTextNode(host))
+
+    l = self.doc.createElement('login')
+    l.appendChild(self.doc.createTextNode(login))
+
+    p = self.doc.createElement('password')
+    if password != None:
+      p.appendChild(self.doc.createTextNode(password))
+
+    self.results.appendChild(result)
+    result.appendChild(h)
+    result.appendChild(l)
+    result.appendChild(p)
+
+  def end(self):
+    if not self.begintime:
+      self.begintime = datetime.now()
+
+    if not self.endtime:
+      self.endtime = datetime.now()
+
+    st = self.doc.createElement('started')
+    st.setAttribute('time', self.begintime.isoformat())
+
+    fn = self.doc.createElement('finished')
+    fn.setAttribute('time', self.endtime.isoformat())
+
+    cr = self.doc.createElement('created')
+    created = datetime.now()
+    cr.setAttribute('time', created.isoformat())
+
+    self.runstats.appendChild(cr)
+    self.runstats.appendChild(st)
+    self.runstats.appendChild(fn)
+
+    s = self.doc.toprettyxml(encoding = 'utf-8')
+    if self.filename != None:
+        f = open(self.filename, 'w')
+        f.write(s)
+        f.close()
+    else:
+        print s
+
+
+if len(sys.argv) < 3:
+  print "Need at least two args: input report filename, output report filename"
+  print "Third parameter optional -r -- remove source file"
+  sys.exit()
+
+remove = len(sys.argv) >= 4 and sys.argv[3] == '-r'
+
+report = XmlReport(sys.argv[2])
+report.process(sys.argv[1])
+
+if remove:
+  os.remove(sys.argv[1])
+
+sys.exit()
