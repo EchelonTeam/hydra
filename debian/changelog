@@ -1,9 +1,3 @@
-hydra (8.1-1~kali1+echelon1) kali; urgency=low
-
-  * Add russian translation.
-
- -- Vasily Laur <v.laur@npo-echelon.ru>  Mon, 26 Dec 2016 17:35:24 +0300
-
 hydra (8.1-1~kali1) kali; urgency=medium
 
   * Import new version from debian

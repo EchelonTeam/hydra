@@ -1,7 +1,7 @@
 Source: hydra
 Section: net
 Priority: extra
-Maintainer: Vasily Laur <v.laur@cnpo.ru>
+Maintainer: Scanner-VS maintainers <support.sca@npo-echelon.ru>
 Uploaders: Daniel Echeverry <epsilon77@gmail.com>
 Build-Depends: autotools-dev,
  debhelper (>= 9),
